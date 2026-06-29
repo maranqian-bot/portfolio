@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>파이널프로젝트 | 생성형 AI SaaS 플랫폼</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: "Noto Sans KR", sans-serif; color: #171717; background: #ffffff; word-break: keep-all; overflow-wrap: break-word; }
+  .display { font-family: "Hanken Grotesk", "Noto Sans KR", sans-serif; letter-spacing: 0; }
+  .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 450, "GRAD" 0, "opsz" 24; }
+  .project-shot { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; }
+</style>
+</head>
+<body>
+<header class="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <a class="display text-lg font-extrabold text-neutral-950" href="index.html">마은재</a>
+    <nav class="hidden items-center gap-7 md:flex">
+      <a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="index.html">홈</a>
+      <a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="mini-project.html">미니프로젝트</a>
+      <a class="text-sm font-bold text-blue-700" href="final-project.html">파이널프로젝트</a>
+      <a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="troubleshooting.html">트러블슛팅</a>
+    </nav>
+    <details class="relative md:hidden">
+      <summary class="list-none p-2 text-neutral-900"><span class="material-symbols-outlined">menu</span></summary>
+      <nav class="absolute right-0 mt-2 w-48 rounded-lg border border-neutral-200 bg-white p-2 shadow-lg">
+        <a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="index.html">홈</a>
+        <a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="mini-project.html">미니프로젝트</a>
+        <a class="block rounded px-3 py-2 text-sm font-bold text-blue-700" href="final-project.html">파이널프로젝트</a>
+        <a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="troubleshooting.html">트러블슛팅</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="bg-white">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+      <div>
+        <p class="text-sm font-bold uppercase text-blue-700">Final Project · 2026.06 – 진행중</p>
+        <h1 class="display mt-3 font-extrabold leading-tight">
+          <span class="block text-3xl text-neutral-950 md:text-4xl">CareerWave</span>
+          <span class="block text-3xl text-neutral-950 md:text-4xl whitespace-nowrap">AI 취업 지원 통합 플랫폼</span>
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">AI 면접 코칭, 서류 분석과 커리어 진단을 제공하는 취업 지원 SaaS 플랫폼입니다. 팀 프로젝트에서 <strong>Auth · Member · Billing 백엔드</strong>를 전담해 사용자 가입·인증·구독·자동결제 전 흐름을 설계하고 구현했습니다.</p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">Java 21</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">Spring Boot 3</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">Spring Security</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">PostgreSQL</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">Redis</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">JWT · OAuth 2.0</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">Toss Payments</span>
+          <span class="rounded bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">JUnit 5 · Mockito</span>
+        </div>
+      </div>
+      <figure class="overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100">
+        <img src="assets/careerwave-screen.png" alt="CareerWave 플랫폼 화면" style="width:100%;height:auto;display:block;"/>
+        <figcaption class="border-t border-neutral-200 bg-white px-4 py-3 text-sm font-semibold text-neutral-600">CareerWave 서비스 화면</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- GitHub -->
+  <section class="bg-neutral-50">
+    <div class="mx-auto max-w-6xl px-5 pt-16 pb-20">
+      <p class="text-sm font-bold text-blue-700">Repository</p>
+      <h2 class="display mt-2 text-3xl font-extrabold text-neutral-950">GitHub 저장소</h2>
+      <div class="mt-6">
+        <a class="flex flex-col gap-4 rounded-lg border border-neutral-200 bg-white p-4 transition hover:border-blue-700 hover:shadow-sm md:flex-row md:items-center md:justify-between" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">
+          <div>
+            <p class="font-bold text-neutral-950">career-wave (maranqian-bot)</p>
+            <p class="mt-1 text-sm text-neutral-600">Spring Boot 3 · Spring Security · PostgreSQL · Redis · Toss Payments — Auth / Member / Billing 모듈</p>
+          </div>
+          <span class="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-blue-700">GitHub 바로가기 <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_outward</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="border-y border-neutral-200 bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-14">
+      <p class="text-sm font-bold text-blue-700">Features</p>
+      <h2 class="display mt-2 text-3xl font-extrabold text-neutral-950">구현 기능</h2>
+      <p class="mt-3 max-w-3xl leading-7 text-neutral-600">Auth · Member · Billing 세 모듈을 전담하며 사용자가 서비스를 가입하고 인증받아 구독·결제까지 이어지는 전 흐름을 설계하고 구현했습니다.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="JWT 인증 시스템" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Auth</span>
+            <h3 class="mt-1 font-bold text-neutral-950">JWT 인증 시스템</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">Access/Refresh 이중 토큰 구조와 Redis JTI 블랙리스트로 로그아웃 즉시 무효화를 구현했습니다. Refresh Token은 SHA-256 해시만 저장해 탈취 피해를 차단하고, 사용자당 최대 5개 동시 세션을 관리하며 초과 시 오래된 세션을 자동 퇴출합니다. 로그인 실패 카운트는 Redis, 잠금 상태는 DB에 이중 저장해 Redis 장애에도 계정 잠금이 유지되도록 설계했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="OAuth 소셜 로그인 보안" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Auth</span>
+            <h3 class="mt-1 font-bold text-neutral-950">OAuth 소셜 로그인 보안 강화</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">카카오·네이버·구글 소셜 로그인 콜백에서 Access Token이 redirect URL에 노출되는 취약점(CWE-598)을 발견해 MaxAge 60초·SameSite=Strict 단기 쿠키 방식으로 전환했습니다. OAuth state 검증을 getAndDelete() 원자 연산으로 전환해 TOCTOU 레이스 컨디션을 제거하고, F5 새로고침 즉시 로그아웃 버그도 쿠키 출처 불일치 분석으로 해결했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="아이디/비밀번호 찾기" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Auth</span>
+            <h3 class="mt-1 font-bold text-neutral-950">아이디 찾기 · 비밀번호 재설정</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">이메일 인증번호와 Reset Token을 해시 저장하고 TTL 및 실패 횟수 Rate Limit으로 원문 노출과 반복 인증 시도를 방어했습니다. 이메일 발송은 Port-Adapter 구조로 AWS SES를 분리해 테스트 환경에서 Stub으로 대체할 수 있도록 설계했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="약관 동의 관리" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Member</span>
+            <h3 class="mt-1 font-bold text-neutral-950">약관 동의 관리</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">개인·기업 회원 가입 시 필수·선택 약관 동의 이력을 저장하고 약관 버전 관리와 재동의 흐름을 구현했습니다. 가입 단계와 약관 동의를 분리해 약관이 변경되어도 기존 회원 데이터에 영향 없이 신규 버전 동의를 수집할 수 있는 구조로 설계했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="기업회원 S3 재직증명서 검증" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Member</span>
+            <h3 class="mt-1 font-bold text-neutral-950">기업회원 S3 재직증명서 검증</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">S3 객체 존재 여부만 확인하던 검증을 확장자·MIME Type·파일 크기·Key Prefix·1회성 소비까지 다층으로 강화했습니다. Stub 어댑터에 @Profile({"local","test"})를 적용해 실제 S3 구현체 없이 staging/prod 배포 시 기동 단계에서 차단되는 구조를 설계했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="구독/구독취소" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Billing</span>
+            <h3 class="mt-1 font-bold text-neutral-950">구독 · 구독 취소</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">플랜 선택부터 구독 활성화·취소·기간 만료까지 구독 생명주기 전 흐름을 구현했습니다. 구독 상태 전이를 CHECK 제약과 상태 일관성 검증으로 보호하고, 취소 즉시 만료와 기간 만료 후 종료 두 가지 방식을 구분해 처리했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="Toss 자동결제" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Billing</span>
+            <h3 class="mt-1 font-bold text-neutral-950">Toss Payments 자동결제 시스템</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">billingKey 발급부터 월 자동결제 스케줄러·결제 실패 재시도·결제 이력 저장까지 프론트엔드와 백엔드 전체 흐름을 구현했습니다. billingKey는 @Getter(AccessLevel.NONE)과 서비스 전용 접근 메서드로 직렬화 경로에서 구조적으로 제외해 무단 결제 위험을 차단했습니다.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-neutral-200 bg-white">
+          <img class="project-shot" src="assets/profile-hero.jpg" alt="외부 서비스 Port-Adapter 분리" width="900" height="1200"/>
+          <div class="p-5">
+            <span class="text-xs font-bold uppercase text-blue-700">Architecture</span>
+            <h3 class="mt-1 font-bold text-neutral-950">외부 서비스 Port-Adapter 분리</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-600">AWS SES·SOLAPI·국세청 API·S3를 Port-Adapter 구조와 Profile별 Stub으로 분리해 비즈니스 로직과 외부 의존성을 격리했습니다. Spec·Swagger·Backend DTO·Frontend TypeScript 타입 간 불일치를 교차 검토하고 Controller·Service·Adapter 테스트로 계약을 고정했습니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section class="bg-neutral-50">
+    <div class="mx-auto max-w-6xl px-5 py-14">
+      <p class="text-sm font-bold text-blue-700">Troubleshooting</p>
+      <h2 class="display mt-2 text-3xl font-extrabold text-neutral-950">문제 해결 기록</h2>
+      <p class="mt-4 max-w-3xl leading-7 text-neutral-700">구현 과정에서 발견한 보안 취약점, 데이터 정합성 문제, 운영 배포 리스크를 분석하고 해결한 기록입니다.</p>
+      <div class="mt-8 space-y-3">
+        <details class="rounded-lg border border-neutral-200 bg-white p-5" open>
+          <summary class="cursor-pointer list-none font-bold text-neutral-950">OAuth F5 새로고침 즉시 로그아웃 버그 — 쿠키 출처 불일치</summary>
+          <p class="mt-3 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">원인:</strong> OAuth 콜백은 제공자가 백엔드(localhost:8080)로 직접 리다이렉트하므로 refresh 쿠키가 8080에서 설정됩니다. F5 시 Vite proxy(5173) 경유 요청에 쿠키가 전달되지 않아 토큰 재발급이 실패하고 즉시 로그아웃됩니다.</p>
+          <p class="mt-2 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">해결:</strong> ① 쿠키 Secure 플래그를 @ConfigurationProperties 빈(CookieProperties)으로 추출해 발급·삭제 세 곳을 통일. ② OAuthCallbackPage에서 probeAuth()를 즉시 호출해 쿠키를 Vite proxy 경유로 rotate하여 출처를 통일했습니다.</p>
+        </details>
+        <details class="rounded-lg border border-neutral-200 bg-white p-5">
+          <summary class="cursor-pointer list-none font-bold text-neutral-950">기업회원 승인 상태 fail-open 보안 취약점</summary>
+          <p class="mt-3 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">원인:</strong> switch 문 default 분기가 APPROVED 외 모든 상태를 통과시켜, hr_managers row가 누락된 COMPANY 계정(NONE 상태)도 토큰이 발급되는 취약점이었습니다. 코드 리뷰에서 발견해 운영 전에 수정했습니다.</p>
+          <p class="mt-2 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">해결:</strong> fail-close 방식으로 전환. APPROVED만 명시적으로 허용하고 나머지는 default → throw로 차단. 향후 새 상태값이 추가돼도 실수로 통과되지 않는 구조를 확보했습니다.</p>
+        </details>
+        <details class="rounded-lg border border-neutral-200 bg-white p-5">
+          <summary class="cursor-pointer list-none font-bold text-neutral-950">Toss billingKey 직렬화 노출 방지</summary>
+          <p class="mt-3 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">원인:</strong> 클래스 레벨 @Getter로 getEncryptedBillingKey()가 자동 생성되면 Jackson이 직렬화 대상으로 인식해 응답 DTO나 로그에 billingKey가 노출될 위험이 있었습니다. billingKey 유출 시 무단 결제가 가능합니다.</p>
+          <p class="mt-2 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">해결:</strong> @Getter(AccessLevel.NONE)으로 Lombok getter를 차단. 서비스 레이어용 접근은 encryptedBillingKeyForService() 메서드로 별도 제공해 get* 네이밍을 피해 Jackson 직렬화 후보에서 구조적으로 제외했습니다.</p>
+        </details>
+        <details class="rounded-lg border border-neutral-200 bg-white p-5">
+          <summary class="cursor-pointer list-none font-bold text-neutral-950">운영 DB 무중단 마이그레이션 — CREATE 스킵·FK 누락·원자성</summary>
+          <p class="mt-3 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">원인:</strong> 기존 plans 테이블이 있어 CREATE IF NOT EXISTS가 블록 전체를 스킵해 신규 컬럼이 추가되지 않아 Hibernate validate 기동 실패. FK 누락으로 고아 레코드 위험. 트랜잭션 없이 실행 시 중간 실패 시 partial schema 발생.</p>
+          <p class="mt-2 text-sm leading-6 text-neutral-700"><strong class="text-neutral-950">해결:</strong> ALTER TABLE ADD COLUMN IF NOT EXISTS로 신규 컬럼을 보장. idempotent FK 추가 패턴 적용. 파일 전체를 BEGIN/COMMIT으로 래핑해 원자성을 확보했습니다.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Collaboration -->
+  <section class="border-y border-neutral-200 bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-14">
+      <p class="text-sm font-bold text-blue-700">Release Management</p>
+      <h2 class="display mt-2 text-3xl font-extrabold text-neutral-950">팀 협업과 릴리즈 관리</h2>
+      <p class="mt-4 max-w-3xl leading-7 text-neutral-700">요구사항 문서, API 계약, 이슈와 PR, 배포 체크리스트를 연결해 기능 구현이 실제 실행 가능한 상태까지 이어지도록 관리했습니다.</p>
+      <div class="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">
+        <article class="grid gap-6 py-8 md:grid-cols-[0.86fr_1.14fr] md:items-center">
+          <div>
+            <p class="text-xs font-bold uppercase text-blue-700">01 / Requirement</p>
+            <h3 class="mt-2 text-xl font-extrabold text-neutral-950">Notion에서 요구사항과 역할을 먼저 맞췄습니다</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-700">사용자 역할, 핵심 화면, API 필요 항목, 담당 범위를 문서로 정리했습니다. 변경된 요구사항은 구현 전에 문서에 먼저 반영해 팀원이 같은 기준을 보고 작업하도록 맞췄습니다.</p>
+            <ul class="mt-4 grid gap-2 text-sm leading-6 text-neutral-700">
+              <li><strong class="text-neutral-950">관리 항목</strong> 회의록, 화면 정의, 역할 분담, 완료 기준</li>
+              <li><strong class="text-neutral-950">확인 방식</strong> 작업 전 문서 기준을 맞추고 이슈로 구현 범위를 분리</li>
+            </ul>
+          </div>
+          <figure class="overflow-hidden border border-neutral-200 bg-white">
+            <img class="project-shot" src="assets/profile-hero.jpg" alt="Notion 요구사항과 역할 분담 문서" width="900" height="1200"/>
+            <figcaption class="border-t border-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-600">Notion 요구사항과 역할 분담</figcaption>
+          </figure>
+        </article>
+        <article class="grid gap-6 py-8 md:grid-cols-[1.14fr_0.86fr] md:items-center">
+          <div>
+            <p class="text-xs font-bold uppercase text-blue-700">02 / Pull Request</p>
+            <h3 class="mt-2 text-xl font-extrabold text-neutral-950">Issue, Branch, PR을 연결해 변경 이력을 남겼습니다</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-700">GitHub Issue를 기준으로 브랜치를 만들고 PR에서 구현 의도, 변경 범위, 확인 방법을 공유했습니다. 리뷰 코멘트는 수정 커밋으로 반영해 논의가 코드에 어떻게 반영됐는지 추적할 수 있게 했습니다.</p>
+            <ul class="mt-4 grid gap-2 text-sm leading-6 text-neutral-700">
+              <li><strong class="text-neutral-950">관리 항목</strong> 브랜치 전략, 커밋 컨벤션, PR 설명, 코드리뷰 코멘트</li>
+              <li><strong class="text-neutral-950">확인 방식</strong> 병합 전 변경 파일과 테스트 결과를 PR에 함께 기록</li>
+            </ul>
+          </div>
+          <figure class="overflow-hidden border border-neutral-200 bg-white md:order-first">
+            <img class="project-shot" src="assets/profile-hero.jpg" alt="GitHub Issue Branch PR 흐름" width="900" height="1200"/>
+            <figcaption class="border-t border-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-600">GitHub Issue, Branch, PR 흐름</figcaption>
+          </figure>
+        </article>
+        <article class="grid gap-6 py-8 md:grid-cols-[0.86fr_1.14fr] md:items-center">
+          <div>
+            <p class="text-xs font-bold uppercase text-blue-700">03 / API Contract</p>
+            <h3 class="mt-2 text-xl font-extrabold text-neutral-950">API 계약으로 프론트엔드 연동 재작업을 줄였습니다</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-700">Spec·Swagger·Backend DTO·Frontend TypeScript 타입을 교차 검토하고 Controller·Service·Adapter 테스트로 계약을 고정했습니다. 인증 도메인 응답 구조를 가입·인증·로그인·계정 복구 전반에 걸쳐 일관되게 유지했습니다.</p>
+            <ul class="mt-4 grid gap-2 text-sm leading-6 text-neutral-700">
+              <li><strong class="text-neutral-950">관리 항목</strong> 요청·응답 필드, 에러 코드, 인증 헤더</li>
+              <li><strong class="text-neutral-950">확인 방식</strong> Swagger 계약과 실제 구현 비교, 프론트 연동 단계 교차 검토</li>
+            </ul>
+          </div>
+          <figure class="overflow-hidden border border-neutral-200 bg-white">
+            <img class="project-shot" src="assets/profile-hero.jpg" alt="API 계약 문서" width="900" height="1200"/>
+            <figcaption class="border-t border-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-600">API 계약과 응답 구조 정의</figcaption>
+          </figure>
+        </article>
+        <article class="grid gap-6 py-8 md:grid-cols-[1.14fr_0.86fr] md:items-center">
+          <div>
+            <p class="text-xs font-bold uppercase text-blue-700">04 / QA &amp; Bug Fix</p>
+            <h3 class="mt-2 text-xl font-extrabold text-neutral-950">QA 중 발견한 버그를 원인부터 분석해 수정했습니다</h3>
+            <p class="mt-3 text-sm leading-6 text-neutral-700">카카오 소셜 로그인 사용자의 결제 시도 시 404가 반환되는 버그를 QA 중 발견했습니다. 이메일 미등록(customer_email NOT NULL 위반)이 동시 요청 처리용 catch 블록을 오통과하는 원인임을 DB 직접 조회로 확인하고, INSERT 전 이메일 사전 검증 추가와 프론트엔드 오류 분기 수정으로 해결했습니다.</p>
+            <ul class="mt-4 grid gap-2 text-sm leading-6 text-neutral-700">
+              <li><strong class="text-neutral-950">발견 방법</strong> QA 시나리오 중 소셜 로그인 결제 경로 테스트</li>
+              <li><strong class="text-neutral-950">해결 방식</strong> DB 직접 조회 → 원인 확정 → Backend·Frontend 동시 수정</li>
+            </ul>
+          </div>
+          <figure class="overflow-hidden border border-neutral-200 bg-white md:order-first">
+            <img class="project-shot" src="assets/profile-hero.jpg" alt="QA 버그 수정 기록" width="900" height="1200"/>
+            <figcaption class="border-t border-neutral-200 px-4 py-3 text-sm font-semibold text-neutral-600">QA와 버그 원인 분석 기록</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-white border-t border-neutral-200">
+  <div class="mx-auto max-w-6xl px-5 py-8 text-sm text-neutral-500">
+      <div class="flex items-baseline justify-between gap-6">
+        <span class="font-bold text-neutral-900">마은재</span>
+        <a class="font-bold text-neutral-900" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+      </div>
+      <p class="mt-2">© 2026 백엔드 신입 개발자 포트폴리오. Java, Spring Boot, DB, 배포와 문제 해결.</p>
+  </div>
+</footer>
+<script src="assets/image-modal.js" defer></script>
+</body>
+</html>
