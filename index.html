@@ -844,22 +844,19 @@
 </header>
 <main class="overflow-x-hidden">
 <!-- 히어로 섹션 -->
-<section class="hero-section flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop">
-<figure class="hero-portrait" aria-label="마은재 프로필 이미지">
-<img class="active" src="assets/2023-09-28 085642.jpg" alt="마은재 프로필 사진"/>
-<img src="assets/f22b6bae0010de31fd8a3024156058 2.jpg" alt="마은재 프로필 사진"/>
-<img src="assets/blue.JPG" alt="마은재 프로필 사진"/>
-</figure>
-<div class="hero-content reveal-on-scroll visible">
-<div class="hero-copy">
-<span class="hero-eyebrow">백엔드 신입 개발자</span>
-<h1 class="hero-title">안녕하세요, 마은재입니다.</h1>
-<p class="hero-kicker">요구사항과 검증 기준을 먼저 정리하고, AI와 도구를 활용해 구현 속도와 품질을 함께 높이는 백엔드 개발자를 지향합니다.</p>
-<div class="hero-lede text-on-surface-variant">
-<p>AI가 제안한 코드는 그대로 사용하지 않고, 프로젝트 구조와 의존성, 예외 흐름을 확인한 뒤 필요한 형태로 적용합니다.</p>
-<p>구현 이후에도 로그 분석, 장애 재현, 개선 과정을 기록하며 서비스가 동작하는 전체 흐름을 이해하려고 합니다.</p>
-</div>
-<div class="hero-links" aria-label="홈 주요 링크">
+<section style="background:#ffffff;border-bottom:1px solid #f0f0f2;padding:80px 40px 88px;">
+<div style="max-width:1200px;margin-inline:auto;">
+<div style="max-width:580px;">
+<img src="assets/2023-09-28 085642.jpg" alt="마은재" style="display:block;width:52px;height:52px;border-radius:999px;object-fit:cover;object-position:center 15%;margin-bottom:32px;"/>
+<h1 style="font-family:'Inter','Noto Sans KR',sans-serif;font-size:46px;font-weight:800;line-height:1.08;letter-spacing:-0.025em;color:#0a0a0a;margin:0;">마은재</h1>
+<p style="margin-top:10px;font-size:15px;font-weight:600;color:#9ca3af;letter-spacing:0;">백엔드 개발자 · Java / Spring Boot</p>
+<p style="margin-top:24px;font-size:17px;font-weight:500;line-height:1.78;color:#4b5563;">요구사항과 검증 기준을 먼저 정의하고, AI 도구를 활용해<br/>구현 속도와 품질을 함께 높이는 백엔드 개발자입니다.</p>
+<div style="margin-top:32px;display:flex;align-items:center;gap:20px;font-size:13px;font-weight:700;">
+<a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer" style="color:#111827;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#d1d5db;">GitHub</a>
+<span style="color:#e5e7eb;">·</span>
+<a href="final-project.html" style="color:#111827;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#d1d5db;">파이널프로젝트</a>
+<span style="color:#e5e7eb;">·</span>
+<a href="troubleshooting.html" style="color:#111827;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#d1d5db;">트러블슛팅</a>
 </div>
 </div>
 </div>
@@ -1179,16 +1176,5 @@
             }
         });
     });
-</script>
-<script>
-(function() {
-    const slides = document.querySelectorAll('.hero-portrait img');
-    let current = 0;
-    setInterval(() => {
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-    }, 4000);
-})();
 </script>
 </body></html>
