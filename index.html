@@ -1,1314 +1,572 @@
 <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마은재 | 풀스택 포트폴리오</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FBFBFD;
+            --card-bg: #FFFFFF;
+            --accent: #0066FF;
+            --hot: #ff2442;
+            --text-main: #1D1D1F;
+            --text-sub: #6E6E73;
+            --border: #E5E5E7;
+            --radius: 28px;
+        }
 
-<html class="scroll-smooth" lang="ko"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>마은재 | 백엔드 포트폴리오</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "outline-variant": "#cfc4c5",
-                    "on-secondary": "#ffffff",
-                    "surface-container-lowest": "#ffffff",
-                    "secondary-fixed-dim": "#c7c6c6",
-                    "on-tertiary": "#ffffff",
-                    "on-tertiary-fixed": "#001b3f",
-                    "on-tertiary-fixed-variant": "#00458f",
-                    "on-primary-container": "#848484",
-                    "secondary-container": "#e1dfdf",
-                    "secondary-fixed": "#e4e2e2",
-                    "surface-container-highest": "#e2e2e4",
-                    "surface-bright": "#f9f9fb",
-                    "on-primary-fixed-variant": "#474747",
-                    "on-primary-fixed": "#1b1b1b",
-                    "on-secondary-fixed": "#1b1c1c",
-                    "surface-container": "#eeeef0",
-                    "inverse-primary": "#c6c6c6",
-                    "on-secondary-container": "#626262",
-                    "on-background": "#1a1c1d",
-                    "on-primary": "#ffffff",
-                    "tertiary": "#000000",
-                    "background": "#f9f9fb",
-                    "primary-fixed": "#e2e2e2",
-                    "on-error": "#ffffff",
-                    "outline": "#7e7576",
-                    "primary": "#000000",
-                    "on-secondary-fixed-variant": "#464747",
-                    "surface": "#f9f9fb",
-                    "primary-fixed-dim": "#c6c6c6",
-                    "on-surface-variant": "#4c4546",
-                    "inverse-surface": "#2f3132",
-                    "on-surface": "#1a1c1d",
-                    "tertiary-fixed-dim": "#abc7ff",
-                    "secondary": "#5e5e5e",
-                    "surface-container-low": "#f3f3f5",
-                    "surface-variant": "#e2e2e4",
-                    "surface-tint": "#5e5e5e",
-                    "primary-container": "#1b1b1b",
-                    "surface-container-high": "#e8e8ea",
-                    "error-container": "#ffdad6",
-                    "on-error-container": "#93000a",
-                    "error": "#ba1a1a",
-                    "tertiary-container": "#001b3f",
-                    "on-tertiary-container": "#2b82f4",
-                    "inverse-on-surface": "#f0f0f2",
-                    "surface-dim": "#d9dadc",
-                    "tertiary-fixed": "#d7e2ff"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "stack-md": "24px",
-                    "margin-mobile": "20px",
-                    "section-v-padding": "120px",
-                    "stack-sm": "8px",
-                    "container-max": "1200px",
-                    "gutter": "32px",
-                    "stack-lg": "64px",
-                    "margin-desktop": "40px"
-            },
-            "fontFamily": {
-                    "label-md": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "display": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "body-md": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "headline-lg": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "headline-md": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "body-lg": ["Noto Sans KR", "Inter", "sans-serif"],
-                    "caption": ["Noto Sans KR", "Inter", "sans-serif"]
-            },
-            "fontSize": {
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "500"}],
-                    "display": ["56px", {"lineHeight": "68px", "letterSpacing": "0", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "headline-lg": ["40px", {"lineHeight": "50px", "letterSpacing": "0", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link-active {
-            color: #000000;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 4px;
-        }
-        body {
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
-        .display {
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            letter-spacing: 0;
-        }
-        .ko-copy,
-        .ko-copy p,
-        .ko-copy li,
-        .ko-copy h1,
-        .ko-copy h2,
-        .ko-copy h3,
-        .ko-copy h4 {
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
-        .hero-title {
-            color: #141516;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 56px;
-            font-weight: 600;
-            line-height: 1.08;
-            letter-spacing: 0;
-        }
-        .hero-content {
-            width: min(1200px, 100%);
-            margin-inline: auto;
-            text-align: left;
-        }
-        .hero-copy {
-            min-width: 0;
-            max-width: 870px;
-        }
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            color: #3f4448;
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .hero-kicker {
-            margin-top: 16px;
-            max-width: 700px;
-            color: #5d6368;
-            font-size: 19px;
-            font-weight: 600;
-            line-height: 1.52;
-        }
-        .hero-section {
-            --hero-image-width: clamp(430px, 40vw, 720px);
-            --hero-image-offset: max(40px, calc((100% - 1200px) / 2));
-            position: relative;
-            isolation: isolate;
-            min-height: 520px;
-            overflow: hidden;
-            padding-top: 74px;
-            padding-bottom: 82px;
-            background: #f9f9fb;
-        }
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(90deg, #f9f9fb 0%, rgba(249, 249, 251, 0.99) 44%, rgba(249, 249, 251, 0.84) 60%, rgba(249, 249, 251, 0.36) 82%, rgba(249, 249, 251, 0.08) 100%),
-                linear-gradient(180deg, rgba(249, 249, 251, 0.2), rgba(249, 249, 251, 0) 42%, rgba(249, 249, 251, 0.18));
-            pointer-events: none;
-            z-index: 1;
-        }
-        .hero-section > div {
-            position: relative;
-            z-index: 2;
-        }
-        .hero-lede {
-            display: grid;
-            gap: 10px;
-            max-width: 700px;
-            margin-top: 18px;
-            padding-left: 0;
-            list-style: none;
-            text-align: left;
-            font-size: 15px;
-            line-height: 1.72;
-            text-shadow: 0 1px 18px rgba(255, 255, 255, 0.72);
-        }
-        .hero-lede p {
-            margin: 0;
-        }
-        .ai-principles-section {
-            background: #ffffff;
-            border-bottom: 1px solid #e6e7e9;
-        }
-        .ai-principles-label {
-            padding-top: 48px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .ai-principles-label p {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #4b5563;
-            margin: 0;
-        }
-        .ai-principles-label span {
-            display: inline-block;
-            width: 24px;
-            height: 1px;
-            background: #d1d5db;
-        }
-        .ai-principles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0;
-            padding-top: 0;
-            padding-bottom: 52px;
-        }
-        .ai-principle {
-            background: transparent;
-            border: none;
-            border-right: 1px solid #e5e7eb;
-            border-radius: 0;
-            padding: 28px 36px 28px 0;
-        }
-        .ai-principle:nth-child(2) {
-            padding: 28px 36px;
-        }
-        .ai-principle:last-child {
-            border-right: none;
-            padding: 28px 0 28px 36px;
-        }
-        .ai-principle .ai-principle-icon {
-            display: block;
-            width: auto;
-            height: auto;
-            margin-bottom: 14px;
-            border-radius: 0;
-            background: transparent;
-            border: none;
-            color: #4b5563;
-            font-size: 17px;
-            line-height: 1;
-        }
-        .ai-principle strong {
-            display: block;
-            color: #111827;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            line-height: 1.35;
-        }
-        .ai-principle span {
-            display: block;
-            margin-top: 5px;
-            color: #374151;
-            font-size: 13px;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        .ai-principle p {
-            margin-top: 10px;
-            color: #6b7280;
-            font-size: 13px;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-        .hero-lede li::marker {
-            color: #141516;
-            font-size: 0.72em;
-        }
-        .hero-links {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 28px;
-            color: #2f3438;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            line-height: 20px;
-        }
-        .hero-links a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(47, 52, 56, 0.35);
-            transition: border-color 0.2s ease, color 0.2s ease;
-        }
-        .hero-links a:hover {
-            color: #141516;
-            border-bottom-color: #141516;
-        }
-        .hero-links span {
-            color: #8b9196;
-            font-weight: 600;
-        }
-        .hero-portrait {
-            position: absolute;
-            inset: 0 0 0 auto;
-            width: var(--hero-image-width);
-            height: 100%;
-            overflow: hidden;
-            background: #f9f9fb;
-            z-index: 0;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 22%);
-            mask-image: linear-gradient(to right, transparent 0%, black 22%);
-        }
-        .hero-portrait img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 70%;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-        }
-        .hero-portrait img.active {
-            opacity: 1;
-        }
-        .section-title {
-            display: flex !important;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px !important;
-            font-weight: 700 !important;
-            letter-spacing: 0.1em !important;
-            text-transform: uppercase !important;
-            color: #4b5563 !important;
-            line-height: 1.4 !important;
-            padding-bottom: 20px !important;
-            margin-bottom: 28px !important;
-            border-bottom: 1px solid #e5e7eb !important;
-        }
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 24px;
-            height: 1px;
-            background: #d1d5db;
-            flex-shrink: 0;
-        }
-        .project-header .section-title {
-            border-bottom: none !important;
-            padding-bottom: 0 !important;
-            margin-bottom: 0 !important;
-        }
-        #experience h3 {
-            font-size: 18px !important;
-        }
-        .career-role {
-            margin-top: 6px;
-            color: #4c5155;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 24px;
-        }
-        .career-stack {
-            margin-top: 12px;
-            color: #6a7075;
-            font-size: 13px;
-            font-weight: 600;
-            line-height: 22px;
-        }
-        #projects,
-        #experience,
-        #teaching {
-            padding-top: 24px;
-        }
-        .project-section {
-            background: #f9f9fb;
-        }
-        .project-header {
-            padding-top: 48px;
-            padding-bottom: 20px;
-            margin-bottom: 32px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .project-eyebrow {
-            display: block;
-            margin-bottom: 10px;
-            color: #6a7075;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0;
-            text-transform: uppercase;
-        }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            display: flex;
-            min-height: auto;
-            flex-direction: column;
-            padding: 28px 24px 24px;
-            border: 1px solid #e1e4e7;
-            border-top: 2px solid #111827;
-            border-radius: 0;
-            background: #ffffff;
-            color: inherit;
-            text-decoration: none;
-            transition: border-top-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        button.project-card {
-            width: 100%;
-            font: inherit;
-            text-align: left;
-            cursor: pointer;
-        }
-        .project-card:hover {
-            border-top-color: #2563eb;
-            box-shadow: 0 8px 24px rgba(17, 19, 20, 0.07);
-        }
-        .project-media {
-            display: none;
-        }
-        .project-media img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 18px;
-        }
-        .project-media--mark {
-            background:
-                linear-gradient(135deg, rgba(20, 21, 22, 0.03), rgba(20, 21, 22, 0)),
-                #f8fafc;
-        }
-        .project-media--cveradar {
-            background: #ffffff;
-        }
-        .cveradar-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #111827;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .cveradar-logo-mark {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: #f97316;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .project-kind {
-            color: #6a7075;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            line-height: 18px;
-            text-transform: uppercase;
-        }
-        .project-card-title {
-            margin-top: 14px;
-            color: #141516;
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1.25;
-        }
-        .project-card-copy {
-            margin-top: 14px;
-            color: #4f565c;
-            font-size: 14px;
-            line-height: 1.68;
-        }
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: auto;
-            padding-top: 22px;
-        }
-        .project-tags li {
-            padding: 5px 9px;
-            border: 1px solid #dde1e5;
-            border-radius: 999px;
-            color: #4f565c;
-            font-size: 12px;
-            font-weight: 700;
-            line-height: 16px;
-        }
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 18px;
-            color: #141516;
-            font-size: 13px;
-            font-weight: 800;
-            line-height: 20px;
-        }
-        .project-link .material-symbols-outlined {
-            font-size: 17px;
-        }
-        .teaching-section {
-            background: #ffffff;
-        }
-        .teaching-header {
-            margin-bottom: 0;
-            padding-bottom: 28px;
-            border-bottom: 1px solid #e6e7e9;
-        }
-        .teaching-list {
-            display: grid;
-        }
-        .teaching-item {
-            display: grid;
-            grid-template-columns: 190px minmax(0, 1fr);
-            gap: 36px;
-            align-items: start;
-            padding: 24px 0;
-            border-bottom: 1px solid #eceeef;
-        }
-        .teaching-period {
-            color: #6a7075;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            line-height: 24px;
-            white-space: nowrap;
-        }
-        .teaching-course {
-            color: #141516;
-            display: block;
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.55;
-        }
-        .teaching-detail {
-            min-width: 0;
-        }
-        .teaching-detail summary {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 24px;
-            gap: 16px;
-            align-items: center;
-            cursor: pointer;
-            list-style: none;
-        }
-        .teaching-detail summary::-webkit-details-marker {
-            display: none;
-        }
-        .teaching-detail summary::after {
-            content: "+";
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            border: 1px solid #cfd3d7;
-            border-radius: 50%;
-            color: #4c5155;
-            font-size: 14px;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .teaching-detail[open] summary::after {
-            content: "-";
-        }
-        .teaching-stack-groups {
-            display: grid;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .teaching-stack-group {
-            display: grid;
-            gap: 7px;
-        }
-        .teaching-stack-label {
-            color: #6a7075;
-            font-size: 12px;
-            font-weight: 800;
-            line-height: 18px;
-        }
-        .teaching-stack-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 0;
-            padding: 0;
-            list-style: none;
-        }
-        .teaching-stack-list li {
-            padding: 5px 9px;
-            border: 1px solid #dde1e5;
-            border-radius: 999px;
-            color: #4f565c;
-            font-size: 12px;
-            font-weight: 700;
-            line-height: 16px;
-        }
-        .activity-list {
-            display: grid;
-            border-top: 1px solid #e2e2e4;
-        }
-        .activity-item {
-            display: grid;
-            grid-template-columns: 170px minmax(0, 1fr);
-            gap: 36px;
-            padding: 26px 0;
-            border-bottom: 1px solid #e2e2e4;
-        }
-        .activity-meta {
-            color: #6a7075;
-            font-family: "Inter", "Noto Sans KR", sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 22px;
-        }
-        .activity-title {
-            color: #141516;
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1.35;
-        }
-        .activity-copy {
-            margin-top: 8px;
-            color: #4f565c;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        .activity-detail {
-            display: grid;
-            gap: 5px;
-            margin-top: 10px;
-            padding-left: 18px;
-            color: #4f565c;
-            font-size: 14px;
-            line-height: 1.55;
-            list-style: disc;
-        }
-        .activity-detail li {
-            padding-left: 2px;
-        }
-        .activity-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: 8px;
-            color: #141516;
-            font-size: 12px;
-            font-weight: 800;
-            line-height: 18px;
-            text-decoration: none;
-        }
-        .activity-link--pending {
-            color: #6a7075;
-            text-decoration: none;
-        }
-        .collaboration-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 14px;
-            margin-top: 18px;
-        }
-        .collaboration-shot {
-            min-width: 0;
-            overflow: hidden;
-            border: 1px solid #dfe3e7;
-            border-radius: 8px;
-            background: #ffffff;
-        }
-        .collaboration-shot img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-        }
-        .collaboration-shot figcaption {
-            padding: 10px 12px;
-            color: #4f565c;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-        @media (max-width: 767px) {
-            .hero-section {
-                min-height: 460px;
-                padding-top: 58px;
-                padding-bottom: 64px;
-                background-position: center top;
-            }
-            .hero-title {
-                font-size: 40px;
-                line-height: 1.12;
-            }
-            .hero-content {
-                display: block;
-                text-align: center;
-            }
-            .hero-copy {
-                max-width: 100%;
-            }
-            .hero-eyebrow {
-                justify-content: center;
-                font-size: 13px;
-            }
-            .hero-kicker {
-                font-size: 17px;
-            }
-            .ai-principles-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding-top: 48px;
-                padding-bottom: 60px;
-            }
-            .ai-principle {
-                min-height: auto;
-            }
-            .hero-lede {
-                max-width: 100%;
-                margin-top: 18px;
-            }
-            .hero-links {
-                justify-content: center;
-                margin-top: 24px;
-            }
-            .hero-portrait {
-                display: none;
-            }
-            .section-title {
-                font-size: 32px;
-                line-height: 1.35;
-            }
-            .ko-card {
-                padding: 24px;
-            }
-            #experience .relative.ml-4 {
-                margin-left: 0;
-            }
-            #experience .absolute.left-\[-5px\] {
-                left: -1px;
-            }
-            #experience .pl-12 {
-                padding-left: 28px;
-            }
-            #experience .career-list > :not([hidden]) ~ :not([hidden]) {
-                margin-top: 40px;
-            }
-            #experience .font-label-md.uppercase {
-                font-size: 12px;
-                line-height: 20px;
-            }
-            .career-role {
-                font-size: 14px;
-                line-height: 22px;
-            }
-            .career-stack {
-                font-size: 12px;
-                line-height: 20px;
-            }
-            #projects,
-            #experience,
-            #teaching {
-                padding-top: 24px;
-            }
-            .project-header {
-                margin-bottom: 22px;
-                padding-bottom: 22px;
-            }
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .project-card {
-                min-height: auto;
-                padding: 22px;
-            }
-            .project-media {
-                height: 128px;
-                margin-bottom: 18px;
-            }
-            .project-media img {
-                padding: 14px;
-            }
-            .project-card-title {
-                font-size: 20px;
-            }
-            .teaching-header {
-                display: block;
-                margin-bottom: 0;
-                padding-bottom: 22px;
-            }
-            .teaching-list {
-                grid-template-columns: 1fr;
-            }
-            .teaching-item {
-                grid-template-columns: 1fr;
-                gap: 6px;
-                padding: 20px 0;
-            }
-            .teaching-period {
-                font-size: 13px;
-                line-height: 20px;
-            }
-            .teaching-course {
-                font-size: 16px;
-                line-height: 1.58;
-            }
-            .teaching-detail summary {
-                grid-template-columns: minmax(0, 1fr) 22px;
-                gap: 10px;
-            }
-            .teaching-stack-list {
-                margin-top: 12px;
-            }
-            .activity-item {
-                grid-template-columns: 1fr;
-                gap: 6px;
-                padding: 22px 0;
-            }
-            .activity-title {
-                font-size: 20px;
-            }
-            .activity-copy {
-                font-size: 14px;
-            }
-        }
-        @media (min-width: 768px) and (max-width: 1120px) {
-            .hero-content {
-                display: block;
-                text-align: left;
-            }
-            .hero-copy {
-                max-width: 100%;
-            }
-            .hero-portrait {
-                display: none;
-            }
-            .project-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", "Noto Sans KR", -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; overflow-x: hidden; }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(251, 251, 253, 0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border); padding: 18px 0;
+        }
+        .nav-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; padding: 0 24px; align-items: center; }
+        .nav-logo { font-weight: 800; font-size: 17px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: var(--text-main); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        nav a.nav-item { text-decoration: none; color: var(--text-sub); font-size: 13px; font-weight: 600; transition: 0.2s; letter-spacing: 0.02em; text-transform: uppercase; }
+        nav a.nav-item:hover, nav a.nav-item.active { color: var(--accent); }
+        .nav-dd { position: relative; display: inline-flex; align-items: center; }
+        .nav-dd .dd-caret { font-size: 8px; margin-left: 5px; transition: 0.2s; }
+        .nav-dd:hover .dd-caret { transform: rotate(180deg); }
+        .nav-dd::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 24px; }
+        .nav-dd-menu { position: absolute; top: 100%; left: 50%; margin-top: 16px; transform: translateX(-50%) translateY(8px); background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,0.10); padding: 7px; min-width: 170px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 1001; }
+        .nav-dd:hover .nav-dd-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .nav-dd-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--text-sub); text-decoration: none; text-transform: none; letter-spacing: 0; white-space: nowrap; transition: 0.15s; }
+        .nav-dd-menu a:hover { background: #F2F2F7; color: var(--accent); }
+        .nav-toggle { display: none; background: none; border: none; font-size: 20px; color: var(--text-main); cursor: pointer; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 140px 24px; }
+        section { margin-bottom: 120px; scroll-margin-top: 96px; }
+        .section-title { font-size: 44px; font-weight: 700; margin-bottom: 40px; letter-spacing: -0.02em; }
+        .section-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sub); letter-spacing: 0.14em; display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .section-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--border); }
+
+        /* 1. HERO */
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; margin-top: -40px; margin-bottom: 120px; }
+        .hero-avatar { width: 168px; height: 168px; border-radius: 50%; overflow: hidden; background: #F2F2F7; box-shadow: 0 8px 28px rgba(0,0,0,0.10); margin-bottom: 40px; }
+        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transform: scale(1.18); }
+        .hero-status { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff7a1a; letter-spacing: 0.08em; margin-bottom: 22px; }
+        .hero h1 { font-size: 54px; font-weight: 800; line-height: 1.14; margin-bottom: 26px; letter-spacing: -0.03em; }
+        .hero h1 .accent { color: var(--accent); }
+        .hero-sub { font-size: 18px; color: var(--text-sub); font-weight: 400; line-height: 1.75; margin-bottom: 38px; }
+        .hero-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--text-main); color: #fff; padding: 16px 32px; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; transition: 0.25s; }
+        .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+        /* ABOUT ME */
+        #about { background: #fff; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 92px calc(50vw - 50%); }
+        .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; margin-top: 12px; }
+        .about-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+        .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+        .about-tags span { padding: 9px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 700; color: var(--text-sub); }
+        .about-content h3 { font-size: 25px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+        .about-content p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 12px; }
+        .about-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--text-main); color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 14.5px; font-weight: 700; text-decoration: none; margin-top: 28px; transition: 0.25s; }
+        .about-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+
+        /* 2. BENTO (philosophy) */
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .card { background: var(--card-bg); border-radius: var(--radius); padding: 36px; border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.04); border-color: #d1d1d6; }
+        .large { grid-column: span 2; }
+        .full { grid-column: span 3; }
+        .tag-label { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 16px; display: block; }
+        .card-icon { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--border); color: var(--accent); font-size: 19px; margin-bottom: 18px; }
+        .card h3 { font-size: 24px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+        .card p { color: var(--text-sub); font-size: 15px; line-height: 1.7; }
+        .card .lead { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .stats { display: flex; gap: 40px; margin-top: 32px; flex-wrap: wrap; }
+        .stat-item h4 { font-size: 34px; font-weight: 700; color: var(--accent); }
+        .stat-item p { font-size: 11px; font-weight: 600; color: var(--text-sub); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* 3. CAREER timeline */
+        .timeline { position: relative; margin-top: 8px; }
+        .timeline::before { content: ""; position: absolute; left: 50%; top: 6px; bottom: 6px; width: 1px; background: var(--border); transform: translateX(-50%); }
+        .tl-item { position: relative; width: 50%; padding: 0 48px; margin-bottom: 56px; }
+        .tl-item:last-child { margin-bottom: 0; }
+        .tl-item:nth-child(odd) { left: 0; text-align: right; }
+        .tl-item:nth-child(even) { left: 50%; text-align: left; }
+        .tl-dot { position: absolute; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--border); border: 3px solid var(--bg); z-index: 2; }
+        .tl-item:nth-child(odd) .tl-dot { right: -6px; }
+        .tl-item:nth-child(even) .tl-dot { left: -6px; }
+        .tl-item:first-child .tl-dot { background: var(--text-main); }
+        .tl-period { color: #ff7a1a; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+        .tl-item h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .tl-role { color: var(--text-sub); font-size: 15px; font-weight: 600; line-height: 1.55; }
+        .tl-stack { margin-top: 8px; color: var(--text-sub); font-size: 13px; font-weight: 500; line-height: 1.7; }
+        .tl-list { list-style: none; margin-top: 8px; display: grid; gap: 4px; }
+        .tl-list li { color: var(--text-sub); font-size: 14px; line-height: 1.6; }
+
+        /* 4. PROJECTS */
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .p-card { background: var(--card-bg); padding: 34px 30px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: 0.3s; }
+        .p-card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.04); transform: translateY(-4px); }
+        .p-card .p-icon { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; background: #F2F2F7; color: var(--accent); font-size: 22px; margin-bottom: 20px; }
+        .p-card .p-logo { height: 42px; width: auto; max-width: 80%; object-fit: contain; object-position: left center; display: block; margin: 14px 0 4px; }
+        .p-media { margin: -34px -30px 24px; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; background: #fff; aspect-ratio: 1280 / 620; }
+        .p-media img, .p-media video { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .p-media.p-shadow { position: relative; }
+        .p-media.p-shadow::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08)); pointer-events: none; }
+        .p-kind { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-sub); }
+        .p-card h4 { font-size: 23px; font-weight: 800; margin: 12px 0 14px; letter-spacing: -0.02em; }
+        .p-card p { font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+        .p-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 20px; }
+        .p-tags span { padding: 6px 11px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--text-sub); }
+        .p-link { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 700; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; }
+        .p-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 18px; }
+        .p-links .p-link { margin-top: 0; }
+        .p-links .p-link:hover { text-decoration: underline; }
+
+        /* 5. SKILLS */
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .skill-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; padding: 26px 22px; transition: 0.3s; }
+        .skill-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+        .skill-card .s-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .skill-card .s-head i { font-size: 22px; color: var(--accent); width: 26px; text-align: center; }
+        .skill-card .s-head h4 { font-size: 15px; font-weight: 700; }
+        .skill-card .s-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-card .s-tags span { font-size: 12px; font-weight: 600; color: var(--text-sub); background: #F5F5F7; padding: 4px 10px; border-radius: 8px; }
+        /* tech stack — categories with logos */
+        .tech-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .tech-cat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; padding: 26px 24px; transition: 0.3s; }
+        .tech-cat:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+        .tech-cat .tc-head { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; }
+        .tech-cat .tc-head i { font-size: 18px; color: var(--accent); width: 22px; text-align: center; }
+        .tech-cat .tc-head h4 { font-size: 15px; font-weight: 700; }
+        .tech-cat .tc-items { display: flex; flex-wrap: wrap; gap: 12px; }
+        .tech-cat .tc-tools { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--border); }
+        .tech-cat .tc-sub { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-sub); margin-bottom: 12px; }
+        .tech-chip { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; width: 94px; height: 94px; padding: 8px; background: #F5F5F7; border: 1px solid transparent; border-radius: 16px; opacity: 0; transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.28s ease; }
+        .tech-chip img { width: 34px; height: 34px; object-fit: contain; display: block; transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .tech-chip span { font-size: 11.5px; font-weight: 600; color: var(--text-main); text-align: center; line-height: 1.2; }
+        .tech-chip.text-only span { color: var(--text-sub); }
+        .tech-chip:hover { background: #fff; border-color: var(--accent); box-shadow: 0 12px 26px rgba(0,0,0,0.09); transform: translateY(-6px); }
+        .tech-chip:hover img { transform: scale(1.14); }
+        .tech-cats.visible .tech-chip { animation: chipIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .tc-items .tech-chip:nth-child(1) { animation-delay: 0.04s; }
+        .tc-items .tech-chip:nth-child(2) { animation-delay: 0.09s; }
+        .tc-items .tech-chip:nth-child(3) { animation-delay: 0.14s; }
+        .tc-items .tech-chip:nth-child(4) { animation-delay: 0.19s; }
+        .tc-items .tech-chip:nth-child(5) { animation-delay: 0.24s; }
+        .tc-items .tech-chip:nth-child(6) { animation-delay: 0.29s; }
+        @keyframes chipIn { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+
+        /* 6. COLLABORATION accordion */
+        details.collab { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; transition: 0.3s; }
+        details.collab:hover { border-color: #d1d1d6; }
+        details.collab summary { padding: 28px 36px; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 18px; }
+        details.collab summary::-webkit-details-marker { display: none; }
+        details.collab summary .c-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: #F2F2F7; padding: 6px 12px; border-radius: 8px; flex-shrink: 0; }
+        details.collab summary h4 { font-size: 19px; font-weight: 700; flex: 1; }
+        details.collab summary .c-plus { color: var(--accent); font-size: 26px; font-weight: 300; transition: transform 0.3s; }
+        details.collab[open] summary .c-plus { transform: rotate(45deg); }
+        .collab-body { padding: 0 36px 32px; border-top: 1px solid var(--border); }
+        .collab-body p { color: var(--text-sub); font-size: 15px; line-height: 1.75; margin-top: 22px; }
+        .collab-body ul { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+        .collab-body ul li { color: var(--text-sub); font-size: 15px; line-height: 1.65; padding-left: 18px; position: relative; }
+        .collab-body ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+        /* PROBLEM SOLVING (growth) */
+        .growth-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: start; }
+        .growth-text h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 20px; }
+        .growth-text p { color: var(--text-sub); font-size: 16px; line-height: 1.75; margin-bottom: 14px; }
+        .growth-steps { display: grid; gap: 14px; }
+        .growth-step { display: grid; grid-template-columns: 40px 1fr; gap: 18px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 22px 24px; transition: 0.3s; }
+        .growth-step:hover { border-color: #d1d1d6; box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+        .growth-step span { font-size: 15px; font-weight: 800; color: var(--accent); }
+        .growth-step p { font-size: 15px; font-weight: 600; color: var(--text-main); line-height: 1.5; }
+
+        /* COLLABORATION list */
+        .collab-list { display: grid; }
+        .collab-row { display: grid; grid-template-columns: 180px 1fr; gap: 36px; align-items: start; padding: 40px 0; border-top: 1px solid var(--border); }
+        .collab-row:first-child { border-top: none; padding-top: 8px; }
+        .collab-meta { color: var(--accent); font-size: 14px; font-weight: 800; }
+        .collab-row h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+        .collab-row p { color: var(--text-sub); font-size: 15.5px; line-height: 1.7; }
+        .collab-row ul { list-style: none; display: grid; gap: 8px; }
+        .collab-row ul li { color: var(--text-sub); font-size: 15.5px; line-height: 1.6; padding-left: 18px; position: relative; }
+        .collab-row ul li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+        .collab-cta-wrap { margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+        .collab-cta-wrap.right { align-items: flex-end; text-align: right; }
+        .collab-cta-desc { color: var(--text-sub); font-size: 15px; line-height: 1.7; }
+        .collab-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 700; border-radius: 10px; transition: 0.25s; }
+        .collab-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .collab-cta i { font-size: 15px; }
+        .collab-gallery { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+        .collab-item { margin: 0; }
+        .collab-cap { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; color: var(--text-main); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+        .collab-cap::before { content: ""; width: 4px; height: 15px; border-radius: 2px; background: var(--accent); }
+        .collab-shot { height: 420px; overflow: auto; border: 1px solid var(--border); border-radius: 12px; background: #fff; transition: 0.25s; }
+        .collab-shot:hover { border-color: #c4c4ca; }
+        .collab-shot img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+        .lightbox { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 40px; background: rgba(0,0,0,0.88); cursor: zoom-out; opacity: 0; transition: opacity 0.2s ease; }
+        .lightbox.open { display: flex; opacity: 1; }
+        .lightbox img { max-width: 96%; max-height: 96%; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-close { position: fixed; top: 22px; right: 28px; color: #fff; font-size: 34px; font-weight: 300; line-height: 1; cursor: pointer; opacity: 0.8; }
+        .lightbox-close:hover { opacity: 1; }
+
+        /* 7. CONTACT */
+        .contact-box { background: var(--text-main); color: #fff; border-radius: 44px; padding: 100px 40px; text-align: center; }
+        .contact-box h2 { font-size: 36px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
+        .contact-box .sub { color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.75; margin-bottom: 40px; }
+        .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .contact-actions a { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: 0.2s; }
+        .contact-primary { background: #fff; color: var(--text-main); }
+        .contact-primary:hover { background: var(--accent); color: #fff; }
+        .contact-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .contact-secondary:hover { background: rgba(255,255,255,0.18); }
+
+        /* footer */
+        footer { border-top: 1px solid var(--border); padding: 40px 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-sub); flex-wrap: wrap; gap: 12px; }
+        .footer-content strong { color: var(--text-main); }
+
+        /* reveal */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } .tech-cats { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .tech-cats { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .container { padding: 110px 20px; }
+            .hero { margin-bottom: 90px; }
+            .hero h1 { font-size: 36px; }
+            .hero-avatar { width: 150px; height: 150px; }
+            #about { padding-top: 56px; padding-bottom: 56px; }
+            .about-grid { grid-template-columns: 1fr; gap: 28px; }
+            .about-photo { max-width: 280px; margin: 0 auto; }
+            .section-title { font-size: 34px; }
+            .bento-grid, .project-grid { grid-template-columns: 1fr; }
+            .growth-grid { grid-template-columns: 1fr; gap: 28px; }
+            .collab-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
+            .collab-shot { height: 240px; }
+            .large, .full { grid-column: span 1; }
+            .timeline::before { left: 5px; }
+            .tl-item { width: 100%; padding: 0 0 0 32px; margin-bottom: 40px; }
+            .tl-item:nth-child(odd), .tl-item:nth-child(even) { left: 0; text-align: left; }
+            .tl-item:nth-child(odd) .tl-dot, .tl-item:nth-child(even) .tl-dot { left: -1px; right: auto; }
+            .contact-box { padding: 70px 24px; border-radius: 32px; }
+            .contact-box h2 { font-size: 34px; }
+            details.collab summary { padding: 22px 24px; gap: 12px; }
+            details.collab summary h4 { font-size: 17px; }
+            .collab-body { padding: 0 24px 26px; }
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed ko-copy">
-<header class="sticky top-0 z-50 border-b border-neutral-200 bg-white/90 backdrop-blur">
-<div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-<a class="display text-lg font-extrabold text-neutral-950" href="index.html">마은재</a>
-<nav class="hidden items-center gap-7 md:flex">
-<a class="text-sm font-bold text-blue-700" href="index.html">홈</a>
-<a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="mini-project.html">미니프로젝트</a>
-<a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="final-project.html">파이널프로젝트</a>
-<a class="text-sm font-semibold text-neutral-600 hover:text-blue-700" href="troubleshooting.html">트러블슛팅</a>
+<body>
+
+<nav>
+    <div class="nav-content">
+        <div class="nav-links">
+            <a href="#about" class="nav-item">About me</a>
+            <a href="#skills" class="nav-item">기술스택</a>
+            <div class="nav-dd">
+                <a class="nav-item">프로젝트</a>
+                <div class="nav-dd-menu">
+                    <a href="mini-project.html">미니 프로젝트</a>
+                    <a href="final-project.html">파이널 프로젝트</a>
+                </div>
+            </div>
+            <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
+            <a href="collaboration.html" class="nav-item">협업방식</a>
+        </div>
+    </div>
 </nav>
-<details class="relative md:hidden">
-<summary class="list-none p-2 text-neutral-900 cursor-pointer">
-<span class="material-symbols-outlined">menu</span>
-</summary>
-<nav class="absolute right-0 mt-2 w-48 rounded-lg border border-neutral-200 bg-white p-2 shadow-lg">
-<a class="block rounded px-3 py-2 text-sm font-bold text-blue-700" href="index.html">홈</a>
-<a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="mini-project.html">미니프로젝트</a>
-<a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="final-project.html">파이널프로젝트</a>
-<a class="block rounded px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100" href="troubleshooting.html">트러블슛팅</a>
-</nav>
-</details>
-</div>
-</header>
-<main class="overflow-x-hidden">
-<!-- 히어로 섹션 -->
-<section style="background:#ffffff;">
-<div style="max-width:1200px;margin-inline:auto;display:grid;grid-template-columns:320px 1fr;min-height:240px;">
 
-  <!-- 왼쪽: 사진 슬라이드 -->
-  <div style="position:relative;overflow:hidden;background:#111314;">
-    <!-- 트랙: 세 장을 가로로 나열, translateX로 밀기 -->
-    <div id="hero-track" style="position:absolute;inset:0;display:flex;transition:transform 0.75s cubic-bezier(0.4,0,0.2,1);">
-      <img src="assets/blue.JPG" alt="마은재"
-           style="min-width:100%;height:100%;object-fit:cover;object-position:center top;flex-shrink:0;"/>
-      <img src="assets/2023-09-28 085642.jpg" alt="마은재"
-           style="min-width:100%;height:100%;object-fit:cover;object-position:center top;flex-shrink:0;"/>
-      <img src="assets/f22b6bae0010de31fd8a3024156058 2.jpg" alt="마은재"
-           style="min-width:100%;height:100%;object-fit:cover;object-position:center top;flex-shrink:0;"/>
-    </div>
-    <!-- 하단 그라디언트 -->
-    <div style="position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(10,10,10,0.5) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
-    <!-- 슬라이드 인디케이터 -->
-    <div style="position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:3;">
-      <span class="slide-dot" style="width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,0.9);transition:background 0.4s;"></span>
-      <span class="slide-dot" style="width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,0.3);transition:background 0.4s;"></span>
-      <span class="slide-dot" style="width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,0.3);transition:background 0.4s;"></span>
-    </div>
-  </div>
+<div class="container">
 
-  <!-- 오른쪽: 텍스트 -->
-  <div style="padding:44px 60px;display:flex;flex-direction:column;justify-content:center;">
-    <p style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;margin:0 0 22px;">
-      <span style="display:inline-block;width:28px;height:1px;background:#d1d5db;"></span>
-      Backend Developer
-    </p>
-    <h1 style="font-family:'Inter','Noto Sans KR',sans-serif;font-size:38px;font-weight:800;line-height:1.1;letter-spacing:-0.025em;color:#0a0a0a;margin:0;">마은재</h1>
-    <p style="margin:10px 0 0;font-size:14px;font-weight:600;color:#b0b7bf;letter-spacing:0.01em;">Java · Spring Boot · PostgreSQL · Redis · Toss Payments</p>
-    <p style="margin:32px 0 0;font-size:16px;font-weight:500;line-height:1.88;color:#4b5563;">
-      요구사항과 검증 기준을 먼저 정의하고,<br/>
-      AI 도구를 활용해 구현 속도와 품질을 함께 높이는<br/>
-      백엔드 개발자입니다.
-    </p>
-    <div style="margin-top:44px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-      <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer"
-         style="display:inline-flex;align-items:center;padding:11px 24px;background:#0a0a0a;color:#ffffff;font-size:13px;font-weight:700;border-radius:6px;text-decoration:none;">
-        GitHub
-      </a>
-      <a href="final-project.html"
-         style="display:inline-flex;align-items:center;padding:10px 24px;border:1.5px solid #d1d5db;color:#374151;font-size:13px;font-weight:700;border-radius:6px;text-decoration:none;">
-        파이널프로젝트
-      </a>
-      <a href="troubleshooting.html"
-         style="display:inline-flex;align-items:center;padding:10px 24px;border:1.5px solid #d1d5db;color:#374151;font-size:13px;font-weight:700;border-radius:6px;text-decoration:none;">
-        트러블슛팅
-      </a>
-    </div>
-  </div>
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-avatar">
+            <img src="assets/hero-profile.jpg" alt="마은재">
+        </div>
+        <span class="hero-status">● Status: Open to Work</span>
+        <h1>안녕하세요,<br>풀스택 개발자<br><span class="accent">마은재입니다.</span></h1>
+        <p class="hero-sub">사용자의 흐름과 도메인을 먼저 살핍니다.<br>왜?를 생각하며 집요하게 문제를 파고드는 개발자입니다.</p>
+        <a class="hero-btn" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub 바로가기</a>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+        <h2 class="section-title">About me</h2>
+        <div class="about-grid reveal">
+            <div class="about-photo">
+                <img src="assets/KakaoTalk_Photo_2026-06-28-08-08-03.jpeg" alt="마은재">
+            </div>
+            <div class="about-content">
+                <div class="about-tags">
+                    <span>#집요한 문제해결</span><span>#책임감</span><span>#안정적인 설계</span><span>#끊임없는 배움</span>
+                </div>
+                <h3>문제를 깊이 이해하고 안정적으로 만드는 개발</h3>
+                <p>좋은 코드는 빠르게 만들어진 기능보다, 문제를 얼마나 깊이 이해했는지에서 시작된다고 믿습니다.</p>
+                <p>사용자의 흐름과 도메인을 먼저 살피고, 요구사항을 작고 명확한 단위로 나누어 안정적으로 구현합니다. 빠르게 실행하고 결과를 돌아보며 더 나은 방향으로 개선해 나갑니다.</p>
+                <a class="about-btn" href="#projects">프로젝트 보러가기 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="tech-cats reveal">
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-server"></i><h4>Backend</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/java.svg" alt="Java"><span>Java</span></span>
+                    <span class="tech-chip"><img src="assets/logos/spring.svg" alt="Spring Boot"><span>Spring Boot</span></span>
+                    <span class="tech-chip"><img src="assets/logos/python.svg" alt="Python"><span>Python</span></span>
+                    <span class="tech-chip"><img src="assets/logos/langchain.svg" alt="LangChain"><span>LangChain</span></span>
+                    <span class="tech-chip"><img src="assets/logos/fastapi.svg" alt="FastAPI"><span>FastAPI</span></span>
+                    <span class="tech-chip"><img src="assets/logos/gradle.svg" alt="Gradle"><span>Gradle</span></span>
+                    <span class="tech-chip"><img src="assets/logos/jpa.svg" alt="JPA"><span>JPA</span></span>
+                    <span class="tech-chip"><img src="assets/logos/swagger.svg" alt="Swagger"><span>Swagger</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">Tool</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="assets/logos/eclipse.svg" alt="Eclipse"><span>Eclipse</span></span>
+                        <span class="tech-chip"><img src="assets/logos/pycharm.svg" alt="PyCharm"><span>PyCharm</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fab fa-react"></i><h4>Frontend</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/react.svg" alt="React"><span>React</span></span>
+                    <span class="tech-chip"><img src="assets/logos/javascript.svg" alt="JavaScript"><span>JavaScript</span></span>
+                    <span class="tech-chip"><img src="assets/logos/typescript.svg" alt="TypeScript"><span>TypeScript</span></span>
+                    <span class="tech-chip"><img src="assets/logos/tailwindcss.svg" alt="Tailwind CSS"><span>Tailwind</span></span>
+                    <span class="tech-chip"><img src="assets/logos/html5.svg" alt="HTML"><span>HTML</span></span>
+                    <span class="tech-chip"><img src="assets/logos/css3.svg" alt="CSS"><span>CSS</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">Tool</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="assets/logos/vscode.svg" alt="VS Code"><span>VS Code</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-users"></i><h4>Collaboration</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/git.svg" alt="Git"><span>Git</span></span>
+                    <span class="tech-chip"><img src="assets/logos/github.svg" alt="GitHub"><span>GitHub</span></span>
+                    <span class="tech-chip"><img src="assets/logos/notion.svg" alt="Notion"><span>Notion</span></span>
+                    <span class="tech-chip"><img src="assets/logos/discord.svg" alt="Discord"><span>Discord</span></span>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-database"></i><h4>Database</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/mysql.svg" alt="MySQL"><span>MySQL</span></span>
+                    <span class="tech-chip"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"><span>PostgreSQL</span></span>
+                    <span class="tech-chip"><img src="assets/logos/redis.svg" alt="Redis"><span>Redis</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">Tool</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="assets/logos/dbeaver.svg" alt="DBeaver"><span>DBeaver</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-cloud"></i><h4>DevOps</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/docker.svg" alt="Docker"><span>Docker</span></span>
+                    <span class="tech-chip"><img src="assets/logos/aws.svg" alt="AWS"><span>AWS</span></span>
+                    <span class="tech-chip"><img src="assets/logos/linux.svg" alt="Linux"><span>Linux</span></span>
+                    <span class="tech-chip"><img src="assets/logos/githubactions.svg" alt="GitHub Actions"><span>GitHub Actions</span></span>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-wand-magic-sparkles"></i><h4>AI · LLM</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="assets/logos/openai.svg" alt="OpenAI"><span>OpenAI</span></span>
+                    <span class="tech-chip"><img src="assets/logos/azure.svg" alt="Azure OpenAI"><span>Azure OpenAI</span></span>
+                    <span class="tech-chip"><img src="assets/logos/claude.svg" alt="Claude Code"><span>Claude Code</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <a href="final-project.html" class="p-card reveal">
+                <div class="p-media"><video src="assets/careerwave-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">Final Project</span>
+                <img src="assets/logo-careerwave.png" alt="Career Wave" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">CareerWave</h4>
+                <p>구직자는 이력서, 면접, 커리어 진단처럼 여러 준비 단계를 흩어진 도구로 해결해야 합니다. CareerWave는 이 흐름을 한 서비스 안에서 연결해 AI 기반 면접 코칭, 서류 분석, 커리어 진단을 제공하는 것을 목표로 했습니다.<br><br>저는 그중에서도 사용자가 안정적으로 가입하고 인증받고 구독 결제까지 이어질 수 있도록 하는 백엔드 핵심 흐름을 담당했습니다.</p>
+                <div class="p-tags"><span>Spring Boot</span><span>REST API</span><span>Docker</span><span>AWS</span></div>
+                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="mini-project.html" class="p-card reveal">
+                <div class="p-media"><video src="assets/mapingo-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">Mini Project</span>
+                <img src="assets/logo-mapingo.png" alt="Mapingo" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">Mapingo</h4>
+                <p>지도에서 고른 실제 장소와 학습 이력을 기반으로 맞춤 회화·음성 연습·발음 평가를 제공하는 AI 영어 학습 서비스입니다. 저는 AI 회화 코칭 기능을 FastAPI AI 서버부터 Spring 연동, React 프론트까지 풀스택으로 담당했습니다.</p>
+                <div class="p-tags"><span>FastAPI</span><span>OpenAI</span><span>Azure Speech</span><span>FFmpeg</span><span>Spring Boot</span><span>React</span></div>
+                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PROBLEM SOLVING (growth) -->
+    <section id="growth">
+        <h2 class="section-title">Problem Solving</h2>
+        <div class="growth-grid reveal">
+            <div class="growth-text">
+                <h3>트러블슈팅 기록으로 보여주는 성장</h3>
+                <p>프로젝트를 진행하며 만난 오류를 재현 조건, 원인 분석, 해결 과정, 검증 결과로 나누어 기록했습니다.</p>
+                <p>결과 화면만 확인하지 않고 로그, 요청 값, DB 상태를 함께 보며 문제가 발생한 지점을 좁혀갑니다.</p>
+                <p>같은 문제가 반복되지 않도록 원인과 확인 기준을 남기는 습관을 포트폴리오에 담았습니다.</p>
+            </div>
+            <div class="growth-steps">
+                <div class="growth-step"><span>01</span><p>문제 상황과 재현 조건을 먼저 적습니다.</p></div>
+                <div class="growth-step"><span>02</span><p>로그, 요청 값, DB 상태를 기준으로 원인을 좁힙니다.</p></div>
+                <div class="growth-step"><span>03</span><p>수정 후 같은 조건에서 다시 검증합니다.</p></div>
+            </div>
+        </div>
+        <div class="collab-cta-wrap right reveal">
+            <p class="collab-cta-desc">인증·결제·성능 등 실제 프로젝트에서 만난 버그를 재현 조건, 원인 분석, 해결, 재검증까지 정리했습니다.</p>
+            <a class="collab-cta" href="troubleshooting.html">
+                트러블슈팅 기록 자세히 보기 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- COLLABORATION -->
+    <section id="collaboration">
+        <h2 class="section-title">Collaboration</h2>
+        <div class="collab-list reveal">
+            <article class="collab-row">
+                <span class="collab-meta">GitHub</span>
+                <div>
+                    <h3>브랜치 전략과 커밋 컨벤션을 맞춥니다</h3>
+                    <ul>
+                        <li>기능 단위 브랜치를 만들고, 작업 범위가 한 PR에 과하게 섞이지 않도록 관리합니다.</li>
+                        <li>커밋 메시지는 변경 의도가 드러나도록 팀 컨벤션에 맞춰 작성합니다.</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Issue</span>
+                <div>
+                    <h3>이슈 단위로 작업을 추적합니다</h3>
+                    <p>구현할 기능, 버그, 개선 사항을 이슈로 나누고 진행 상태와 완료 기준을 남겨 작업 흐름이 보이도록 정리합니다.</p>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Code Review</span>
+                <div>
+                    <h3>코드리뷰 코멘트로 개선 과정을 남깁니다</h3>
+                    <p>구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 기록해 팀 안에서 개선한 과정을 남깁니다.</p>
+                </div>
+            </article>
+        </div>
+        <div class="collab-cta-wrap reveal">
+            <p class="collab-cta-desc">브랜치 전략, 커밋 컨벤션, 이슈 관리, PR·코드리뷰 절차를 팀과 맞춰 일관되게 운영한 방식을 정리했습니다.</p>
+            <a class="collab-cta" href="collaboration.html">
+                협업 방식 자세히 보기 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- CAREER -->
+    <section id="career">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline reveal">
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2026.01 — 2026.07</div>
+                <h3>코리아IT아카데미</h3>
+                <p class="tl-role">클라우드네이티브 &amp; 생성형 AI SaaS 플랫폼 구축 과정 수료</p>
+                <p class="tl-stack">Java·Spring Boot, React, Docker·AWS, FastAPI·LLM 기반 풀스택 웹 개발, 클라우드 배포 자동화, 생성형 AI 서비스 연동 실습 이수</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2021.09 — 2024.08</div>
+                <h3>한양대학교</h3>
+                <p class="tl-role">디지털미디어콘텐츠 전공 석사</p>
+                <ul class="tl-list">
+                    <li>재학 중 매 학기 등록금 30% 장학금 수혜</li>
+                    <li>졸업 기수 최우수 논문상 수상</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2017.09 — 2021.08</div>
+                <h3>Sichuan International Studies University</h3>
+                <p class="tl-role">정보미디어 전공 학사</p>
+                <ul class="tl-list">
+                    <li>방송영상제작, 미디어콘텐츠, 마케팅커뮤니케이션 등 미디어 관련 과목 이수</li>
+                    <li>중국 전국 대학생 광고예술대회 우수상 수상</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-box reveal">
+            <h2>배우고 고민하며, 꾸준히 성장하겠습니다.</h2>
+            <p class="sub">새로운 기술과 낯선 문제에도 주저하지 않고,<br>사용자의 관점에서 더 나은 서비스를 만들어가겠습니다.</p>
+            <div class="contact-actions">
+                <a href="mailto:maranqian@gmail.com" class="contact-primary"><i class="fas fa-envelope"></i> maranqian@gmail.com</a>
+                <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer" class="contact-secondary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
 
 </div>
-</section>
-<!-- AI 활용 원칙 -->
-<section class="ai-principles-section px-margin-mobile md:px-margin-desktop" aria-label="AI 활용 원칙">
-<div class="max-w-container-max mx-auto">
-<div class="ai-principles-label">
-  <span></span>
-  <p>개발 철학</p>
-</div>
-<div class="ai-principles-grid reveal-on-scroll">
-<div class="ai-principle">
-<span class="material-symbols-outlined ai-principle-icon" aria-hidden="true">checklist</span>
-<strong>요구사항 먼저</strong>
-<span>검증 기준을 먼저 정의합니다.</span>
-<p>기능 범위, 입력과 출력, 실패 조건을 정리한 뒤 구현 범위를 작게 나눕니다.</p>
-</div>
-<div class="ai-principle">
-<span class="material-symbols-outlined ai-principle-icon" aria-hidden="true">smart_toy</span>
-<strong>AI 활용 환경 설계</strong>
-<span>AI가 안전하게 작동할 조건을 만듭니다.</span>
-<p>모호한 요청을 바로 코드로 넘기지 않고, 컨텍스트와 제약 조건을 함께 제공합니다.</p>
-</div>
-<div class="ai-principle">
-<span class="material-symbols-outlined ai-principle-icon" aria-hidden="true">verified_user</span>
-<strong>개발자 책임</strong>
-<span>동작 원리와 의존성을 분석합니다.</span>
-<p>생성된 코드는 직접 읽고 수정하며, 배포 이후 로그와 오류까지 확인합니다.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- 프로젝트 섹션 -->
-<section class="project-section py-section-v-padding px-margin-mobile md:px-margin-desktop" id="projects">
-<div class="max-w-container-max mx-auto">
-<div class="project-header reveal-on-scroll">
-<div>
-<h2 class="font-headline-lg text-headline-lg section-title">프로젝트</h2>
-</div>
-</div>
-<div class="project-grid">
-<a class="project-card reveal-on-scroll" href="mini-project.html" aria-label="미니프로젝트 페이지로 이동">
-<div class="project-media project-media--cveradar">
-<span class="material-symbols-outlined text-[48px] text-on-surface-variant" aria-hidden="true">code</span>
-</div>
-<span class="project-kind">Mini Project</span>
-<h3 class="project-card-title">미니프로젝트</h3>
-<p class="project-card-copy">회원 기반 게시판 서비스를 통해 CRUD, 검색과 페이징, 입력 검증, DB 연동처럼 웹 서비스의 기본 흐름을 구현한 프로젝트입니다.</p>
-<ul class="project-tags" aria-label="기술스택">
-<li>Java</li>
-<li>Spring Boot</li>
-<li>MySQL</li>
-<li>Thymeleaf</li>
-</ul>
-<span class="project-link">페이지 보기 <span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></span>
-</a>
-<a class="project-card reveal-on-scroll" href="final-project.html" aria-label="파이널프로젝트 페이지로 이동">
-<div class="project-media project-media--cveradar">
-<span class="material-symbols-outlined text-[48px] text-on-surface-variant" aria-hidden="true">rocket_launch</span>
-</div>
-<span class="project-kind">Final Project</span>
-<h3 class="project-card-title">파이널프로젝트</h3>
-<p class="project-card-copy">생성형 AI SaaS 플랫폼을 팀 프로젝트로 구현하며 요구사항 정의, API 설계, 기능 구현, 배포와 협업 과정을 함께 정리했습니다.</p>
-<ul class="project-tags" aria-label="기술스택">
-<li>Spring Boot</li>
-<li>REST API</li>
-<li>Docker</li>
-<li>AWS</li>
-</ul>
-<span class="project-link">페이지 보기 <span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></span>
-</a>
-<a class="project-card reveal-on-scroll" href="troubleshooting.html" aria-label="트러블슛팅 페이지로 이동">
-<div class="project-media project-media--cveradar">
-<span class="material-symbols-outlined text-[48px] text-on-surface-variant" aria-hidden="true">build</span>
-</div>
-<span class="project-kind">Troubleshooting</span>
-<h3 class="project-card-title">트러블슛팅 기록</h3>
-<p class="project-card-copy">프로젝트 중 만난 배포, API, DB 연동, 인증 흐름 이슈를 재현 조건부터 원인 분석, 해결 방법, 재검증까지 정리했습니다.</p>
-<ul class="project-tags" aria-label="기술스택">
-<li>Debugging</li>
-<li>Log</li>
-<li>Deploy</li>
-<li>API</li>
-</ul>
-<span class="project-link">페이지 보기 <span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span></span>
-</a>
-</div>
-</div>
-</section>
-<!-- 이력 섹션 -->
-<section class="bg-white py-section-v-padding px-margin-mobile md:px-margin-desktop" id="experience">
-<div class="max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg section-title mb-stack-lg border-b border-outline-variant pb-stack-sm">이력</h2>
-<div class="relative ml-4 md:ml-0">
-<!-- 타임라인 세로선 -->
-<div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-outline-variant transform md:-translate-x-1/2"></div>
-<div class="career-list space-y-16">
-<!-- History 1 -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center">
-<div class="hidden md:block w-1/2 pr-16 text-right reveal-on-scroll">
-<span class="font-label-md text-label-md text-secondary">2026.06 — 현재</span>
-</div>
-<div class="absolute left-[-5px] md:left-1/2 w-[11px] h-[11px] bg-primary rounded-full md:-translate-x-1/2 z-10"></div>
-<div class="w-full md:w-1/2 pl-12 md:pl-16 reveal-on-scroll">
-<span class="md:hidden font-label-md text-label-md text-secondary block mb-2">2026.06 — 현재</span>
-<h3 class="font-headline-md text-headline-md mb-2">신입 백엔드 개발자 포트폴리오 정리</h3>
-<p class="career-role">실제 운영 환경을 목표로 한 플랫폼 개발 참여 · Auth · Billing · LLM 핵심 도메인 구현 · AWS 배포 완료</p>
-</div>
-</div>
-<!-- History 2 -->
-<div class="relative flex flex-col md:flex-row-reverse items-start md:items-center">
-<div class="hidden md:block w-1/2 pl-16 text-left reveal-on-scroll">
-<span class="font-label-md text-label-md text-secondary">2026.01 — 2026.07</span>
-</div>
-<div class="absolute left-[-5px] md:left-1/2 w-[11px] h-[11px] bg-outline-variant rounded-full md:-translate-x-1/2 z-10"></div>
-<div class="w-full md:w-1/2 pr-0 md:pr-16 pl-12 md:pl-0 md:text-right reveal-on-scroll">
-<span class="md:hidden font-label-md text-label-md text-secondary block mb-2">2026.01 — 2026.07</span>
-<h3 class="font-headline-md text-headline-md mb-2">코리아IT아카데미</h3>
-<p class="career-role">클라우드네이티브&amp;생성형AI SaaS플랫폼 구축 과정 수료</p>
-<p class="career-stack mt-2">Java·Spring Boot, React, Docker·AWS, FastAPI·LLM을 활용한 풀스택 웹 개발, 클라우드 배포 자동화, 생성형 AI 서비스 연동 실습 과정 이수</p>
-</div>
-</div>
-<!-- History 3 -->
-<div class="relative flex flex-col md:flex-row items-start md:items-center">
-<div class="hidden md:block w-1/2 pr-16 text-right reveal-on-scroll">
-<span class="font-label-md text-label-md text-secondary">2021.09 — 2024.08</span>
-</div>
-<div class="absolute left-[-5px] md:left-1/2 w-[11px] h-[11px] bg-outline-variant rounded-full md:-translate-x-1/2 z-10"></div>
-<div class="w-full md:w-1/2 pl-12 md:pl-16 reveal-on-scroll">
-<span class="md:hidden font-label-md text-label-md text-secondary block mb-2">2021.09 — 2024.08</span>
-<h3 class="font-headline-md text-headline-md mb-2">한양대학교</h3>
-<p class="career-role">디지털미디어콘텐츠 전공 석사</p>
-<ul class="career-stack mt-2 list-none space-y-1">
-<li>재학 중 매 학기 등록금 30% 장학금 수혜</li>
-<li>졸업 기수 최우수 논문상 수상</li>
-</ul>
-</div>
-</div>
-<!-- History 4 -->
-<div class="relative flex flex-col md:flex-row-reverse items-start md:items-center">
-<div class="hidden md:block w-1/2 pl-16 text-left reveal-on-scroll">
-<span class="font-label-md text-label-md text-secondary">2017.09 — 2021.08</span>
-</div>
-<div class="absolute left-[-5px] md:left-1/2 w-[11px] h-[11px] bg-outline-variant rounded-full md:-translate-x-1/2 z-10"></div>
-<div class="w-full md:w-1/2 pr-0 md:pr-16 pl-12 md:pl-0 md:text-right reveal-on-scroll">
-<span class="md:hidden font-label-md text-label-md text-secondary block mb-2">2017.09 — 2021.08</span>
-<h3 class="font-headline-md text-headline-md mb-2">Sichuan International Studies University</h3>
-<p class="career-role">정보미디어 전공 학사</p>
-<ul class="career-stack mt-2 list-none space-y-1">
-<li>방송영상제작, 미디어콘텐츠, 마케팅커뮤니케이션 등 미디어 관련 과목 이수</li>
-<li>중국 전국 대학생 광고예술대회 우수상 수상</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 문제 해결 요약 -->
-<section class="bg-surface-container-low py-12 md:py-14 px-margin-mobile md:px-margin-desktop" id="awards">
-<div class="max-w-container-max mx-auto reveal-on-scroll">
-<div class="border-y border-outline-variant py-10">
-<span class="font-label-md text-label-md text-secondary uppercase">Problem Solving</span>
-<div class="mt-3 grid gap-6 md:grid-cols-[1.22fr_0.78fr] md:items-start">
-<div>
-<h2 class="font-headline-lg text-headline-lg section-title">트러블슛팅 기록으로 보여주는 성장</h2>
-<p class="mt-4 text-body-md text-on-surface-variant">프로젝트를 진행하며 만난 오류를 재현 조건, 원인 분석, 해결 과정, 검증 결과로 나누어 기록했습니다.</p>
-<p class="mt-4 text-body-md text-on-surface-variant">결과 화면만 확인하지 않고 로그, 요청 값, DB 상태를 함께 보며 문제가 발생한 지점을 좁혀갑니다.</p>
-<p class="mt-4 text-body-md text-on-surface-variant">같은 문제가 반복되지 않도록 원인과 확인 기준을 남기는 습관을 포트폴리오에 담았습니다.</p>
-</div>
-<div class="grid gap-6 md:w-full md:max-w-[500px] md:justify-self-end">
-<div class="grid gap-2 rounded-lg border border-outline-variant bg-white p-5 md:grid-cols-[36px_1fr]">
-<span class="font-label-md text-label-md text-secondary">01</span>
-<p class="text-body-md font-semibold md:whitespace-nowrap">문제 상황과 재현 조건을 먼저 적습니다.</p>
-</div>
-<div class="grid gap-2 rounded-lg border border-outline-variant bg-white p-5 md:grid-cols-[36px_1fr]">
-<span class="font-label-md text-label-md text-secondary">02</span>
-<p class="text-body-md font-semibold md:whitespace-nowrap">로그, 요청 값, DB 상태를 기준으로 원인을 좁힙니다.</p>
-</div>
-<div class="grid gap-2 rounded-lg border border-outline-variant bg-white p-5 md:grid-cols-[36px_1fr]">
-<span class="font-label-md text-label-md text-secondary">03</span>
-<p class="text-body-md font-semibold md:whitespace-nowrap">수정 후 같은 조건에서 다시 검증합니다.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 협업 방식 -->
-<section class="py-section-v-padding px-margin-mobile md:px-margin-desktop bg-white" id="seminars">
-<div class="max-w-container-max mx-auto">
-<div class="reveal-on-scroll">
-<h2 class="font-headline-lg text-headline-lg section-title mb-stack-lg">협업 방식</h2>
-</div>
-<div class="activity-list">
-<article class="activity-item reveal-on-scroll">
-<span class="activity-meta">Notion</span>
-<div>
-<h4 class="activity-title">회의와 요구사항을 문서로 남깁니다</h4>
-<p class="activity-copy">기능 요구사항, 역할 분담, 진행 상황, 회의 내용을 Notion에 정리해 팀원이 같은 기준으로 작업할 수 있도록 맞춥니다.</p>
-<div class="collaboration-gallery" aria-label="Notion 협업 자료 이미지 영역">
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="Notion 회의록 및 요구사항 정리 예시 이미지" width="900" height="1200"/>
-<figcaption>Notion 회의록 및 요구사항 정리</figcaption>
-</figure>
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="Notion 작업 현황과 담당자 관리 예시 이미지" width="900" height="1200"/>
-<figcaption>작업 현황과 담당자 관리</figcaption>
-</figure>
-</div>
-</div>
-</article>
-<article class="activity-item reveal-on-scroll">
-<span class="activity-meta">GitHub</span>
-<div>
-<h4 class="activity-title">브랜치 전략과 커밋 컨벤션을 맞춥니다</h4>
-<ul class="activity-detail">
-<li>기능 단위 브랜치를 만들고, 작업 범위가 한 PR에 과하게 섞이지 않도록 관리합니다.</li>
-<li>커밋 메시지는 변경 의도가 드러나도록 팀 컨벤션에 맞춰 작성합니다.</li>
-</ul>
-<div class="collaboration-gallery" aria-label="GitHub 브랜치와 커밋 자료 이미지 영역">
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="GitHub 브랜치 전략 예시 이미지" width="900" height="1200"/>
-<figcaption>브랜치 전략</figcaption>
-</figure>
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="GitHub 커밋 컨벤션 예시 이미지" width="900" height="1200"/>
-<figcaption>커밋 컨벤션</figcaption>
-</figure>
-</div>
-</div>
-</article>
-<article class="activity-item reveal-on-scroll">
-<span class="activity-meta">Issue</span>
-<div>
-<h4 class="activity-title">이슈 단위로 작업을 추적합니다</h4>
-<p class="activity-copy">구현할 기능, 버그, 개선 사항을 이슈로 나누고 진행 상태와 완료 기준을 남겨 작업 흐름이 보이도록 정리합니다.</p>
-<div class="collaboration-gallery" aria-label="GitHub 이슈 자료 이미지 영역">
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="GitHub 이슈 목록 예시 이미지" width="900" height="1200"/>
-<figcaption>GitHub 이슈 목록</figcaption>
-</figure>
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="GitHub 이슈 상세와 진행 기록 예시 이미지" width="900" height="1200"/>
-<figcaption>이슈 상세와 진행 기록</figcaption>
-</figure>
-</div>
-</div>
-</article>
-<article class="activity-item reveal-on-scroll">
-<span class="activity-meta">Code Review</span>
-<div>
-<h4 class="activity-title">코드리뷰 코멘트로 개선 과정을 남깁니다</h4>
-<p class="activity-copy">구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 기록해 팀 안에서 개선한 과정을 남깁니다.</p>
-<div class="collaboration-gallery" aria-label="코드리뷰 자료 이미지 영역">
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="Pull Request 코드리뷰 코멘트 예시 이미지" width="900" height="1200"/>
-<figcaption>Pull Request</figcaption>
-</figure>
-<figure class="collaboration-shot">
-<img src="assets/profile-hero.jpg" alt="코드리뷰 반영 기록 예시 이미지" width="900" height="1200"/>
-<figcaption>코드리뷰</figcaption>
-</figure>
-</div>
-</div>
-</article>
-</div>
-</div>
-</section>
-</main>
-<!-- 푸터 -->
-<footer class="bg-white border-t border-neutral-200">
-<div class="mx-auto max-w-6xl px-5 py-8 text-sm text-neutral-500">
-<div class="flex items-baseline justify-between gap-6">
-<span class="font-bold text-neutral-900">마은재</span>
-<a class="font-bold text-neutral-900" href="https://github.com/your-github-profile" target="_blank" rel="noreferrer">GitHub 프로필</a>
-</div>
-<p class="mt-2">© 2026 백엔드 신입 개발자 포트폴리오. Java, Spring Boot, DB, 배포와 문제 해결.</p>
-</div>
+
+<footer>
+    <div class="footer-content">
+        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
+        <span>© 2026 · Java, Spring Boot, DB, 배포와 문제 해결</span>
+    </div>
 </footer>
-<script src="assets/image-modal.js" defer></script>
-<script>
-    // Simple Intersection Observer for reveal effects
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
 
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" aria-label="닫기">&times;</span>
+    <img src="" alt="확대 이미지" id="lightbox-img">
+</div>
+
+<script>
+    // reveal on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            if (href === '#') {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                return;
-            }
-
-            const target = document.querySelector(href);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
+    // lightbox
+    (function () {
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.collab-shot img').forEach(img => {
+            img.addEventListener('click', () => {
+                lbImg.src = img.src;
+                lb.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
-
-    // Active Link Highlighting
-    window.addEventListener('scroll', () => {
-        const sections = ['projects', 'experience', 'teaching', 'awards', 'seminars'];
-        let current = '';
-
-        sections.forEach(section => {
-            const sectionEl = document.getElementById(section);
-            if (sectionEl) {
-                const sectionTop = sectionEl.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section;
-                }
-            }
-        });
-
-        document.querySelectorAll('nav .nav-link').forEach(a => {
-            a.classList.remove('nav-link-active');
-            if (a.getAttribute('href') === `#${current}`) {
-                a.classList.add('nav-link-active');
-            }
-        });
-    });
+        function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+        lb.addEventListener('click', close);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
 </script>
-<script>
-(function() {
-    const track = document.getElementById('hero-track');
-    const dots  = document.querySelectorAll('.slide-dot');
-    if (!track) return;
-    const total = track.children.length;
-    let current = 0;
 
-    function goTo(nextIdx) {
-        if (dots[current]) dots[current].style.background = 'rgba(255,255,255,0.3)';
-        current = nextIdx;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        if (dots[current]) dots[current].style.background = 'rgba(255,255,255,0.9)';
-    }
-
-    setInterval(() => goTo((current + 1) % total), 4500);
-})();
-</script>
-</body></html>
+</body>
+</html>

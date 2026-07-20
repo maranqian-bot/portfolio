@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>협업 방식 | 마은재 포트폴리오</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/portfolio.css"/>
+<style>
+    .collab-page .page-hero .hero-lead { max-width: 840px; }
+    .collab-page section { margin-bottom: 72px; }
+    .collab-page .section-title { font-size: 26px; margin-bottom: 8px; }
+    .collab-page .section-desc { color: var(--text-sub); font-size: 15.5px; line-height: 1.75; max-width: none; margin-bottom: 30px; }
+
+    /* workflow timeline */
+    .flow { display: grid; gap: 0; }
+    .flow-step { display: grid; grid-template-columns: 52px 1fr; gap: 20px; padding: 18px 0; position: relative; }
+    .flow-step:not(:last-child)::before { content: ""; position: absolute; left: 25px; top: 52px; bottom: -18px; width: 2px; background: var(--border); }
+    .flow-num { width: 52px; height: 52px; border-radius: 50%; background: #F2F2F7; color: var(--accent); font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; z-index: 1; }
+    .flow-body h4 { font-size: 16.5px; font-weight: 700; margin-top: 12px; }
+    .flow-body p { color: var(--text-sub); font-size: 14.5px; line-height: 1.65; margin-top: 5px; }
+
+    /* generic card */
+    .c-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px 30px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .c-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+    .c-card p { color: var(--text-sub); font-size: 14.5px; line-height: 1.7; }
+    .c-card ul { list-style: none; display: grid; gap: 9px; margin-top: 6px; }
+    .c-card ul li { color: var(--text-sub); font-size: 14.5px; line-height: 1.6; padding-left: 18px; position: relative; }
+    .c-card ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* code chip block */
+    .code-block { background: #1D1D1F; color: #F2F2F7; border-radius: 12px; padding: 20px 22px; font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 13.5px; line-height: 1.9; overflow-x: auto; }
+    .code-block .tk { color: #6ea8ff; }
+    .code-block .cm { color: #8b8b93; }
+
+    /* convention table */
+    .conv-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .conv-table th, .conv-table td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--border); }
+    .conv-table th { color: var(--text-sub); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .conv-table td:first-child { width: 130px; }
+    .conv-table code { background: #F2F2F7; color: var(--accent); padding: 3px 9px; border-radius: 7px; font-family: 'SF Mono', ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 700; }
+    .conv-table td:last-child { color: var(--text-sub); }
+
+    /* checklist */
+    .check-list { display: grid; gap: 12px; }
+    .check-item { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; color: var(--text-sub); font-size: 14.5px; line-height: 1.6; }
+    .check-item .ck { width: 22px; height: 22px; border-radius: 6px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+
+    .source-note { margin-top: 10px; color: var(--text-sub); font-size: 13.5px; line-height: 1.7; background: #F7F7FA; border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+    .source-note a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+    /* github evidence screenshots */
+    .shot { margin-top: 26px; }
+    .shot-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 26px; }
+    .shot-img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); cursor: zoom-in; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+    .shot-img:hover { border-color: var(--accent); box-shadow: 0 8px 26px rgba(0,0,0,0.12); }
+    .shot-hint { display: block; margin-top: 8px; font-size: 12px; color: var(--text-sub); text-align: center; }
+    .shot-hint::before { content: "🔍 "; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 3000; cursor: zoom-out; padding: 20px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 97%; max-height: 95%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .shot-img.missing { display: none; }
+    .shot-img.missing + .shot-ph { display: flex; }
+    .shot-ph { display: none; flex-direction: column; align-items: center; gap: 7px; text-align: center; padding: 46px 24px; border: 1.5px dashed #cdd0d6; border-radius: 12px; background: #FAFAFB; color: var(--text-sub); }
+    .shot-ph .ic { font-size: 26px; }
+    .shot-ph b { color: var(--text-main); font-size: 14.5px; }
+    .shot-ph small { font-size: 13px; line-height: 1.65; max-width: 340px; }
+    .shot-ph code { font-size: 12px; background: #F2F2F7; color: var(--accent); padding: 3px 9px; border-radius: 6px; margin-top: 5px; font-family: 'SF Mono', ui-monospace, Menlo, monospace; }
+    .shot figcaption, .shot-item figcaption { margin-top: 10px; font-size: 12.5px; color: var(--text-sub); text-align: center; }
+
+    /* right-side minimal TOC */
+    .collab-page section { scroll-margin-top: 92px; }
+    .toc { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 500; display: flex; flex-direction: column; gap: 15px; padding-left: 17px; border-left: 2px solid var(--border); }
+    .toc a { position: relative; font-size: 12.5px; font-weight: 600; color: var(--text-sub); text-decoration: none; white-space: nowrap; opacity: 0.6; transition: color 0.2s ease, opacity 0.2s ease; }
+    .toc a:hover { opacity: 1; color: var(--text-main); }
+    .toc a.active { opacity: 1; color: var(--accent); font-weight: 700; }
+    .toc a.active::before { content: ""; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); width: 2px; height: 15px; border-radius: 2px; background: var(--accent); }
+
+    @media (max-width: 1340px) { .toc { display: none; } }
+    @media (max-width: 720px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .shot-grid { grid-template-columns: 1fr; }
+        .conv-table td:first-child { width: auto; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-content">
+        <div class="nav-links">
+            <a href="index.html#about" class="nav-item">About me</a>
+            <a href="index.html#skills" class="nav-item">기술스택</a>
+            <div class="nav-dd">
+                <a class="nav-item">프로젝트</a>
+                <div class="nav-dd-menu">
+                    <a href="mini-project.html">미니 프로젝트</a>
+                    <a href="final-project.html">파이널 프로젝트</a>
+                </div>
+            </div>
+            <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
+            <a href="collaboration.html" class="nav-item active">협업방식</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container collab-page">
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <p class="eyebrow">Collaboration</p>
+        <h1>팀과 함께 일하는 방식</h1>
+        <p class="hero-lead">프로젝트를 진행하며 팀과 함께 지킨 협업 기준입니다. <strong>스펙 주도 개발</strong>을 바탕으로 브랜치 전략, 커밋 컨벤션, 이슈 관리, PR·코드리뷰 절차를 팀과 맞추고 일관되게 운영했습니다.</p>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="flow">
+        <h2 class="section-title">작업 흐름</h2>
+        <p class="section-desc">기능을 바로 구현하기보다, 요구사항과 스펙을 먼저 확인하고 작업 범위를 합의한 뒤 구현에 들어가는 순서로 일했습니다.</p>
+        <div class="flow reveal">
+            <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><h4>이슈 · 요구사항 확인</h4><p>구현할 기능, 버그, 개선 사항을 먼저 이슈로 정리했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><h4>Spec 문서 확인 · 작성</h4><p>관련 스펙을 확인하고, 없으면 spec · plan · tasks 순서로 작성했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><h4>구현 범위 합의</h4><p>구현 계획과 작업 범위를 팀과 맞춘 뒤 시작했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><h4>브랜치 생성</h4><p>최신 <code>develop</code> 기준으로 기능 단위 브랜치를 만들었습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">5</div><div class="flow-body"><h4>구현 및 검증</h4><p>기존 코드 스타일·구조를 따르며 구현하고, 테스트로 검증했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">6</div><div class="flow-body"><h4>Pull Request 생성</h4><p>하나의 목적에 집중된 PR을 열고 변경 의도를 정리했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">7</div><div class="flow-body"><h4>리뷰 반영 후 병합</h4><p>리뷰 코멘트를 반영하고 스레드를 정리한 뒤 병합했습니다.</p></div></div>
+        </div>
+    </section>
+
+    <!-- BRANCH -->
+    <section id="branch">
+        <h2 class="section-title">브랜치 전략</h2>
+        <p class="section-desc">항상 최신 <code>develop</code>에서 분기하고, 작업 내용이 드러나도록 브랜치명을 지었습니다. 하나의 브랜치에는 하나의 목적만 담았습니다.</p>
+        <div class="grid-2 reveal">
+            <div class="c-card">
+                <h4>브랜치 네이밍</h4>
+                <div class="code-block"><span class="tk">feature/</span>{작업명}<br><span class="tk">fix/</span>{작업명}<br><span class="tk">refactor/</span>{작업명}<br><span class="tk">docs/</span>{작업명}<br><span class="tk">chore/</span>{작업명}</div>
+            </div>
+            <div class="c-card">
+                <h4>지킨 규칙</h4>
+                <ul>
+                    <li>진행 중인 작업 브랜치 위에서 새 브랜치를 만들지 않았습니다.</li>
+                    <li>브랜치를 잘못 만들면 변경사항을 보존한 뒤 <code>develop</code> 기준으로 다시 만들었습니다.</li>
+                    <li>순차 의존 피처는 머지 순서와 의존 브랜치를 PR 본문에 명시했습니다.</li>
+                </ul>
+            </div>
+        </div>
+        <figure class="shot reveal">
+            <img class="shot-img" src="assets/collab/branches.png" alt="브랜치 목록" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>브랜치 목록 스크린샷</b><small>GitHub 저장소 → <b>Branches</b> 탭(또는 Insights → Network 그래프)을 캡처. 컨벤션에 맞춘 feature/·fix/ 브랜치들이 보이도록.</small><code>assets/collab/branches.png</code></div>
+            <figcaption>실제 브랜치 목록 — 컨벤션에 맞춘 기능 단위 브랜치명</figcaption>
+        </figure>
+    </section>
+
+    <!-- COMMIT -->
+    <section id="commit">
+        <h2 class="section-title">커밋 컨벤션</h2>
+        <p class="section-desc">커밋 메시지만 봐도 변경 의도가 드러나도록 <code>{type}({branch-name}) : {summary}</code> 형식을 지켰고, 리뷰 가능한 단위로 커밋을 나눴습니다.</p>
+        <div class="c-card reveal" style="overflow-x:auto;">
+            <table class="conv-table">
+                <thead><tr><th>Type</th><th>의미</th></tr></thead>
+                <tbody>
+                    <tr><td><code>feat</code></td><td>기능 추가</td></tr>
+                    <tr><td><code>fix</code></td><td>버그 수정</td></tr>
+                    <tr><td><code>refactor</code></td><td>리팩토링</td></tr>
+                    <tr><td><code>style</code></td><td>코드 포맷 또는 스타일 변경</td></tr>
+                    <tr><td><code>design</code></td><td>UI/UX 변경</td></tr>
+                    <tr><td><code>chore</code></td><td>기타 설정 또는 문서 작업</td></tr>
+                    <tr><td><code>rename</code></td><td>파일 또는 이름 변경</td></tr>
+                    <tr><td><code>remove</code></td><td>삭제</td></tr>
+                    <tr><td><code>build</code></td><td>빌드 설정 변경</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="code-block reveal" style="margin-top:20px;"><span class="cm"># 예시</span><br>feat(feature/user-login-api) : 회원 로그인 API 추가<br>fix(fix/payment-status-validation) : 결제 상태 검증 오류 수정</div>
+        <figure class="shot reveal">
+            <img class="shot-img" src="assets/collab/commits.png" alt="커밋 히스토리" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>커밋 히스토리 스크린샷</b><small>GitHub → <b>Commits</b> 목록을 캡처. <code>{type}({branch}) : {summary}</code> 형식이 실제로 지켜진 커밋들이 보이도록.</small><code>assets/collab/commits.png</code></div>
+            <figcaption>실제 커밋 히스토리 — 컨벤션 형식을 지킨 커밋 메시지</figcaption>
+        </figure>
+    </section>
+
+    <!-- ISSUE -->
+    <section id="issue">
+        <h2 class="section-title">이슈 관리</h2>
+        <p class="section-desc">구현할 기능, 버그, 개선 사항을 이슈 단위로 나누고 진행 상태와 완료 기준을 남겨, 작업 흐름이 팀 안에서 보이도록 정리했습니다.</p>
+        <div class="grid-2 reveal">
+            <div class="c-card"><h4>이슈로 나눈 기준</h4><p>기능, 버그, 개선 사항을 각각의 이슈로 분리해 작업 단위를 명확히 했습니다.</p></div>
+            <div class="c-card"><h4>남긴 기록</h4><p>진행 상태와 완료 기준을 이슈에 남겨, 무엇을 어디까지 했는지 드러나게 했습니다.</p></div>
+        </div>
+        <figure class="shot reveal">
+            <img class="shot-img" src="assets/collab/issues.png" alt="이슈 목록" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>이슈 목록 스크린샷</b><small>GitHub → <b>Issues</b> 탭을 캡처. 기능·버그·개선이 이슈 단위로 분리되고 라벨·상태가 보이도록. (이슈 하나의 상세 화면을 추가로 넣어도 좋아요.)</small><code>assets/collab/issues.png</code></div>
+            <figcaption>실제 이슈 목록 — 기능·버그·개선 단위 분리 및 진행 상태 기록</figcaption>
+        </figure>
+    </section>
+
+    <!-- PR -->
+    <section id="pr">
+        <h2 class="section-title">Pull Request</h2>
+        <p class="section-desc">PR은 항상 <code>develop</code>을 대상으로 열었고, 팀 템플릿에 맞춰 관련 이슈·작업 모듈·변경 사항·검증 결과·리뷰어 전달 사항을 남겼습니다. PR을 열기 전 아래 항목을 스스로 점검했습니다.</p>
+        <div class="c-card reveal">
+            <div class="check-list">
+                <div class="check-item"><span class="ck">✓</span><span>작업 브랜치가 <code>develop</code>에서 분기되었는가 (순차 의존 시 머지 순서·의존 브랜치 명시)</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>PR 범위가 하나의 목적에 집중되어 있는가</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>관련 없는 파일 변경이 제외되었는가</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>Spec 또는 Convention과 충돌하지 않는가</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>필요한 테스트 또는 빌드 확인을 수행했는가</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>리뷰어가 확인해야 할 사항을 PR 본문에 남겼는가</span></div>
+            </div>
+        </div>
+        <div class="shot-grid reveal">
+            <figure class="shot-item">
+                <img class="shot-img" src="assets/collab/pr-list.png" alt="PR 목록" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>PR 목록 스크린샷</b><small>GitHub → <b>Pull requests</b> 탭 전체 목록. 하나의 목적에 집중된 PR들이 쌓인 모습이 보이도록.</small><code>assets/collab/pr-list.png</code></div>
+                <figcaption>실제 PR 목록 — 한 PR에 하나의 목적</figcaption>
+            </figure>
+            <figure class="shot-item">
+                <img class="shot-img" src="assets/collab/pr-detail.png" alt="PR 본문" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>PR 본문 스크린샷</b><small>PR 하나를 열어 <b>템플릿(관련 이슈·작업 모듈·변경 사항·검증 결과)</b>이 작성된 본문을 캡처.</small><code>assets/collab/pr-detail.png</code></div>
+                <figcaption>실제 PR 본문 — 팀 템플릿에 맞춘 작성</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- REVIEW -->
+    <section id="review">
+        <h2 class="section-title">코드리뷰 반영</h2>
+        <p class="section-desc">구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 남겨 팀 안에서 개선한 과정을 기록했습니다.</p>
+        <div class="grid-2 reveal">
+            <div class="c-card">
+                <h4>리뷰 처리 원칙</h4>
+                <ul>
+                    <li>모든 코멘트를 반영·보류·반려 중 하나로 명확히 처리했습니다.</li>
+                    <li>반영하지 않을 때는 이유를 코멘트로 남겼습니다.</li>
+                    <li>반영 커밋을 기존 PR 브랜치에 추가하고 스레드를 resolved 처리했습니다.</li>
+                </ul>
+            </div>
+            <div class="c-card">
+                <h4>AI · 자동 리뷰</h4>
+                <ul>
+                    <li>CodeRabbit 등 자동 리뷰도 유효한 지적이면 반영했습니다.</li>
+                    <li>단순 스타일 경고도 팀 규칙과 충돌하지 않으면 가능한 한 정리했습니다.</li>
+                    <li>현재 코드와 맞지 않는 지적은 근거를 남기고 스킵했습니다.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="shot-grid reveal">
+            <figure class="shot-item">
+                <img class="shot-img" src="assets/collab/review.png" alt="코드리뷰 코멘트" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>코드리뷰 코멘트 스크린샷</b><small>PR 대화(Conversation)의 실제 <b>리뷰 코멘트 + 반영 커밋 / Resolved</b> 처리된 스레드를 캡처.</small><code>assets/collab/review.png</code></div>
+                <figcaption>실제 리뷰 코멘트와 반영·해결 과정</figcaption>
+            </figure>
+            <figure class="shot-item">
+                <img class="shot-img" src="assets/collab/coderabbit.png" alt="AI 자동 리뷰" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>AI 자동 리뷰 스크린샷</b><small><b>CodeRabbit</b> 등 자동 리뷰가 남긴 코멘트와, 그에 대한 반영/스킵 근거가 보이도록 캡처.</small><code>assets/collab/coderabbit.png</code></div>
+                <figcaption>CodeRabbit 자동 리뷰 반영</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- TEST -->
+    <section id="test">
+        <h2 class="section-title">테스트 & 검증</h2>
+        <p class="section-desc">각 스택별로 아래 명령으로 검증한 뒤 PR에 결과를 남겼습니다. 문서만 수정한 경우에는 생략 사유를 함께 적었습니다.</p>
+        <div class="code-block reveal"><span class="cm"># Backend</span><br>cd backend &amp;&amp; ./gradlew test<br><br><span class="cm"># Frontend</span><br>cd frontend &amp;&amp; npm run build<br><br><span class="cm"># FastAPI</span><br>cd fastapi &amp;&amp; python -m pytest</div>
+    </section>
+
+</div>
+
+<nav class="toc" aria-label="목차">
+    <a href="#flow">작업 흐름</a>
+    <a href="#branch">브랜치 전략</a>
+    <a href="#commit">커밋 컨벤션</a>
+    <a href="#issue">이슈 관리</a>
+    <a href="#pr">Pull Request</a>
+    <a href="#review">코드리뷰 반영</a>
+    <a href="#test">테스트 &amp; 검증</a>
+</nav>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
+        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><img src="" alt="확대 이미지"></div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // screenshot lightbox (click to enlarge)
+    const lb = document.getElementById('lightbox');
+    const lbImg = lb.querySelector('img');
+    document.querySelectorAll('.shot-img').forEach(img => {
+        img.addEventListener('click', () => {
+            if (img.classList.contains('missing')) return;
+            lbImg.src = img.currentSrc || img.src;
+            lb.classList.add('open');
+        });
+    });
+    lb.addEventListener('click', () => lb.classList.remove('open'));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+    // TOC scroll-spy
+    const tocLinks = document.querySelectorAll('.toc a');
+    const secObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+            }
+        });
+    }, { rootMargin: '-32% 0px -58% 0px', threshold: 0 });
+    document.querySelectorAll('.collab-page section[id]').forEach(s => secObserver.observe(s));
+</script>
+
+</body>
+</html>

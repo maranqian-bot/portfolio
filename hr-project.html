@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR 근태·인사 관리 시스템 | 마은재 포트폴리오</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/portfolio.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    .repo-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .stack-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .stack-col h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 9px; }
+    .stack-col h4 i { color: var(--accent); font-size: 16px; }
+    .stack-col .pills { margin: 0; }
+    @media (max-width: 720px) { .repo-cards, .stack-cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-content">
+        <div class="nav-links">
+            <a href="index.html#about" class="nav-item">About me</a>
+            <a href="index.html#skills" class="nav-item">기술스택</a>
+            <div class="nav-dd">
+                <a class="nav-item active">프로젝트</a>
+                <div class="nav-dd-menu">
+                    <a href="mini-project.html">미니 프로젝트</a>
+                    <a href="final-project.html">파이널 프로젝트</a>
+                </div>
+            </div>
+            <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
+            <a href="collaboration.html" class="nav-item">협업방식</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <p class="eyebrow">Team Project · 2026.03 – 2026.04</p>
+        <h1>HR 근태·인사 관리 시스템</h1>
+        <p class="hero-lead">실무 환경을 고려해 설계한 사내 HR 시스템입니다. 프론트·백엔드 분리 구조와 AWS 인프라, GitHub Actions 기반 CI/CD 배포로 구성했습니다. 저는 <strong>로그인·인증(이메일 인증, Refresh Token)과 백엔드 API 흐름</strong>을 맡아 구현했습니다.</p>
+        <div class="pills">
+            <span>Java 21</span><span>Spring Boot 3</span><span>Spring Data JPA</span><span>Spring Security</span><span>MySQL</span><span>Redis</span><span>React 18</span><span>AWS</span><span>GitHub Actions</span>
+        </div>
+    </section>
+
+    <!-- REPOSITORY -->
+    <section>
+        <p class="section-eyebrow">Repository</p>
+        <h2 class="section-title">GitHub 저장소</h2>
+        <p class="lead">프론트엔드와 백엔드를 분리해 각각 저장소로 관리했습니다.</p>
+        <div class="repo-cards reveal">
+            <a class="repo-card" href="https://github.com/maranqian-bot/CloudProject-spring" target="_blank" rel="noreferrer">
+                <div><strong>CloudProject-spring · Backend</strong><p>Java 21 · Spring Boot 3 · Spring Data JPA · Spring Security · MySQL · Redis · AWS</p></div>
+                <span class="link-arrow">GitHub 바로가기 →</span>
+            </a>
+            <a class="repo-card" href="https://github.com/maranqian-bot/CloudProject-react" target="_blank" rel="noreferrer">
+                <div><strong>CloudProject-react · Frontend</strong><p>React 18 · React Router · Zustand · TanStack Query · Axios · Vite</p></div>
+                <span class="link-arrow">GitHub 바로가기 →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section>
+        <p class="section-eyebrow">Features</p>
+        <h2 class="section-title">주요 기능</h2>
+        <p class="lead">직원의 근태와 인사 정보를 한 시스템에서 관리하도록 로그인·인증부터 근태·휴가 관리까지 구성했습니다.</p>
+        <div class="grid-2 reveal">
+            <div class="card">
+                <span class="kind">Auth</span>
+                <h3>로그인 · 인증</h3>
+                <p>Spring Security 기반 로그인과 인증 흐름을 구현했습니다. 이메일 인증번호와 Refresh Token을 Redis에 저장해 인증 상태와 세션을 관리하고, 비밀번호 재설정 흐름을 이메일 인증과 연결했습니다.</p>
+            </div>
+            <div class="card">
+                <span class="kind">HR</span>
+                <h3>직원 관리</h3>
+                <p>직원 정보를 등록·조회·수정하고, 부서 배치와 상태를 관리하는 인사 데이터의 기본 흐름을 다룹니다.</p>
+            </div>
+            <div class="card">
+                <span class="kind">HR</span>
+                <h3>부서 관리</h3>
+                <p>부서를 생성하고 직원을 배치하며, 조직 구조를 기준으로 인사 데이터를 정리합니다.</p>
+            </div>
+            <div class="card">
+                <span class="kind">Attendance</span>
+                <h3>근태 관리</h3>
+                <p>출근·퇴근 기록과 근태 현황을 관리하고, 근무일·지각·결근 같은 근태 데이터를 집계합니다.</p>
+            </div>
+            <div class="card">
+                <span class="kind">Attendance</span>
+                <h3>휴가 관리</h3>
+                <p>휴가 신청과 처리 흐름을 관리해 근태 데이터와 연결되도록 구성했습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section>
+        <p class="section-eyebrow">Tech Stack</p>
+        <h2 class="section-title">기술 스택</h2>
+        <div class="stack-cols reveal">
+            <div class="stack-col">
+                <h4><i class="fas fa-server"></i> Backend</h4>
+                <div class="pills"><span>Java 21</span><span>Spring Boot 3</span><span>Spring Data JPA</span><span>Spring Security</span><span>Lombok</span><span>Swagger</span></div>
+            </div>
+            <div class="stack-col">
+                <h4><i class="fab fa-react"></i> Frontend</h4>
+                <div class="pills"><span>React 18</span><span>React Router</span><span>Zustand</span><span>TanStack Query</span><span>Axios</span><span>Vite</span></div>
+            </div>
+            <div class="stack-col">
+                <h4><i class="fas fa-cloud"></i> Infra</h4>
+                <div class="pills"><span>AWS EC2</span><span>AWS S3</span><span>AWS CloudFront</span><span>MySQL</span><span>Redis</span><span>GitHub Actions</span></div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
+        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
