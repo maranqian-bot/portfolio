@@ -120,6 +120,35 @@ details.acc[open] summary .plus { transform: rotate(45deg); }
 .case-label.r { color: #1a8f5a; }
 .case-row p { color: var(--text-sub); font-size: 14.5px; line-height: 1.72; }
 
+#case-list.accordion-mode .case-head {
+    position: relative;
+    padding-right: 34px;
+    cursor: pointer;
+    user-select: none;
+}
+#case-list.accordion-mode .case-head::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-right: 1.8px solid #9a9aa2;
+    border-bottom: 1.8px solid #9a9aa2;
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.22s ease, border-color 0.2s ease;
+}
+#case-list.accordion-mode .case-head:hover::after { border-color: var(--text-main); }
+#case-list.accordion-mode .case.is-open .case-head::after {
+    transform: translateY(-30%) rotate(-135deg);
+}
+#case-list.accordion-mode .case:not(.is-open) .case-head {
+    margin-bottom: 0;
+}
+#case-list.accordion-mode .case:not(.is-open) .case-row {
+    display: none;
+}
+
 /* numbered list */
 .steps { display: grid; gap: 18px; }
 .step-card { display: grid; grid-template-columns: 64px 1fr; gap: 24px; align-items: start; background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; padding: 30px 32px; transition: 0.3s; }

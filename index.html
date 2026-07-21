@@ -49,7 +49,8 @@
         .section-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--border); }
 
         /* 1. HERO */
-        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; margin-top: -40px; margin-bottom: 120px; }
+        .hero-shell { margin-bottom: 120px; }
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; margin-top: 0; margin-bottom: 0; }
         .hero-avatar { width: 168px; height: 168px; border-radius: 50%; overflow: hidden; background: #F2F2F7; box-shadow: 0 8px 28px rgba(0,0,0,0.10); margin-bottom: 40px; }
         .hero-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transform: scale(1.18); }
         .hero-status { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff7a1a; letter-spacing: 0.08em; margin-bottom: 22px; }
@@ -116,6 +117,7 @@
         .p-kind { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-sub); }
         .p-card h4 { font-size: 23px; font-weight: 800; margin: 12px 0 14px; letter-spacing: -0.02em; }
         .p-card p { font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+        .p-card .p-desc { min-height: 154px; }
         .p-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 20px; }
         .p-tags span { padding: 6px 11px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--text-sub); }
         .p-link { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 700; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; }
@@ -236,7 +238,7 @@
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .container { padding: 110px 20px; }
-            .hero { margin-bottom: 90px; }
+            .hero-shell { margin-bottom: 90px; }
             .hero h1 { font-size: 36px; }
             .hero-avatar { width: 150px; height: 150px; }
             #about { padding-top: 56px; padding-bottom: 56px; }
@@ -265,13 +267,12 @@
 <nav>
     <div class="nav-content">
         <div class="nav-links">
-            <a href="#about" class="nav-item">About me</a>
-            <a href="#skills" class="nav-item">기술스택</a>
+            <a href="#about" class="nav-item active">About me</a>
             <div class="nav-dd">
                 <a class="nav-item">프로젝트</a>
                 <div class="nav-dd-menu">
-                    <a href="mini-project.html">미니 프로젝트</a>
                     <a href="final-project.html">파이널 프로젝트</a>
+                    <a href="mini-project.html">미니 프로젝트</a>
                 </div>
             </div>
             <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
@@ -283,15 +284,17 @@
 <div class="container">
 
     <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="hero-avatar">
-            <img src="assets/hero-profile.jpg" alt="마은재">
-        </div>
-        <span class="hero-status">● Status: Open to Work</span>
-        <h1>안녕하세요,<br>풀스택 개발자<br><span class="accent">마은재입니다.</span></h1>
-        <p class="hero-sub">사용자의 흐름과 도메인을 먼저 살핍니다.<br>왜?를 생각하며 집요하게 문제를 파고드는 개발자입니다.</p>
-        <a class="hero-btn" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub 바로가기</a>
-    </section>
+    <div class="hero-shell" id="hero-shell">
+        <section id="home" class="hero">
+            <div class="hero-avatar">
+                <img src="assets/hero-profile.jpg" alt="마은재">
+            </div>
+            <span class="hero-status">● Status: Open to Work</span>
+            <h1>안녕하세요,<br>풀스택 개발자<br><span class="accent">마은재입니다.</span></h1>
+            <p class="hero-sub">사용자의 흐름과 도메인을 먼저 살핍니다.<br>왜?를 생각하며 집요하게 문제를 파고드는 개발자입니다.</p>
+            <a class="hero-btn" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub 바로가기</a>
+        </section>
+    </div>
 
     <!-- ABOUT ME -->
     <section id="about">
@@ -396,92 +399,6 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-grid">
-            <a href="final-project.html" class="p-card reveal">
-                <div class="p-media"><video src="assets/careerwave-preview2.mp4" autoplay muted loop playsinline></video></div>
-                <span class="p-kind">Final Project</span>
-                <img src="assets/logo-careerwave.png" alt="Career Wave" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h4 style="display:none;">CareerWave</h4>
-                <p>구직자는 이력서, 면접, 커리어 진단처럼 여러 준비 단계를 흩어진 도구로 해결해야 합니다. CareerWave는 이 흐름을 한 서비스 안에서 연결해 AI 기반 면접 코칭, 서류 분석, 커리어 진단을 제공하는 것을 목표로 했습니다.<br><br>저는 그중에서도 사용자가 안정적으로 가입하고 인증받고 구독 결제까지 이어질 수 있도록 하는 백엔드 핵심 흐름을 담당했습니다.</p>
-                <div class="p-tags"><span>Spring Boot</span><span>REST API</span><span>Docker</span><span>AWS</span></div>
-                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
-            </a>
-            <a href="mini-project.html" class="p-card reveal">
-                <div class="p-media"><video src="assets/mapingo-preview2.mp4" autoplay muted loop playsinline></video></div>
-                <span class="p-kind">Mini Project</span>
-                <img src="assets/logo-mapingo.png" alt="Mapingo" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h4 style="display:none;">Mapingo</h4>
-                <p>지도에서 고른 실제 장소와 학습 이력을 기반으로 맞춤 회화·음성 연습·발음 평가를 제공하는 AI 영어 학습 서비스입니다. 저는 AI 회화 코칭 기능을 FastAPI AI 서버부터 Spring 연동, React 프론트까지 풀스택으로 담당했습니다.</p>
-                <div class="p-tags"><span>FastAPI</span><span>OpenAI</span><span>Azure Speech</span><span>FFmpeg</span><span>Spring Boot</span><span>React</span></div>
-                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
-            </a>
-        </div>
-    </section>
-
-    <!-- PROBLEM SOLVING (growth) -->
-    <section id="growth">
-        <h2 class="section-title">Problem Solving</h2>
-        <div class="growth-grid reveal">
-            <div class="growth-text">
-                <h3>트러블슈팅 기록으로 보여주는 성장</h3>
-                <p>프로젝트를 진행하며 만난 오류를 재현 조건, 원인 분석, 해결 과정, 검증 결과로 나누어 기록했습니다.</p>
-                <p>결과 화면만 확인하지 않고 로그, 요청 값, DB 상태를 함께 보며 문제가 발생한 지점을 좁혀갑니다.</p>
-                <p>같은 문제가 반복되지 않도록 원인과 확인 기준을 남기는 습관을 포트폴리오에 담았습니다.</p>
-            </div>
-            <div class="growth-steps">
-                <div class="growth-step"><span>01</span><p>문제 상황과 재현 조건을 먼저 적습니다.</p></div>
-                <div class="growth-step"><span>02</span><p>로그, 요청 값, DB 상태를 기준으로 원인을 좁힙니다.</p></div>
-                <div class="growth-step"><span>03</span><p>수정 후 같은 조건에서 다시 검증합니다.</p></div>
-            </div>
-        </div>
-        <div class="collab-cta-wrap right reveal">
-            <p class="collab-cta-desc">인증·결제·성능 등 실제 프로젝트에서 만난 버그를 재현 조건, 원인 분석, 해결, 재검증까지 정리했습니다.</p>
-            <a class="collab-cta" href="troubleshooting.html">
-                트러블슈팅 기록 자세히 보기 <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- COLLABORATION -->
-    <section id="collaboration">
-        <h2 class="section-title">Collaboration</h2>
-        <div class="collab-list reveal">
-            <article class="collab-row">
-                <span class="collab-meta">GitHub</span>
-                <div>
-                    <h3>브랜치 전략과 커밋 컨벤션을 맞춥니다</h3>
-                    <ul>
-                        <li>기능 단위 브랜치를 만들고, 작업 범위가 한 PR에 과하게 섞이지 않도록 관리합니다.</li>
-                        <li>커밋 메시지는 변경 의도가 드러나도록 팀 컨벤션에 맞춰 작성합니다.</li>
-                    </ul>
-                </div>
-            </article>
-            <article class="collab-row">
-                <span class="collab-meta">Issue</span>
-                <div>
-                    <h3>이슈 단위로 작업을 추적합니다</h3>
-                    <p>구현할 기능, 버그, 개선 사항을 이슈로 나누고 진행 상태와 완료 기준을 남겨 작업 흐름이 보이도록 정리합니다.</p>
-                </div>
-            </article>
-            <article class="collab-row">
-                <span class="collab-meta">Code Review</span>
-                <div>
-                    <h3>코드리뷰 코멘트로 개선 과정을 남깁니다</h3>
-                    <p>구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 기록해 팀 안에서 개선한 과정을 남깁니다.</p>
-                </div>
-            </article>
-        </div>
-        <div class="collab-cta-wrap reveal">
-            <p class="collab-cta-desc">브랜치 전략, 커밋 컨벤션, 이슈 관리, PR·코드리뷰 절차를 팀과 맞춰 일관되게 운영한 방식을 정리했습니다.</p>
-            <a class="collab-cta" href="collaboration.html">
-                협업 방식 자세히 보기 <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
     <!-- CAREER -->
     <section id="career">
         <h2 class="section-title">Experience</h2>
@@ -513,6 +430,80 @@
                     <li>중국 전국 대학생 광고예술대회 우수상 수상</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <a href="final-project.html" class="p-card reveal">
+                <div class="p-media"><video src="assets/careerwave-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">Final Project</span>
+                <img src="assets/logo-careerwave.png" alt="Career Wave" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">CareerWave</h4>
+                <p class="p-desc">구직자는 이력서, 면접, 커리어 진단처럼 여러 준비 단계를 흩어진 도구로 해결해야 합니다. CareerWave는 이 흐름을 한 서비스 안에서 연결해 AI 기반 면접 코칭, 서류 분석, 커리어 진단을 제공하는 것을 목표로 했습니다.<br><br>저는 그중에서도 사용자가 안정적으로 가입하고 인증받고 구독 결제까지 이어질 수 있도록 하는 백엔드 핵심 흐름을 담당했습니다.</p>
+                <div class="p-tags"><span>Java 21</span><span>Spring Boot 3</span><span>Spring Security</span><span>PostgreSQL</span><span>Redis</span><span>Toss Payments</span></div>
+                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="mini-project.html" class="p-card reveal">
+                <div class="p-media"><video src="assets/mapingo-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">Mini Project</span>
+                <img src="assets/logo-mapingo.png" alt="Mapingo" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">Mapingo</h4>
+                <p class="p-desc">지도에서 고른 실제 장소와 학습 이력을 기반으로 맞춤 회화·음성 연습·발음 평가를 제공하는 AI 영어 학습 서비스입니다.<br><br>저는 AI 회화 코칭 기능을 FastAPI AI 서버부터 Spring 연동, React 프론트까지 풀스택으로 담당했습니다.</p>
+                <div class="p-tags"><span>FastAPI</span><span>OpenAI</span><span>Azure Speech</span><span>FFmpeg</span><span>Spring Boot</span><span>React</span></div>
+                <span class="p-link">페이지 보기 <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PROBLEM SOLVING (growth) -->
+    <section id="growth">
+        <h2 class="section-title">Problem Solving</h2>
+        <div class="growth-grid reveal">
+            <div class="growth-text">
+                <h3>트러블슈팅 기록으로 보여주는 성장</h3>
+                <p>프로젝트를 진행하며 만난 오류를 재현 조건, 원인 분석, 해결 과정, 검증 결과로 나누어 기록했습니다.</p>
+                <p>결과 화면만 확인하지 않고 로그, 요청 값, DB 상태를 함께 보며 문제가 발생한 지점을 좁혀갑니다.</p>
+                <p>같은 문제가 반복되지 않도록 원인과 확인 기준을 남기는 습관을 포트폴리오에 담았습니다.</p>
+            </div>
+            <div class="growth-steps">
+                <div class="growth-step"><span>01</span><p>문제 상황과 재현 조건을 먼저 적습니다.</p></div>
+                <div class="growth-step"><span>02</span><p>로그, 요청 값, DB 상태를 기준으로 원인을 좁힙니다.</p></div>
+                <div class="growth-step"><span>03</span><p>수정 후 같은 조건에서 다시 검증합니다.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION -->
+    <section id="collaboration">
+        <h2 class="section-title">Collaboration</h2>
+        <div class="collab-list reveal">
+            <article class="collab-row">
+                <span class="collab-meta">GitHub</span>
+                <div>
+                    <h3>브랜치 전략과 커밋 컨벤션을 맞춥니다</h3>
+                    <ul>
+                        <li>기능 단위 브랜치를 만들고, 작업 범위가 한 PR에 과하게 섞이지 않도록 관리합니다.</li>
+                        <li>커밋 메시지는 변경 의도가 드러나도록 팀 컨벤션에 맞춰 작성합니다.</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Issue</span>
+                <div>
+                    <h3>이슈 단위로 작업을 추적합니다</h3>
+                    <p>구현할 기능, 버그, 개선 사항을 이슈로 나누고 진행 상태와 완료 기준을 남겨 작업 흐름이 보이도록 정리합니다.</p>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Code Review</span>
+                <div>
+                    <h3>코드리뷰 코멘트로 개선 과정을 남깁니다</h3>
+                    <p>구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 기록해 팀 안에서 개선한 과정을 남깁니다.</p>
+                </div>
+            </article>
         </div>
     </section>
 

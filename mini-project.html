@@ -561,20 +561,25 @@
     .collab-card ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
     .collab-card .xref { margin-top: 18px; }
 
-    /* 기술적 의사결정 — accent cards */
+    /* 기술적 의사결정 — accordion */
     #decisions .container { counter-reset: dec; }
-    .decision { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--surface-line); border-radius: 18px; padding: 30px 34px 28px; margin-top: 18px; box-shadow: 0 6px 20px rgba(84,95,115,0.03); transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; counter-increment: dec; }
+    .decision-list { display: grid; gap: 18px; margin-top: 8px; }
+    .decision { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--surface-line); border-radius: 18px; box-shadow: 0 6px 20px rgba(84,95,115,0.03); transition: box-shadow 0.28s ease, border-color 0.28s ease; counter-increment: dec; }
     .decision::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--accent), #4d92ff); }
-    .decision::after { content: counter(dec, decimal-leading-zero); position: absolute; top: 20px; right: 30px; font-size: 46px; font-weight: 800; color: rgba(0,102,255,0.08); letter-spacing: -0.03em; line-height: 1; pointer-events: none; }
-    .decision:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,102,255,0.10); border-color: rgba(0,102,255,0.28); }
-    .decision:first-of-type { margin-top: 8px; }
-    .decision .trade { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: var(--accent); padding: 6px 13px; border-radius: 999px; }
-    .decision h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 13px 0 12px; padding-right: 56px; }
+    .decision::after { content: counter(dec, decimal-leading-zero); position: absolute; top: 18px; right: 72px; font-size: 46px; font-weight: 800; color: rgba(0,102,255,0.08); letter-spacing: -0.03em; line-height: 1; pointer-events: none; }
+    .decision:hover { box-shadow: 0 16px 36px rgba(0,102,255,0.10); border-color: rgba(0,102,255,0.28); }
+    .decision summary { list-style: none; cursor: pointer; padding: 28px 34px 24px; position: relative; }
+    .decision summary::-webkit-details-marker { display: none; }
+    .decision summary::after { content: "\f078"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: 28px; top: 33px; font-size: 15px; color: #6e7a90; transition: transform 0.22s ease, color 0.22s ease; }
+    .decision[open] summary::after { transform: rotate(180deg); color: var(--accent); }
+    .decision-head { display: flex; align-items: center; gap: 16px; padding-right: 116px; min-height: 44px; }
+    .decision .trade { display: inline-flex; align-items: center; flex: 0 0 auto; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: var(--accent); padding: 6px 13px; border-radius: 999px; white-space: nowrap; }
+    .decision h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 0; flex: 1 1 auto; line-height: 1.35; }
+    .decision-body { padding: 0 34px 28px; }
     .decision p { color: #3d3d42; font-size: 15.5px; line-height: 1.85; margin-bottom: 12px; }
     .decision p:last-child { margin-bottom: 0; }
     .decision .takeaway { position: relative; margin-top: 16px; padding: 14px 18px 14px 46px; background: rgba(0,102,255,0.05); border: 1px solid rgba(0,102,255,0.13); border-radius: 12px; color: var(--text-main); font-weight: 600; font-size: 14.5px; line-height: 1.65; }
     .decision .takeaway::before { content: "\f0eb"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 18px; top: 15px; color: var(--accent); font-size: 15px; }
-    #decisions .lead { max-width: 900px; }
 
     /* impact */
     section#result { background: #fff; }
@@ -597,11 +602,11 @@
     .impact-note p { color: var(--text-sub); font-size: 14.5px; line-height: 1.72; }
 
     /* screenshot gallery */
-    .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 0; }
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 0; }
     .shots figure { margin: 0; }
-    .shots .cap { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
-    .shots .cap::before { content: ""; width: 4px; height: 14px; border-radius: 2px; background: var(--accent); }
-    .shots .win { aspect-ratio: 1265 / 897; overflow: hidden; border: 1px solid var(--surface-line); border-radius: 16px; background: #fff; transition: 0.25s; box-shadow: 0 8px 24px rgba(84,95,115,0.04); display: flex; align-items: center; justify-content: center; padding: 0; }
+    .shots .cap { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
+    .shots .cap::before { content: ""; width: 4px; height: 12px; border-radius: 2px; background: var(--accent); }
+    .shots .win { aspect-ratio: 1265 / 897; overflow: hidden; border: 1px solid var(--surface-line); border-radius: 14px; background: #fff; transition: 0.25s; box-shadow: 0 6px 18px rgba(84,95,115,0.04); display: flex; align-items: center; justify-content: center; padding: 0; }
     .shots .win:hover { border-color: var(--accent); box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
     .shots .win img { display: block; width: 100%; height: 100%; cursor: zoom-in; object-fit: cover; }
 
@@ -638,6 +643,7 @@
         .build-summary { grid-template-columns: 1fr; }
         .constraint-grid { grid-template-columns: 1fr; }
     }
+    @media (max-width: 1180px) { .shots { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 900px) { .shots { grid-template-columns: 1fr; } }
     @media (max-width: 760px) {
         .container { padding-left: 24px; padding-right: 24px; }
@@ -702,6 +708,9 @@
             border-radius: 20px;
         }
         .impact-topline { flex-direction: column; align-items: flex-start; }
+        .decision-head { align-items: flex-start; flex-wrap: wrap; gap: 12px; padding-right: 72px; }
+        .decision::after { right: 58px; font-size: 40px; }
+        .decision summary::after { right: 22px; top: 31px; }
     }
 </style>
 </head>
@@ -711,12 +720,11 @@
     <div class="nav-content">
         <div class="nav-links">
             <a href="index.html#about" class="nav-item">About me</a>
-            <a href="index.html#skills" class="nav-item">기술스택</a>
             <div class="nav-dd">
                 <a class="nav-item active">프로젝트</a>
                 <div class="nav-dd-menu">
-                    <a href="mini-project.html">미니 프로젝트</a>
                     <a href="final-project.html">파이널 프로젝트</a>
+                    <a href="mini-project.html">미니 프로젝트</a>
                 </div>
             </div>
             <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
@@ -766,7 +774,6 @@
                         <p class="section-eyebrow">Overview</p>
                         <h2 class="section-title doc-title">담당 역할 · 설계 중심</h2>
                     </div>
-                    <p class="info-kicker">이 화면에서는 서비스 소개를 반복하기보다, 제가 맡은 핵심 책임 범위와 그 흐름을 어떤 기준으로 설계했는지를 한 장 안에서 읽히도록 정리했습니다.</p>
                 </div>
                 <div class="info-grid">
                     <div class="blk">
@@ -794,20 +801,19 @@
     <div class="container">
         <p class="section-eyebrow">Design Assets</p>
         <h2 class="section-title doc-title">설계 산출물</h2>
-        <p class="lead" style="margin-top: -8px;">서비스 구조와 사용자 흐름을 문서로 정리해 팀이 같은 기준으로 개발할 수 있도록 했습니다.<br>현재 남아 있는 산출물과 함께, 실제로 사용했던 유스케이스 문서도 카드 기준에 포함해 정리합니다.</p>
         <div class="asset-grid reveal">
             <figure class="asset">
                 <div class="asset-img"><img src="assets/mapingoaws.png" alt="Mapingo AWS 아키텍처 다이어그램"/></div>
                 <figcaption>
                     <h3>AWS 아키텍처</h3>
-                    <p>사용자 요청이 애플리케이션 서버와 데이터베이스로 이어지는 배포 구성을 정리합니다.</p>
+                    <p>React, Spring, FastAPI, AWS 인프라가 어떻게 연결되어 AI 코칭 요청과 학습 데이터를 처리하는지 배포 구조를 기준으로 정리합니다.</p>
                 </figcaption>
             </figure>
             <figure class="asset">
                 <div class="asset-img"><img src="assets/english-on-the-map.png" alt="English on the map 구조 이미지"/></div>
                 <figcaption>
                     <h3>ERD</h3>
-                    <p>회원·구독·결제·이용권·약관 등 전체 도메인의 관계와 상태 전이·삭제 정책을 함께 정리합니다.</p>
+                    <p>회원, 장소 학습, AI 코칭 세션, 발음 평가와 피드백 결과가 어떻게 연결되는지 데이터 구조를 기준으로 정리합니다.</p>
                 </figcaption>
             </figure>
             <figure class="asset">
@@ -826,9 +832,6 @@
     <div class="container">
         <p class="section-eyebrow">Implementation</p>
         <h2 class="section-title doc-title">주요 구현</h2>
-        <div class="build-intro">
-            <p class="lead">Mapingo에서 제가 맡은 구현은 FastAPI AI 서버 단독 기능 구현에서 시작해, Spring API 경계와 React 사용자 흐름까지 이어졌습니다.<br>실제 작업 이력과 기능 분류를 기준으로 보면, AI 코칭 진입과 대화 흐름, AI 연동, 그리고 피드백·추천 기능으로 나누어 설명하는 것이 가장 정확합니다.</p>
-        </div>
         <div class="build-summary">
             <article class="build-card">
                 <span class="kind">Coaching Flow</span>
@@ -908,14 +911,13 @@
             <div class="build-showcase-head">
                 <p class="section-eyebrow">Representative Screens</p>
                 <h3 class="section-title doc-title">대표 화면</h3>
-                <p class="lead">실제 구현 화면은 AI Coaching의 시작, 대화 진행, 종료, 결과 피드백과 추천 흐름을 기준으로 정리했습니다. 사용자가 어떤 순서로 학습을 이어가는지 한눈에 보이도록 실제 Mapingo 화면으로 교체했습니다.</p>
             </div>
             <div class="shots">
             <figure><figcaption class="cap">AI 코칭 시작</figcaption><div class="win"><img src="assets/mapingo-chat-start.png" alt="Mapingo AI 코칭 시작 화면"/></div></figure>
             <figure><figcaption class="cap">AI 코칭 대화 진행</figcaption><div class="win"><img src="assets/mapingo-chat-progress.png" alt="Mapingo AI 코칭 대화 진행 화면"/></div></figure>
             <figure><figcaption class="cap">AI 코칭 대화 종료</figcaption><div class="win"><img src="assets/mapingo-chat-end.png" alt="Mapingo AI 코칭 대화 종료 화면"/></div></figure>
-            <figure><figcaption class="cap">상세 코칭 평가</figcaption><div class="win"><img src="assets/mapingo-detailed-feedback.png" alt="Mapingo 상세 코칭 평가 화면"/></div></figure>
             <figure><figcaption class="cap">코칭 결과</figcaption><div class="win"><img src="assets/mapingo-coaching-result.png" alt="Mapingo 코칭 결과 화면"/></div></figure>
+            <figure><figcaption class="cap">상세 코칭 평가</figcaption><div class="win"><img src="assets/mapingo-detailed-feedback.png" alt="Mapingo 상세 코칭 평가 화면"/></div></figure>
             <figure><figcaption class="cap">단어 발음 및 콘텐츠 추천</figcaption><div class="win"><img src="assets/mapingo-word-content.png" alt="Mapingo 단어 발음 및 콘텐츠 추천 화면"/></div></figure>
             </div>
         </div>
@@ -927,20 +929,33 @@
     <div class="container">
         <p class="section-eyebrow">Decisions</p>
         <div class="title-row doc-title"><h2 class="section-title">기술적 의사결정</h2><span class="title-badge">핵심 역량</span></div>
-        <p class="lead">Mapingo에서는 AI 품질 자체보다도, 응답이 끝까지 이어지고 사용자가 실제 결과를 받을 수 있는가를 더 중요하게 봤습니다. 아래 두 가지는 그 기준이 가장 잘 드러나는 기술적 판단입니다.</p>
-        <div class="decision">
-            <span class="trade">형식 자유도 vs 서비스 안정성</span>
-            <h3>Prompt 품질보다 응답 계약을 먼저 고정</h3>
-            <p>LLM은 내용이 좋아도 응답 형식이 조금만 흔들리면 Spring과 React에서 그대로 파싱 오류로 이어질 수 있었습니다. 그래서 먼저 output format과 schema를 강하게 고정하고, 그 안에서 script와 feedback 품질을 높이는 방향으로 설계했습니다.</p>
-            <p>이후 problemWords normalize 같은 후처리를 추가해 문자열 배열과 객체 배열이 섞여도 서비스 응답이 깨지지 않도록 보완했습니다.</p>
-            <p class="takeaway">즉, “더 자연스러운 답변”보다 “서비스가 끝까지 소비할 수 있는 답변”을 우선한 결정이었습니다.</p>
-        </div>
-        <div class="decision">
-            <span class="trade">클라이언트 분기 vs 서버 표준화</span>
-            <h3>브라우저 음성 입력은 서버에서 표준 포맷으로 정규화</h3>
-            <p>브라우저마다 MediaRecorder 포맷과 codec이 달라 프론트에서 모든 경우를 직접 처리하면 복잡도가 크게 올라갔습니다. 그래서 webm 업로드는 FastAPI에서 ffmpeg 기반 wav로 변환해 Azure Speech가 안정적으로 받을 수 있는 입력으로 통일했습니다.</p>
-            <p>여기에 pronunciation assessment 실패 시 STT fallback을 붙여, 포맷 차이나 인식 실패가 있어도 전체 코칭 흐름이 끊기지 않게 했습니다.</p>
-            <p class="takeaway">입력 다양성을 프론트에서 모두 흡수하기보다, 서버 쪽에서 표준화와 fallback을 함께 두는 편이 더 운영 가능하다고 판단했습니다.</p>
+        <div class="decision-list">
+            <details class="decision" open>
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">형식 자유도 vs 서비스 안정성</span>
+                        <h3>Prompt 품질보다 응답 계약을 먼저 고정</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>LLM은 내용이 좋아도 응답 형식이 조금만 흔들리면 Spring과 React에서 그대로 파싱 오류로 이어질 수 있었습니다. 그래서 먼저 output format과 schema를 강하게 고정하고, 그 안에서 script와 feedback 품질을 높이는 방향으로 설계했습니다.</p>
+                    <p>이후 problemWords normalize 같은 후처리를 추가해 문자열 배열과 객체 배열이 섞여도 서비스 응답이 깨지지 않도록 보완했습니다.</p>
+                    <p class="takeaway">“더 자연스러운 답변”보다 “서비스가 끝까지 소비할 수 있는 답변”을 우선한 결정이었습니다.</p>
+                </div>
+            </details>
+            <details class="decision">
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">클라이언트 분기 vs 서버 표준화</span>
+                        <h3>브라우저 음성 입력은 서버에서 표준 포맷으로 정규화</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>브라우저마다 MediaRecorder 포맷과 codec이 달라 프론트에서 모든 경우를 직접 처리하면 복잡도가 크게 올라갔습니다. 그래서 webm 업로드는 FastAPI에서 ffmpeg 기반 wav로 변환해 Azure Speech가 안정적으로 받을 수 있는 입력으로 통일했습니다.</p>
+                    <p>여기에 pronunciation assessment 실패 시 STT fallback을 붙여, 포맷 차이나 인식 실패가 있어도 전체 코칭 흐름이 끊기지 않게 했습니다.</p>
+                    <p class="takeaway">입력 다양성을 프론트에서 모두 흡수하기보다, 서버 쪽에서 표준화와 fallback을 함께 두는 편이 더 운영 가능하다고 판단했습니다.</p>
+                </div>
+            </details>
         </div>
     </div>
 </section>
@@ -974,7 +989,6 @@
                     <p class="section-eyebrow">Collaboration</p>
                     <h2 class="section-title doc-title">협업 · 이 프로젝트에서 배운 점</h2>
                 </div>
-                <p class="collab-kicker">Mapingo에서는 FastAPI·Spring·React가 동시에 맞물렸기 때문에, 기능 구현보다 먼저 응답 계약과 재현 방법을 팀 안에서 같이 맞추는 데 집중했습니다.</p>
             </div>
             <div class="collab-grid">
                 <div class="collab-card">
@@ -1003,7 +1017,6 @@
     <div class="container">
         <p class="section-eyebrow">Code</p>
         <h2 class="section-title doc-title">코드 및 PR</h2>
-        <p class="lead">Mapingo에서 실제로 맡아 작업한 AI 코칭 기능 중심으로, 흐름 구현과 연동 안정화가 잘 드러나는 PR만 추려 연결했습니다.</p>
         <div class="code-links">
             <a href="https://github.com/soo97/languagemap-spring/pull/152" target="_blank" rel="noreferrer"><span class="t">코칭 음성 multipart content type 보존</span><span class="pr">Spring PR #152</span></a>
             <a href="https://github.com/soo97/languagemap-FastAPI/pull/16" target="_blank" rel="noreferrer"><span class="t">최종 피드백 문제 단어 정규화</span><span class="pr">FastAPI PR #16</span></a>

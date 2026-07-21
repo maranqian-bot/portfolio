@@ -533,20 +533,25 @@
     .collab-card ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
     .collab-card .xref { margin-top: 18px; }
 
-    /* 기술적 의사결정 — accent cards */
+    /* 기술적 의사결정 — accordion */
     #decisions .container { counter-reset: dec; }
-    .decision { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--surface-line); border-radius: 18px; padding: 30px 34px 28px; margin-top: 18px; box-shadow: 0 6px 20px rgba(84,95,115,0.03); transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; counter-increment: dec; }
+    .decision-list { display: grid; gap: 18px; margin-top: 8px; }
+    .decision { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--surface-line); border-radius: 18px; box-shadow: 0 6px 20px rgba(84,95,115,0.03); transition: box-shadow 0.28s ease, border-color 0.28s ease; counter-increment: dec; }
     .decision::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--accent), #4d92ff); }
-    .decision::after { content: counter(dec, decimal-leading-zero); position: absolute; top: 20px; right: 30px; font-size: 46px; font-weight: 800; color: rgba(0,102,255,0.08); letter-spacing: -0.03em; line-height: 1; pointer-events: none; }
-    .decision:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,102,255,0.10); border-color: rgba(0,102,255,0.28); }
-    .decision:first-of-type { margin-top: 8px; }
-    .decision .trade { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: var(--accent); padding: 6px 13px; border-radius: 999px; }
-    .decision h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 13px 0 12px; padding-right: 56px; }
+    .decision::after { content: counter(dec, decimal-leading-zero); position: absolute; top: 18px; right: 72px; font-size: 46px; font-weight: 800; color: rgba(0,102,255,0.08); letter-spacing: -0.03em; line-height: 1; pointer-events: none; }
+    .decision:hover { box-shadow: 0 16px 36px rgba(0,102,255,0.10); border-color: rgba(0,102,255,0.28); }
+    .decision summary { list-style: none; cursor: pointer; padding: 28px 34px 24px; position: relative; }
+    .decision summary::-webkit-details-marker { display: none; }
+    .decision summary::after { content: "\f078"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: 28px; top: 33px; font-size: 15px; color: #6e7a90; transition: transform 0.22s ease, color 0.22s ease; }
+    .decision[open] summary::after { transform: rotate(180deg); color: var(--accent); }
+    .decision-head { display: flex; align-items: center; gap: 16px; padding-right: 116px; min-height: 44px; }
+    .decision .trade { display: inline-flex; align-items: center; flex: 0 0 auto; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: var(--accent); padding: 6px 13px; border-radius: 999px; white-space: nowrap; }
+    .decision h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 0; flex: 1 1 auto; line-height: 1.35; }
+    .decision-body { padding: 0 34px 28px; }
     .decision p { color: #3d3d42; font-size: 15.5px; line-height: 1.85; margin-bottom: 12px; }
     .decision p:last-child { margin-bottom: 0; }
     .decision .takeaway { position: relative; margin-top: 16px; padding: 14px 18px 14px 46px; background: rgba(0,102,255,0.05); border: 1px solid rgba(0,102,255,0.13); border-radius: 12px; color: var(--text-main); font-weight: 600; font-size: 14.5px; line-height: 1.65; }
     .decision .takeaway::before { content: "\f0eb"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 18px; top: 15px; color: var(--accent); font-size: 15px; }
-    #decisions .lead { max-width: 900px; }
 
     /* impact */
     section#result { background: #fff; }
@@ -569,11 +574,11 @@
     .impact-note p { color: var(--text-sub); font-size: 14.5px; line-height: 1.72; }
 
     /* screenshot gallery */
-    .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 0; }
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 0; }
     .shots figure { margin: 0; }
-    .shots .cap { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
-    .shots .cap::before { content: ""; width: 4px; height: 14px; border-radius: 2px; background: var(--accent); }
-    .shots .win { aspect-ratio: 1265 / 897; overflow: hidden; border: 1px solid var(--surface-line); border-radius: 16px; background: #fff; transition: 0.25s; box-shadow: 0 8px 24px rgba(84,95,115,0.04); display: flex; align-items: center; justify-content: center; padding: 0; }
+    .shots .cap { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.01em; }
+    .shots .cap::before { content: ""; width: 4px; height: 12px; border-radius: 2px; background: var(--accent); }
+    .shots .win { aspect-ratio: 1265 / 897; overflow: hidden; border: 1px solid var(--surface-line); border-radius: 14px; background: #fff; transition: 0.25s; box-shadow: 0 6px 18px rgba(84,95,115,0.04); display: flex; align-items: center; justify-content: center; padding: 0; }
     .shots .win:hover { border-color: var(--accent); box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
     .shots .win img { display: block; width: 100%; height: 100%; cursor: zoom-in; object-fit: cover; }
 
@@ -610,6 +615,7 @@
         .build-summary { grid-template-columns: 1fr; }
         .constraint-grid { grid-template-columns: 1fr; }
     }
+    @media (max-width: 1180px) { .shots { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 900px) { .shots { grid-template-columns: 1fr; } }
     @media (max-width: 760px) {
         .container { padding-left: 24px; padding-right: 24px; }
@@ -673,6 +679,9 @@
             border-radius: 20px;
         }
         .impact-topline { flex-direction: column; align-items: flex-start; }
+        .decision-head { align-items: flex-start; flex-wrap: wrap; gap: 12px; padding-right: 72px; }
+        .decision::after { right: 58px; font-size: 40px; }
+        .decision summary::after { right: 22px; top: 31px; }
     }
 </style>
 </head>
@@ -682,12 +691,11 @@
     <div class="nav-content">
         <div class="nav-links">
             <a href="index.html#about" class="nav-item">About me</a>
-            <a href="index.html#skills" class="nav-item">기술스택</a>
             <div class="nav-dd">
                 <a class="nav-item active">프로젝트</a>
                 <div class="nav-dd-menu">
-                    <a href="mini-project.html">미니 프로젝트</a>
                     <a href="final-project.html">파이널 프로젝트</a>
+                    <a href="mini-project.html">미니 프로젝트</a>
                 </div>
             </div>
             <a href="troubleshooting.html" class="nav-item">트러블슈팅</a>
@@ -706,9 +714,7 @@
                 <p class="eyebrow">Final Project · 2026.05 – 2026.07 · 팀 6인</p>
                 <h1><span class="hero-line">CareerWave</span><span class="hero-line nowrap">AI 취업 지원 통합 플랫폼</span></h1>
                 <div class="hero-lead">
-                    <p>CareerWave는 수많은 채용 공고 속에서 방향을 잃은 IT 취준생들을 위한 AI 기반 개인화 취업 준비 플랫폼입니다.</p>
-                    <p>사용자가 이력서·자기소개서를 등록하면 AI가 서류를 정밀 진단해 핵심 역량을 추출하고, 실시간 AI 모의면접으로 취업 실력을 정량적 데이터로 축적합니다.</p>
-                    <p>단순히 공고를 나열하는 것이 아니라, 서류 분석 결과와 면접 데이터를 결합해 현재 내 역량으로 합격 확률이 가장 높은 채용 공고를 역으로 추천해 주는 선순환 구조를 지향합니다.</p>
+                    <p>CareerWave는 IT 취준생을 위한 AI 기반 개인화 취업 준비 플랫폼입니다. 이력서·자기소개서를 등록하면 AI가 서류를 분석해 핵심 역량을 추출하고, 실시간 AI 모의면접으로 면접 데이터를 축적합니다. 이 데이터를 바탕으로 현재 역량에 맞는 채용 공고를 추천하는 선순환 구조를 지향합니다.</p>
                 </div>
                 <div class="pills">
                     <span>Java 21</span><span>Spring Boot 3</span><span>Spring Security</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>Redis</span><span>JWT · OAuth 2.0</span><span>Toss Payments</span><span>JUnit 5 · Mockito</span><span>React · TypeScript</span>
@@ -738,7 +744,6 @@
                         <p class="section-eyebrow">Overview</p>
                         <h2 class="section-title doc-title">담당 역할 · 설계 중심</h2>
                     </div>
-                    <p class="info-kicker">이 화면에서는 서비스 소개를 반복하기보다, 제가 맡은 핵심 책임 범위와 그 흐름을 어떤 기준으로 설계했는지를 한 장 안에서 읽히도록 정리했습니다.</p>
                 </div>
                 <div class="info-grid">
                     <div class="blk">
@@ -753,7 +758,8 @@
                     </div>
                     <div class="blk">
                         <h3>설계 중심</h3>
-                        <p>기능을 구현할 때 ‘지금 동작하게’보다 ‘6개월 뒤에도 안전하게 유지되는가’를 먼저 생각했습니다. 인증·결제처럼 민감한 영역에서는 정상 흐름보다 실패와 예외를 먼저 설계에 담았고, 데이터는 성격(사라져도 되는가 / 반드시 남아야 하는가)에 따라 저장 위치와 구조를 나눴습니다. 결제사·소셜처럼 통제할 수 없는 외부 의존성에는 fallback을 남겨, 장애가 나더라도 서비스 흐름이 끊기지 않도록 했습니다.</p>
+                        <p>기능을 구현할 때 ‘지금 동작하게’보다 ‘6개월 뒤에도 안전하게 유지되는가’를 먼저 생각했습니다. 인증·결제처럼 민감한 영역에서는 정상 흐름보다 실패와 예외를 먼저 설계에 담았고, 데이터는 성격(사라져도 되는가 / 반드시 남아야 하는가)에 따라 저장 위치와 구조를 나눴습니다.</p>
+                        <p>이 과정에서 Claude Code와 Codex로 구현 전 예외 시나리오와 설계 대안을 빠르게 비교했고, PR 단계에서는 CodeRabbit과 팀 리뷰를 함께 활용해 놓친 경계 조건이나 리팩터링 포인트를 더 촘촘하게 점검했습니다. 단순히 코드를 빨리 쓰는 용도가 아니라, 설계 검토와 리뷰 루프 자체를 더 짧고 촘촘하게 만드는 데 AI를 활용했습니다.</p>
                     </div>
                 </div>
             </div>
@@ -766,7 +772,6 @@
     <div class="container">
         <p class="section-eyebrow">Design Assets</p>
         <h2 class="section-title doc-title">설계 산출물</h2>
-        <p class="lead" style="margin-top: -8px;">서비스 구조와 데이터 모델을 문서로 정리해 팀이 같은 기준으로 개발할 수 있도록 했습니다.<br>이미지를 누르면 원본 크기로 볼 수 있습니다.</p>
         <div class="asset-grid reveal">
             <figure class="asset">
                 <div class="asset-img"><img src="assets/collab/aws.png" alt="AWS 아키텍처 다이어그램"/></div>
@@ -791,9 +796,6 @@
     <div class="container">
         <p class="section-eyebrow">Implementation</p>
         <h2 class="section-title doc-title">주요 구현</h2>
-        <div class="build-intro">
-            <p class="lead">회원가입부터 인증, 계정 복구, 구독, 결제까지 하나의 서비스 흐름으로 연결되도록 구성했습니다.<br>기능을 나열하기보다, 사용자 계정과 과금 시스템을 세 개의 흐름으로 묶어 설계한 점이 이 섹션의 핵심입니다.</p>
-        </div>
         <div class="build-summary">
             <article class="build-card">
                 <span class="kind">Account Entry</span>
@@ -870,15 +872,17 @@
             <div class="build-showcase-head">
                 <p class="section-eyebrow">Representative Screens</p>
                 <h3 class="section-title doc-title">대표 화면</h3>
-                <p class="lead">실제 구현 화면은 가입, 로그인, 구독 흐름을 기준으로 정리했습니다. 텍스트로 설명한 기능이 서비스 안에서 어떤 사용자 경험으로 연결되는지 함께 보여주고자 했습니다.</p>
             </div>
             <div class="shots">
             <figure><figcaption class="cap">개인 회원가입</figcaption><div class="win"><img src="assets/signup-user.png" alt="개인 회원가입 화면"/></div></figure>
             <figure><figcaption class="cap">기업 회원가입 · 재직증명서</figcaption><div class="win"><img src="assets/signup-company.png" alt="기업 회원가입 화면"/></div></figure>
-            <figure><figcaption class="cap">소셜 가입 추가정보 입력</figcaption><div class="win"><img src="assets/social-signup.png" alt="소셜 가입 추가정보 입력 화면"/></div></figure>
             <figure><figcaption class="cap">마지막 로그인 방식 안내</figcaption><div class="win"><img src="assets/login-lastmethod.png" alt="마지막 로그인 방식 안내"/></div></figure>
-            <figure><figcaption class="cap">구독 현황</figcaption><div class="win"><img src="assets/subscription-detail1.png" alt="구독 현황 화면"/></div></figure>
-            <figure><figcaption class="cap">구독 · 결제 내역</figcaption><div class="win"><img src="assets/payment-history.png" alt="구독 결제 내역 화면"/></div></figure>
+            <figure><figcaption class="cap">계정 찾기</figcaption><div class="win"><img src="assets/careerwave-find-account.png" alt="계정 찾기 화면"/></div></figure>
+            <figure><figcaption class="cap">개인 회원 아이디 찾기</figcaption><div class="win"><img src="assets/careerwave-find-id-user.png" alt="개인 회원 아이디 찾기 화면"/></div></figure>
+            <figure><figcaption class="cap">기업 회원 아이디 찾기</figcaption><div class="win"><img src="assets/careerwave-find-id-company.png" alt="기업 회원 아이디 찾기 화면"/></div></figure>
+            <figure><figcaption class="cap">구독 결제</figcaption><div class="win"><img src="assets/careerwave-billing.png" alt="구독 결제 화면"/></div></figure>
+            <figure><figcaption class="cap">구독 현황</figcaption><div class="win"><img src="assets/careerwave-subscription.png" alt="구독 현황 화면"/></div></figure>
+            <figure><figcaption class="cap">구독 · 결제 내역</figcaption><div class="win"><img src="assets/careerwave-payment-history.png" alt="구독 결제 내역 화면"/></div></figure>
             </div>
         </div>
     </div>
@@ -889,7 +893,6 @@
     <div class="container">
         <p class="section-eyebrow">Impact</p>
         <h2 class="section-title doc-title">핵심 성과</h2>
-        <p class="lead">이 프로젝트에서는 기능을 만들었다는 사실보다, 어떤 문제를 어떤 수준으로 개선했는지를 수치와 시나리오로 설명할 수 있는 결과를 남기는 것을 중요하게 생각했습니다.</p>
         <div class="impact-group">
             <div class="impact-grouplabel"><span class="group-ko">대용량 · 배치 성능 개선</span><span class="group-en perf">Performance</span></div>
             <div class="impact-sheet">
@@ -904,7 +907,7 @@
                 </div>
                 <div class="perf-item">
                     <div class="impact-topline">
-                        <div class="perf-metric"><b>84.2s → 136.9ms</b><span class="delta">약 99.8% ↓</span></div>
+                        <div class="perf-metric"><b>84.2s → 0.137s</b><span class="delta">약 99.8% ↓</span></div>
                         <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/1292" target="_blank" rel="noreferrer">PR #1292</a></div>
                     </div>
                     <h4>채용공고 딥페이지네이션</h4>
@@ -958,34 +961,59 @@
     <div class="container">
         <p class="section-eyebrow">Decisions</p>
         <div class="title-row doc-title"><h2 class="section-title">기술적 의사결정</h2><span class="title-badge">핵심 역량</span></div>
-        <p class="lead">보안과 정합성이 중요한 인증·결제 도메인에서는, 단순히 “동작하는 구현”보다 장애 상황, 변경 비용, 데이터 성격까지 함께 고려해 판단했습니다. 아래 네 가지 결정은 제가 어떤 기준으로 기술을 선택했는지를 가장 잘 보여주는 사례입니다.</p>
-        <div class="decision">
-            <span class="trade">가용성 vs 보안</span>
-            <h3>Redis 장애 시 역할별 장애 정책</h3>
-            <p>블랙리스트 조회가 실패했을 때 모든 사용자를 일괄 차단하는 방식도 가능했지만, 그렇게 하면 일반 사용자가 대규모로 강제 로그아웃되는 문제가 생길 수 있었습니다. 반대로 모두 허용하면 고권한 계정까지 그대로 통과할 수 있어 위험했습니다.</p>
-            <p>그래서 일반 사용자는 가용성을 우선해 허용하고, 관리자는 보안을 우선해 거부하는 방식으로 정책을 나눴습니다. 수천 명의 일반 사용자가 한 번에 이탈하는 비용과, 소수 관리자 토큰이 통과했을 때의 위험이 같지 않다고 판단했기 때문입니다.</p>
-            <p class="takeaway">이 결정은 “같은 장애라도 모든 사용자에게 같은 정책을 적용해야 하는 것은 아니다”라는 기준에서 출발했습니다.</p>
-        </div>
-        <div class="decision">
-            <span class="trade">Redis(임시) + DB(권위)</span>
-            <h3>로그인 실패 횟수와 계정 잠금 상태 분리 저장</h3>
-            <p>처음부터 로그인 실패 관련 데이터를 한 저장소에 몰아넣기보다, 데이터의 성격을 기준으로 나눠 저장했습니다. 실패 횟수는 TTL로 자동 소멸되어야 하고 쓰기 빈도도 높기 때문에 Redis에 두는 것이 적절했습니다. 반면 계정 잠금 상태는 서버 재시작이나 Redis 장애가 발생해도 유지되어야 하는 권위 데이터이기 때문에 DB에 저장했습니다.</p>
-            <p>이렇게 나누면 Redis가 내려가더라도 이미 잠긴 계정은 계속 잠긴 상태로 유지됩니다. 반대로 실패 횟수처럼 일시적인 데이터는 빠르게 누적하고 자동 정리할 수 있습니다.</p>
-            <p class="takeaway">즉, 저장소를 기술 스택 기준으로 나눈 것이 아니라, “이 상태가 사라져도 되는가 / 반드시 남아야 하는가”를 기준으로 나눈 결정이었습니다.</p>
-        </div>
-        <div class="decision">
-            <span class="trade">편의 vs 노출 위험</span>
-            <h3>billingKey는 암호화 저장을 넘어 직렬화 경로에서 구조적으로 제외</h3>
-            <p>billingKey는 노출되면 무단 결제로 이어질 수 있는 고감도 결제 정보였습니다. 단순히 AES로 암호화해 저장하는 것만으로는 충분하지 않다고 봤습니다. 실제 서비스에서는 “암호화는 되어 있지만, 실수로 직렬화되거나 로그에 섞여 나가는” 사고도 충분히 발생할 수 있기 때문입니다.</p>
-            <p>그래서 저장 단계에서는 AES 암호화를 적용하고, 코드 구조상으로는 @Getter(AccessLevel.NONE)와 전용 접근 메서드를 사용해 Jackson 직렬화 후보 자체에서 빠지도록 설계했습니다.</p>
-            <p class="takeaway">이 결정의 핵심은 “민감정보는 잘 보관하는 것”에서 끝나지 않고, “실수로도 바깥으로 새지 않게 경로를 줄이는 것”까지 포함해야 한다는 점이었습니다.</p>
-        </div>
-        <div class="decision">
-            <span class="trade">자동 구현 vs 복합 쿼리 분리</span>
-            <h3>JPA Repository + QueryRepository 역할 분리</h3>
-            <p>조회 로직은 모두 같은 방식으로 처리하지 않았습니다. 단순 중복 확인이나 단건 조회는 JPA Repository 메서드로 두고, 기업회원 아이디 찾기처럼 여러 테이블을 묶고 조건이 복잡한 쿼리는 별도의 QueryRepository로 분리했습니다.</p>
-            <p>단순 조회까지 모두 복잡한 쿼리 레이어로 밀어 넣으면 코드가 과도하게 무거워지고, 반대로 복합 조인을 전부 메서드 네이밍 기반 Repository에 우겨 넣으면 쿼리 의도가 흐려지고 유지보수가 어려워지기 때문입니다.</p>
-            <p class="takeaway">즉, “무조건 하나로 통일”이 아니라 조회의 복잡도에 따라 저장소 역할을 나눈 결정이었습니다.</p>
+        <div class="decision-list">
+            <details class="decision" open>
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">가용성 vs 보안</span>
+                        <h3>Redis 장애 시 역할별 장애 정책</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>블랙리스트 조회가 실패했을 때 모든 사용자를 일괄 차단하는 방식도 가능했지만, 그렇게 하면 일반 사용자가 대규모로 강제 로그아웃되는 문제가 생길 수 있었습니다. 반대로 모두 허용하면 고권한 계정까지 그대로 통과할 수 있어 위험했습니다.</p>
+                    <p>그래서 일반 사용자는 가용성을 우선해 허용하고, 관리자는 보안을 우선해 거부하는 방식으로 정책을 나눴습니다. 수천 명의 일반 사용자가 한 번에 이탈하는 비용과, 소수 관리자 토큰이 통과했을 때의 위험이 같지 않다고 판단했기 때문입니다.</p>
+                    <p class="takeaway">이 결정은 “같은 장애라도 모든 사용자에게 같은 정책을 적용해야 하는 것은 아니다”라는 기준에서 출발했습니다.</p>
+                </div>
+            </details>
+            <details class="decision">
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">Redis(임시) + DB(권위)</span>
+                        <h3>로그인 실패 횟수와 계정 잠금 상태 분리 저장</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>처음부터 로그인 실패 관련 데이터를 한 저장소에 몰아넣기보다, 데이터의 성격을 기준으로 나눠 저장했습니다. 실패 횟수는 TTL로 자동 소멸되어야 하고 쓰기 빈도도 높기 때문에 Redis에 두는 것이 적절했습니다. 반면 계정 잠금 상태는 서버 재시작이나 Redis 장애가 발생해도 유지되어야 하는 권위 데이터이기 때문에 DB에 저장했습니다.</p>
+                    <p>이렇게 나누면 Redis가 내려가더라도 이미 잠긴 계정은 계속 잠긴 상태로 유지됩니다. 반대로 실패 횟수처럼 일시적인 데이터는 빠르게 누적하고 자동 정리할 수 있습니다.</p>
+                    <p class="takeaway">저장소를 기술 스택 기준으로 나눈 것이 아니라, “이 상태가 사라져도 되는가 / 반드시 남아야 하는가”를 기준으로 나눈 결정이었습니다.</p>
+                </div>
+            </details>
+            <details class="decision">
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">편의 vs 노출 위험</span>
+                        <h3>billingKey는 암호화 저장을 넘어 직렬화 경로에서 구조적으로 제외</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>billingKey는 노출되면 무단 결제로 이어질 수 있는 고감도 결제 정보였습니다. 단순히 AES로 암호화해 저장하는 것만으로는 충분하지 않다고 봤습니다. 실제 서비스에서는 “암호화는 되어 있지만, 실수로 직렬화되거나 로그에 섞여 나가는” 사고도 충분히 발생할 수 있기 때문입니다.</p>
+                    <p>그래서 저장 단계에서는 AES 암호화를 적용하고, 코드 구조상으로는 @Getter(AccessLevel.NONE)와 전용 접근 메서드를 사용해 Jackson 직렬화 후보 자체에서 빠지도록 설계했습니다.</p>
+                    <p class="takeaway">이 결정의 핵심은 “민감정보는 잘 보관하는 것”에서 끝나지 않고, “실수로도 바깥으로 새지 않게 경로를 줄이는 것”까지 포함해야 한다는 점이었습니다.</p>
+                </div>
+            </details>
+            <details class="decision">
+                <summary>
+                    <div class="decision-head">
+                        <span class="trade">자동 구현 vs 복합 쿼리 분리</span>
+                        <h3>JPA Repository + QueryRepository 역할 분리</h3>
+                    </div>
+                </summary>
+                <div class="decision-body">
+                    <p>조회 로직은 모두 같은 방식으로 처리하지 않았습니다. 단순 중복 확인이나 단건 조회는 JPA Repository 메서드로 두고, 기업회원 아이디 찾기처럼 여러 테이블을 묶고 조건이 복잡한 쿼리는 별도의 QueryRepository로 분리했습니다.</p>
+                    <p>단순 조회까지 모두 복잡한 쿼리 레이어로 밀어 넣으면 코드가 과도하게 무거워지고, 반대로 복합 조인을 전부 메서드 네이밍 기반 Repository에 우겨 넣으면 쿼리 의도가 흐려지고 유지보수가 어려워지기 때문입니다.</p>
+                    <p class="takeaway">“무조건 하나로 통일”이 아니라 조회의 복잡도에 따라 저장소 역할을 나눈 결정이었습니다.</p>
+                </div>
+            </details>
         </div>
     </div>
 </section>
@@ -995,7 +1023,6 @@
     <div class="container">
         <p class="section-eyebrow">Troubleshooting</p>
         <h2 class="section-title doc-title">트러블슈팅</h2>
-        <p class="lead">결과 화면만 보고 추측하기보다, 로그, DB 상태, 요청 값, 실행 계획을 함께 확인해 원인을 좁히는 방식으로 문제를 해결했습니다. 두 가지 사례가 제 문제 해결 방식을 가장 잘 보여준다고 생각합니다.</p>
         <div class="trouble-list">
             <article class="trouble-case">
                 <h3>딥페이지네이션 성능 문제</h3>
@@ -1010,33 +1037,6 @@
     </div>
 </section>
 
-<!-- CONSTRAINT -->
-<section class="band band-g" id="payment">
-    <div class="container">
-        <p class="section-eyebrow">Constraint</p>
-        <h2 class="section-title doc-title">결제 연동의 현실적 제약과 대응</h2>
-        <p class="lead">정기결제를 기준으로 설계했지만 외부 결제사의 실제 승인 조건에 막혔고, 시연과 검증이 멈추지 않도록 단계별 대안을 마련했습니다. 구현 자체보다도, 제약을 만났을 때 어떻게 우회 경로를 남겼는지가 핵심이었습니다.</p>
-        <div class="constraint-grid">
-            <article class="constraint-card">
-                <span class="step">01</span>
-                <h3>정기결제를 먼저 구현</h3>
-                <p>구독 서비스에서 가장 자연스러운 구조는 billingKey 기반 자동결제라고 판단했습니다. 카드 1회 등록 후 서버가 매월 자동으로 결제하는 흐름을 기준선으로 삼아 발급, 결산, 재시도, 스케줄러까지 먼저 구현했습니다.</p>
-            </article>
-            <article class="constraint-card">
-                <span class="step">02</span>
-                <h3>실 발급 제약에는 Mock 모드 대응</h3>
-                <p>Toss billingKey 발급에는 사업자등록증 제출과 유료 심사 승인이 필요했고, 프로젝트 기간 안에서는 실제 발급이 어려웠습니다. 그래서 실 연동 코드는 유지한 채 데모용 Mock 모드를 두어 자동결제 흐름 자체는 끊기지 않도록 했습니다.</p>
-            </article>
-            <article class="constraint-card">
-                <span class="step">03</span>
-                <h3>실 시연은 일회성 결제로 연결</h3>
-                <p>실제 결제창 시연까지 가능하게 하기 위해 승인 조건이 더 낮은 일회성 결제(Toss QR)로 실 API를 연동하고, 결제 성공 시 구독이 발급되도록 연결했습니다. 구현·Mock·실 시연 경로를 모두 남겨 상황에 따라 전환할 수 있게 했습니다.</p>
-            </article>
-        </div>
-        <div class="constraint-note">이 경험을 통해 외부 결제사의 정책처럼 개발자가 통제할 수 없는 제약이 있더라도, 서비스 시연과 검증이 멈추지 않도록 fallback 경로를 설계에 포함해야 한다는 점을 배웠습니다.</div>
-    </div>
-</section>
-
 <!-- COLLABORATION -->
 <section class="band band-w" id="collab">
     <div class="container">
@@ -1046,7 +1046,6 @@
                     <p class="section-eyebrow">Collaboration</p>
                     <h2 class="section-title doc-title">협업 · 이 프로젝트에서 배운 점</h2>
                 </div>
-                <p class="collab-kicker">이 섹션에서는 결과물 자체보다, 팀과 어떤 기준으로 협업했고 프로젝트를 마치며 어떤 판단 기준을 남겼는지에 초점을 맞춰 정리했습니다.</p>
             </div>
             <div class="collab-grid">
                 <div class="collab-card">
@@ -1076,7 +1075,6 @@
     <div class="container">
         <p class="section-eyebrow">Code</p>
         <h2 class="section-title doc-title">코드 및 PR</h2>
-        <p class="lead">전체 PR을 모두 나열하기보다, 문제 정의와 해결 방식이 가장 잘 드러나는 작업만 추려 연결했습니다.</p>
         <div class="code-links">
             <a href="https://github.com/ixxveon/career-wave/pull/825" target="_blank" rel="noreferrer"><span class="t">소셜 로그인 결제 404 수정</span><span class="pr">PR #825</span></a>
             <a href="https://github.com/ixxveon/career-wave/pull/951" target="_blank" rel="noreferrer"><span class="t">채용공고 목록 API 성능 최적화</span><span class="pr">PR #951</span></a>
@@ -1098,7 +1096,6 @@
     <a href="#result">핵심 성과</a>
     <a href="#decisions">기술 의사결정</a>
     <a href="#trouble">트러블슈팅</a>
-    <a href="#payment">결제 연동</a>
     <a href="#collab">협업·회고</a>
     <a href="#code">코드·PR</a>
 </nav>
