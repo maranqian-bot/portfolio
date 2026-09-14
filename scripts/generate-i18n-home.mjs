@@ -3,7 +3,11 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const source = await readFile(join(root, 'index.html'), 'utf8');
+const source = (await readFile(join(root, 'index.html'), 'utf8'))
+  .replace(/\s*<meta http-equiv="refresh"[^>]*>/g, '')
+  .replace(/\s*<link rel="canonical"[^>]*>/g, '')
+  .replace(/\s*<noscript>[\s\S]*?<\/noscript>/g, '')
+  .replace(/\s*<script>window\.location\.replace\('ko\/'\);<\/script>/g, '');
 
 const languages = {
   ko: {
@@ -70,6 +74,12 @@ const translations = {
   ]
 };
 
+const habon = {
+  ko: `<div class="tl-item"><span class="tl-dot"></span><div class="tl-period">2024.08 — 2025.05</div><h3>(주)하본인터내셔널</h3><p class="tl-role">해외영업·마케팅</p><ul class="tl-list"><li>대만·홍콩 바이어, 브랜드사, 구매·물류·마케팅 부서 사이의 요청과 출고 일정을 조율했습니다.</li><li>견적, 발주, 수출 출고와 고객 요청의 담당자·기한·후속 조치를 관리했습니다.</li><li>브랜드 홍보, 인플루언서 seeding, 마케팅 콘텐츠와 프로모션을 지원했습니다.</li></ul></div>`,
+  zh: `<div class="tl-item"><span class="tl-dot"></span><div class="tl-period">2024.08 — 2025.05</div><h3>(주)하본인터내셔널</h3><p class="tl-role">海外营业·营销</p><ul class="tl-list"><li>协调台湾、香港买家、品牌方以及采购、物流、营销部门的需求和出货进度。</li><li>管理报价、订单、出口出货以及客户请求的负责人、期限和后续事项。</li><li>支持品牌宣传、网红 seeding、营销内容和促销活动。</li></ul></div>`,
+  en: `<div class="tl-item"><span class="tl-dot"></span><div class="tl-period">2024.08 — 2025.05</div><h3>(주)하본인터내셔널</h3><p class="tl-role">Overseas Sales &amp; Marketing</p><ul class="tl-list"><li>Coordinated requests and shipping schedules across Taiwan/Hong Kong buyers, brands, purchasing, logistics, and marketing teams.</li><li>Tracked owners, deadlines, and follow-ups for quotations, orders, exports, and customer requests.</li><li>Supported brand promotion, influencer seeding, marketing content, and campaigns.</li></ul></div>`
+};
+
 function languageMenu(current) {
   return `<div class="i18n-switcher" aria-label="Language"><a href="../ko/index.html"${current === 'ko' ? ' aria-current="page"' : ''}>한국어</a><a href="../zh/index.html"${current === 'zh' ? ' aria-current="page"' : ''}>中文</a><a href="../en/index.html"${current === 'en' ? ' aria-current="page"' : ''}>English</a></div>`;
 }
@@ -91,6 +101,10 @@ for (const [code, copy] of Object.entries(languages)) {
   for (const [from, to] of [...(translations[code] ?? [])].sort((a, b) => b[0].length - a[0].length)) html = html.split(from).join(to);
 
   html = html.replace('</head>', `<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>`);
+  html = html.replaceAll('Azure OpenAI', 'Azure Speech');
+  html = html.replace(/<span class="tech-chip"><img src="\.\.\/assets\/logos\/langchain\.svg"[^>]*><span>LangChain<\/span><\/span>/g, '');
+  const timelineMarker = '<div class="tl-item">\n                <span class="tl-dot"></span>\n                <div class="tl-period">2021.09 — 2024.08</div>';
+  html = html.replace(timelineMarker, `${habon[code]}\n            ${timelineMarker}`);
   const out = join(root, code, 'index.html');
   await mkdir(dirname(out), { recursive: true });
   await writeFile(out, html);
