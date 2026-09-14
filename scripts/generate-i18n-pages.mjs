@@ -12,7 +12,8 @@ function switcher(lang, page) {
 }
 
 for (const page of pages) {
-  const source = await readFile(join(root, page), 'utf8');
+  const source = (await readFile(join(root, page), 'utf8'))
+    .replace(/<div class="i18n-switcher"[\s\S]*?<\/div>/g, '');
   for (const lang of languages) {
     let html = source
       .replace('<html lang="ko">', `<html lang="${lang === 'zh' ? 'zh-CN' : lang}">`)

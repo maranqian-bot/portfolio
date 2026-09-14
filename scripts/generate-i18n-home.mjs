@@ -92,10 +92,10 @@ for (const [code, copy] of Object.entries(languages)) {
     .replace(/<p class="hero-sub">[\s\S]*?<\/p>/, `<p class="hero-sub">${copy.hero[1]}</p>`)
     .replace(/(<\/nav>)/, `${languageMenu(code)}$1`)
     .replace(/<span><strong>마은재<\/strong> · 풀스택 신입 개발자 포트폴리오<\/span>/, `<span><strong>마은재</strong> · ${copy.footer}</span>`)
-    .replaceAll('href="final-project.html"', 'href="../final-project.html"')
-    .replaceAll('href="mini-project.html"', 'href="../mini-project.html"')
-    .replaceAll('href="troubleshooting.html"', 'href="../troubleshooting.html"')
-    .replaceAll('href="collaboration.html"', 'href="../collaboration.html"')
+    .replaceAll('href="final-project.html"', `href="../${code}/final-project.html"`)
+    .replaceAll('href="mini-project.html"', `href="../${code}/mini-project.html"`)
+    .replaceAll('href="troubleshooting.html"', `href="../${code}/troubleshooting.html"`)
+    .replaceAll('href="collaboration.html"', `href="../${code}/collaboration.html"`)
     .replaceAll('src="assets/', 'src="../assets/');
 
   for (const [from, to] of [...(translations[code] ?? [])].sort((a, b) => b[0].length - a[0].length)) html = html.split(from).join(to);

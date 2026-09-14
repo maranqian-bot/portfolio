@@ -684,6 +684,12 @@
         .decision summary::after { right: 22px; top: 31px; }
     }
 </style>
+<style>
+.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}
+.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}
+.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}
+@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}
+</style>
 </head>
 <body>
 
@@ -702,6 +708,7 @@
             <a href="collaboration.html" class="nav-item">협업방식</a>
         </div>
     </div>
+<div class="i18n-switcher" aria-label="Language"><a href="ko/final-project.html" aria-current="page">한국어</a><a href="zh/final-project.html">中文</a><a href="en/final-project.html">English</a></div>
 </nav>
 
 <a href="index.html" class="page-back"><span class="arr">←</span><span class="label">Home</span></a>
