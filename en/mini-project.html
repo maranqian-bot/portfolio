@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>미니프로젝트 | Mapingo</title>
+<title>Mini Project | Mapingo</title>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="../assets/portfolio.css"/>
@@ -321,7 +321,7 @@
     .info-main .blk ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
     .info-main .blk .hl { margin-top: 14px; padding: 12px 16px; background: rgba(0,102,255,0.05); border: 1px solid rgba(0,102,255,0.12); border-radius: 10px; color: var(--text-main); font-weight: 600; font-size: 14.5px; line-height: 1.6; }
 
-    /* design assets (아키텍처 · ERD) */
+    /* design assets (Architecture · ERD) */
     section#design > .container {
         padding-top: 22px;
     }
@@ -561,7 +561,7 @@
     .collab-card ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
     .collab-card .xref { margin-top: 18px; }
 
-    /* 기술적 의사결정 — accordion */
+    /* Technical Decisions — accordion */
     #decisions .container { counter-reset: dec; }
     .decision-list { display: grid; gap: 18px; margin-top: 8px; }
     .decision { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--surface-line); border-radius: 18px; box-shadow: 0 6px 20px rgba(84,95,115,0.03); transition: box-shadow 0.28s ease, border-color 0.28s ease; counter-increment: dec; }
@@ -713,22 +713,28 @@
         .decision summary::after { right: 22px; top: 31px; }
     }
 </style>
-<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
+<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style><style>
+    html[lang="en"] .hero-band .page-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+    html[lang="en"] .hero-band .page-hero h1 { font-size: 44px; }
+    html[lang="en"] .hero-band .page-hero h1 .hero-line.nowrap { white-space: normal; }
+  </style>
+<meta http-equiv="Cache-Control" content="no-store">
+</head>
 <body>
 
 <nav class="site-nav">
     <div class="nav-content">
         <div class="nav-links">
-            <a href="../en/index.html#about" class="nav-item">About me</a>
+            <a href="../en/index.html#about" class="nav-item">About Me</a>
             <div class="nav-dd">
-                <a class="nav-item active">프로젝트</a>
+                <a class="nav-item active">Projects</a>
                 <div class="nav-dd-menu">
-                    <a href="../en/final-project.html">파이널 프로젝트</a>
-                    <a href="../en/mini-project.html">미니 프로젝트</a>
+                    <a href="../en/final-project.html">Final Project</a>
+                    <a href="../en/mini-project.html">Mini Project</a>
                 </div>
             </div>
-            <a href="../en/troubleshooting.html" class="nav-item">트러블슈팅</a>
-            <a href="../en/collaboration.html" class="nav-item">협업방식</a>
+            <a href="../en/troubleshooting.html" class="nav-item">Troubleshooting</a>
+            <a href="../en/collaboration.html" class="nav-item">Collaboration</a>
         </div>
     </div>
 <div class="i18n-switcher" aria-label="Language"><a href="../ko/mini-project.html">한국어</a><a href="../zh/mini-project.html">中文</a><a href="../en/mini-project.html" aria-current="page">English</a></div></nav>
@@ -740,10 +746,10 @@
     <div class="container">
         <div class="page-hero">
             <div class="hero-copy">
-                <p class="eyebrow">Mini Project · 2026.04 – 2026.05 · 팀 4인</p>
-                <h1><span class="hero-line">Mapingo</span><span class="hero-line nowrap">AI 영어 회화 코칭 플랫폼</span></h1>
+                <p class="eyebrow">Mini Project · 2026.04 – 2026.05 · 4-person team</p>
+                <h1><span class="hero-line">Mapingo</span><span class="hero-line">AI English Conversation</span><span class="hero-line">Coaching Platform</span></h1>
                 <div class="hero-lead">
-                    <p>Mapingo는 사용자가 지도에서 고른 실제 장소와 이전 학습 기록을 바탕으로 더 맥락적인 영어 회화 연습을 제공하는 AI 학습 서비스입니다.</p>
+                    <p>Mapingo is an AI English-learning service that provides contextual conversation practice based on real places selected on a map and the learner’s previous study history.</p>
                 </div>
                 <div class="pills">
                     <span>Python</span><span>FastAPI</span><span>OpenAI API</span><span>Azure Speech</span><span>FFmpeg</span><span>Java</span><span>Spring Boot</span><span>React</span><span>GitHub Actions</span><span>AWS EC2</span>
@@ -752,20 +758,20 @@
             <div class="hero-visual">
                 <figure class="hero-figure">
                     <video src="../assets/mapingo-preview2.mp4" autoplay muted loop playsinline></video>
-                    <figcaption>Mapingo AI Coaching 미리보기</figcaption>
+                    <figcaption>Mapingo AI Coaching Preview</figcaption>
                 </figure>
                 <div class="hero-links">
-                    <a href="https://github.com/soo97/languagemap-react" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> React 저장소</a>
-                    <a href="https://github.com/soo97/languagemap-spring" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> Spring 저장소</a>
-                    <a href="https://github.com/soo97/languagemap-FastAPI" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> FastAPI 저장소</a>
-                    <a href="https://languagemap-drab.vercel.app/coaching" target="_blank" rel="noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> 웹사이트 보기</a>
+                    <a href="https://github.com/soo97/languagemap-react" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> React Repository</a>
+                    <a href="https://github.com/soo97/languagemap-spring" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> Spring Repository</a>
+                    <a href="https://github.com/soo97/languagemap-FastAPI" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> FastAPI Repository</a>
+                    <a href="https://languagemap-drab.vercel.app/coaching" target="_blank" rel="noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> View Website</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ABOUT (개요 · 역할 · 문제) -->
+<!-- ABOUT (Overview · Responsibilities · Issues) -->
 <section class="band" id="about">
     <div class="container">
         <div class="info-card">
@@ -773,23 +779,23 @@
                 <div class="info-head">
                     <div>
                         <p class="section-eyebrow">Overview</p>
-                        <h2 class="section-title doc-title">담당 역할 · 설계 중심</h2>
+                        <h2 class="section-title doc-title">Responsibilities · Design-led</h2>
                     </div>
                 </div>
                 <div class="info-grid">
                     <div class="blk">
-                        <h3>담당 역할</h3>
+                        <h3>Responsibilities</h3>
                         <ul>
-                            <li>AI Coaching 기능 담당 및 FastAPI 기반 AI 서버 구현</li>
-                            <li>Azure Speech · OpenAI 연동과 발음 평가 · 최종 피드백 흐름 구현</li>
-                            <li>React · Spring · FastAPI 사이 음성 업로드와 응답 계약 안정화</li>
-                            <li>스크립트 생성 → 음성 녹음 → 발음 평가 → 최종 피드백 → 후속 추천까지 하나의 학습 흐름 완성</li>
+                            <li>Owned AI Coaching features and implemented the FastAPI-based AI server.</li>
+                            <li>Integrated Azure Speech and OpenAI to deliver pronunciation assessment and the final-feedback flow.</li>
+                            <li>Stabilized the audio-upload flow and response contract across React, Spring, and FastAPI.</li>
+                            <li>Completed one learning flow from script generation and voice recording through pronunciation assessment, final feedback, and follow-up recommendations.</li>
                         </ul>
-                        <p class="hl">단순히 AI 응답을 보여주는 데서 끝나지 않고, 사용자가 실제로 끝까지 학습 결과를 받을 수 있도록 안정적인 코칭 흐름을 설계하고 구현했습니다.</p>
+                        <p class="hl">I did more than display AI responses: I designed and implemented a stable coaching flow so users could complete the learning journey and receive results.</p>
                     </div>
                     <div class="blk">
-                        <h3>설계 중심</h3>
-                        <p>Mapingo의 AI Coaching은 OpenAI, Azure Speech, Spring API, React UI가 하나의 학습 흐름으로 이어져야 했기 때문에, 어느 한 단계만 흔들려도 사용자 경험 전체가 쉽게 끊길 수 있었습니다. 그래서 저는 AI 응답 품질만 높이는 데서 그치지 않고, LLM 응답 계약, 브라우저별 음성 포맷 차이, multipart 업로드 경계, 외부 API timeout과 fallback까지 함께 설계했습니다. 결국 이 프로젝트에서의 설계 중심은 “좋은 AI 결과를 만든다”보다 “스크립트 생성부터 최종 피드백과 후속 추천까지 사용자가 끝까지 도달할 수 있게 만든다”에 더 가까웠습니다.</p>
+                        <h3>Design-led</h3>
+                        <p>Mapingo’s AI Coaching had to connect OpenAI, Azure Speech, the Spring API, and the React UI into one learning flow. Instability at any point could interrupt the whole experience. I therefore designed not only for response quality, but also for the LLM response contract, browser-specific audio-format differences, multipart upload boundaries, and external API timeouts and fallbacks. The goal was not simply a good AI result, but a journey that reliably carries users from script generation to final feedback and follow-up recommendations.</p>
                     </div>
                 </div>
             </div>
@@ -797,262 +803,262 @@
     </div>
 </section>
 
-<!-- DESIGN ASSETS -->
+<!-- Design Assets -->
 <section class="band" id="design">
     <div class="container">
         <p class="section-eyebrow">Design Assets</p>
-        <h2 class="section-title doc-title">설계 산출물</h2>
+        <h2 class="section-title doc-title">Design Assets</h2>
         <div class="asset-grid reveal">
             <figure class="asset">
-                <div class="asset-img"><img src="../assets/mapingoaws.png" alt="Mapingo AWS 아키텍처 다이어그램"/></div>
+                <div class="asset-img"><img src="../assets/mapingoaws.png" alt="Mapingo AWS Architecture Diagram"/></div>
                 <figcaption>
-                    <h3>AWS 아키텍처</h3>
-                    <p>React, Spring, FastAPI, AWS 인프라가 어떻게 연결되어 AI 코칭 요청과 학습 데이터를 처리하는지 배포 구조를 기준으로 정리합니다.</p>
+                    <h3>AWS Architecture</h3>
+                    <p>Shows how React, Spring, FastAPI, and AWS infrastructure connect to process AI Coaching requests and learning data.</p>
                 </figcaption>
             </figure>
             <figure class="asset">
-                <div class="asset-img"><img src="../assets/english-on-the-map.png" alt="English on the map 구조 이미지"/></div>
+                <div class="asset-img"><img src="../assets/english-on-the-map.png" alt="English on the map Structure Image"/></div>
                 <figcaption>
                     <h3>ERD</h3>
-                    <p>회원, 장소 학습, AI 코칭 세션, 발음 평가와 피드백 결과가 어떻게 연결되는지 데이터 구조를 기준으로 정리합니다.</p>
+                    <p>Explains how members, place-based learning, AI Coaching sessions, pronunciation assessments, and feedback results connect in the data model.</p>
                 </figcaption>
             </figure>
             <figure class="asset">
-                <div class="asset-img"><img src="../assets/mapingo-usecase.png" alt="Mapingo 유스케이스 다이어그램"/></div>
+                <div class="asset-img"><img src="../assets/mapingo-usecase.png" alt="Mapingo Use Cases Diagram"/></div>
                 <figcaption>
-                    <h3>유스케이스</h3>
-                    <p>장소 선택, 스크립트 생성, 음성 녹음, 발음 평가, 최종 피드백과 추천까지의 사용자 흐름을 시나리오 단위로 정리한 문서입니다.</p>
+                    <h3>Use Cases</h3>
+                    <p>Documents the user flow by scenario, from place selection and script generation through voice recording, pronunciation assessment, final feedback, and recommendations.</p>
                 </figcaption>
             </figure>
         </div>
     </div>
 </section>
 
-<!-- IMPLEMENTATION -->
+<!-- Key Implementation -->
 <section class="band band-g" id="build">
     <div class="container">
-        <p class="section-eyebrow">Implementation</p>
-        <h2 class="section-title doc-title">주요 구현</h2>
+        <p class="section-eyebrow">Key Implementation</p>
+        <h2 class="section-title doc-title">Key Implementation</h2>
         <div class="build-summary">
             <article class="build-card">
                 <span class="kind">Coaching Flow</span>
-                <h3>AI Coaching 진입과 대화 흐름</h3>
-                <p class="desc">지도 학습 결과와 이전 학습 맥락을 바탕으로 코칭 세션에 진입하고, optionType에 따라 실제 대화가 이어지도록 구성했습니다.</p>
+                <h3>AI Coaching Entry and Conversation Flow</h3>
+                <p class="desc">Enters a coaching session based on map-learning results and previous study context, then continues the actual conversation according to optionType.</p>
                 <div class="split">
                     <span class="split-label">Entry Flow</span>
                     <ul>
-                        <li>장소(place), 학습 결과(evaluation), 이전 대화 context 연동</li>
-                        <li>지도 학습 결과 기반 AI Coaching 진입 흐름 구성</li>
+                        <li>Connects place, evaluation, and previous conversation context.</li>
+                        <li>Built an AI Coaching entry flow based on map-learning results.</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Conversation Flow</span>
                     <ul>
-                        <li>optionType 기반 코칭 script 생성 흐름 연결</li>
-                        <li>ASSISTANT ↔ USER turn 기반 대화 진행 구조 구현</li>
-                        <li>context 유지 및 이전 대화 기반 응답 생성</li>
-                        <li>AI Coaching 대화 흐름 구현</li>
+                        <li>Connected the optionType-based coaching-script generation flow.</li>
+                        <li>Implemented a conversation structure based on ASSISTANT ↔ USER turns.</li>
+                        <li>Preserves context and generates responses from earlier conversation.</li>
+                        <li>Implemented the AI Coaching conversation flow.</li>
                     </ul>
                 </div>
             </article>
             <article class="build-card">
                 <span class="kind">AI Integration</span>
-                <h3>OpenAI와 Azure Speech 연동</h3>
-                <p class="desc">코칭 script 생성부터 음성 인식, 발음 평가, 최종 분석까지 이어지도록 OpenAI와 Azure Speech를 역할별로 분리해 연동했습니다.</p>
+                <h3>Integrated OpenAI and Azure Speech</h3>
+                <p class="desc">Separated and integrated OpenAI and Azure Speech by responsibility, connecting coaching-script generation, speech recognition, pronunciation assessment, and final analysis.</p>
                 <div class="split">
                     <span class="split-label">OpenAI</span>
                     <ul>
-                        <li>coaching script 생성 API 구현</li>
-                        <li>최종 피드백 생성 API 구현</li>
-                        <li>추천 학습 표현 및 추천 영상 키워드 생성</li>
-                        <li>OpenAI 연동</li>
+                        <li>Implemented the coaching-script generation API.</li>
+                        <li>Implemented the final-feedback generation API.</li>
+                        <li>Generated recommended learning expressions and video keywords.</li>
+                        <li>OpenAI Integration</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Azure Speech</span>
                     <ul>
-                        <li>STT(음성 → 텍스트)</li>
-                        <li>발음 평가</li>
-                        <li>pronunciation score / fluency / completeness 분석</li>
-                        <li>Azure Speech 연동</li>
+                        <li>STT (Speech → Text)</li>
+                        <li>Pronunciation Assessment</li>
+                        <li>Analyzes pronunciation score / fluency / completeness.</li>
+                        <li>Azure Speech Integration</li>
                     </ul>
                 </div>
             </article>
             <article class="build-card">
                 <span class="kind">Feedback & Content</span>
-                <h3>피드백과 추천 콘텐츠 기능</h3>
-                <p class="desc">점수만 보여주는 것이 아니라, 발화 분석 결과를 피드백으로 연결하고 문제 단어 다시 듣기와 추천 콘텐츠까지 이어지도록 구성했습니다.</p>
+                <h3>Feedback and Recommendation Features</h3>
+                <p class="desc">Goes beyond showing scores by connecting speech-analysis results to feedback, replaying difficult words, and recommended content.</p>
                 <div class="split">
                     <span class="split-label">Feedback</span>
                     <ul>
-                        <li>사용자 발화 분석</li>
-                        <li>문제 단어 추출</li>
-                        <li>문장 자연스러움 평가</li>
-                        <li>최종 학습 피드백 제공</li>
+                        <li>Analyzes user utterances.</li>
+                        <li>Extracts problematic words.</li>
+                        <li>Evaluates sentence naturalness.</li>
+                        <li>Provides final learning feedback.</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Replay</span>
                     <ul>
-                        <li>문제 단어 개별 음성 생성 및 재생</li>
-                        <li>문제 단어 다시 듣기 기능</li>
+                        <li>Generates and plays individual audio for problematic words.</li>
+                        <li>Problem-word replay feature</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Recommendation</span>
                     <ul>
-                        <li>주제 기반 YouTube 영상 추천</li>
-                        <li>영상 요약 생성 및 저장</li>
-                        <li>추천 콘텐츠 기능</li>
+                        <li>Recommends YouTube videos by topic.</li>
+                        <li>Generates and stores video summaries.</li>
+                        <li>Recommended-content feature</li>
                     </ul>
                 </div>
             </article>
         </div>
         <div class="build-showcase" id="screens">
             <div class="build-showcase-head">
-                <p class="section-eyebrow">Representative Screens</p>
-                <h3 class="section-title doc-title">대표 화면</h3>
+                <p class="section-eyebrow">Key Screens</p>
+                <h3 class="section-title doc-title">Key Screens</h3>
             </div>
             <div class="shots">
-            <figure><figcaption class="cap">AI 코칭 시작</figcaption><div class="win"><img src="../assets/mapingo-chat-start.png" alt="Mapingo AI 코칭 시작 화면"/></div></figure>
-            <figure><figcaption class="cap">AI 코칭 대화 진행</figcaption><div class="win"><img src="../assets/mapingo-chat-progress.png" alt="Mapingo AI 코칭 대화 진행 화면"/></div></figure>
-            <figure><figcaption class="cap">AI 코칭 대화 종료</figcaption><div class="win"><img src="../assets/mapingo-chat-end.png" alt="Mapingo AI 코칭 대화 종료 화면"/></div></figure>
-            <figure><figcaption class="cap">코칭 결과</figcaption><div class="win"><img src="../assets/mapingo-coaching-result.png" alt="Mapingo 코칭 결과 화면"/></div></figure>
-            <figure><figcaption class="cap">상세 코칭 평가</figcaption><div class="win"><img src="../assets/mapingo-detailed-feedback.png" alt="Mapingo 상세 코칭 평가 화면"/></div></figure>
-            <figure><figcaption class="cap">단어 발음 및 콘텐츠 추천</figcaption><div class="win"><img src="../assets/mapingo-word-content.png" alt="Mapingo 단어 발음 및 콘텐츠 추천 화면"/></div></figure>
+            <figure><figcaption class="cap">Start AI Coaching</figcaption><div class="win"><img src="../assets/mapingo-chat-start.png" alt="Mapingo Start AI Coaching Screen"/></div></figure>
+            <figure><figcaption class="cap">AI Coaching Conversation</figcaption><div class="win"><img src="../assets/mapingo-chat-progress.png" alt="Mapingo AI Coaching Conversation Screen"/></div></figure>
+            <figure><figcaption class="cap">End AI Coaching Conversation</figcaption><div class="win"><img src="../assets/mapingo-chat-end.png" alt="Mapingo End AI Coaching Conversation Screen"/></div></figure>
+            <figure><figcaption class="cap">Coaching Results</figcaption><div class="win"><img src="../assets/mapingo-coaching-result.png" alt="Mapingo Coaching Results Screen"/></div></figure>
+            <figure><figcaption class="cap">Detailed Coaching Assessment</figcaption><div class="win"><img src="../assets/mapingo-detailed-feedback.png" alt="Mapingo Detailed Coaching Assessment Screen"/></div></figure>
+            <figure><figcaption class="cap">Word Pronunciation and Content Recommendations</figcaption><div class="win"><img src="../assets/mapingo-word-content.png" alt="Mapingo Word Pronunciation and Content Recommendations Screen"/></div></figure>
             </div>
         </div>
     </div>
 </section>
 
-<!-- DECISIONS -->
+<!-- Technical Decisions -->
 <section class="band band-w" id="decisions">
     <div class="container">
-        <p class="section-eyebrow">Decisions</p>
-        <div class="title-row doc-title"><h2 class="section-title">기술적 의사결정</h2><span class="title-badge">핵심 역량</span></div>
+        <p class="section-eyebrow">Technical Decisions</p>
+        <div class="title-row doc-title"><h2 class="section-title">Technical Decisions</h2><span class="title-badge">Core Capability</span></div>
         <div class="decision-list">
             <details class="decision" open>
                 <summary>
                     <div class="decision-head">
-                        <span class="trade">형식 자유도 vs 서비스 안정성</span>
-                        <h3>Prompt 품질보다 응답 계약을 먼저 고정</h3>
+                        <span class="trade">Format Flexibility vs Service Stability</span>
+                        <h3>Prioritize a Fixed Response Contract over Prompt Quality</h3>
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>LLM은 내용이 좋아도 응답 형식이 조금만 흔들리면 Spring과 React에서 그대로 파싱 오류로 이어질 수 있었습니다. 그래서 먼저 output format과 schema를 강하게 고정하고, 그 안에서 script와 feedback 품질을 높이는 방향으로 설계했습니다.</p>
-                    <p>이후 problemWords normalize 같은 후처리를 추가해 문자열 배열과 객체 배열이 섞여도 서비스 응답이 깨지지 않도록 보완했습니다.</p>
-                    <p class="takeaway">“더 자연스러운 답변”보다 “서비스가 끝까지 소비할 수 있는 답변”을 우선한 결정이었습니다.</p>
+                    <p>Even when LLM content is good, small variations in response format can cause parsing errors in Spring and React. I first fixed the output format and schema strictly, then improved script and feedback quality within that contract.</p>
+                    <p>I then added post-processing such as problemWords normalization so mixed string arrays and object arrays would not break the service response.</p>
+                    <p class="takeaway">This was a decision to prioritize an answer the service can consume end-to-end over a more natural-sounding answer.</p>
                 </div>
             </details>
             <details class="decision">
                 <summary>
                     <div class="decision-head">
-                        <span class="trade">클라이언트 분기 vs 서버 표준화</span>
-                        <h3>브라우저 음성 입력은 서버에서 표준 포맷으로 정규화</h3>
+                        <span class="trade">Client-side Branching vs Server-side Standardization</span>
+                        <h3>Standardized browser voice input to a common format on the server.</h3>
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>브라우저마다 MediaRecorder 포맷과 codec이 달라 프론트에서 모든 경우를 직접 처리하면 복잡도가 크게 올라갔습니다. 그래서 webm 업로드는 FastAPI에서 ffmpeg 기반 wav로 변환해 Azure Speech가 안정적으로 받을 수 있는 입력으로 통일했습니다.</p>
-                    <p>여기에 pronunciation assessment 실패 시 STT fallback을 붙여, 포맷 차이나 인식 실패가 있어도 전체 코칭 흐름이 끊기지 않게 했습니다.</p>
-                    <p class="takeaway">입력 다양성을 프론트에서 모두 흡수하기보다, 서버 쪽에서 표준화와 fallback을 함께 두는 편이 더 운영 가능하다고 판단했습니다.</p>
+                    <p>MediaRecorder formats and codecs differ across browsers; handling every case directly on the frontend would sharply increase complexity. In FastAPI, I converted webm uploads to ffmpeg-based wav so Azure Speech received a stable, unified input.</p>
+                    <p>I also added an STT fallback for pronunciation-assessment failures, so format differences or recognition failures would not interrupt the coaching flow.</p>
+                    <p class="takeaway">I concluded that standardizing and applying fallbacks on the server was more maintainable than making the frontend absorb every input difference.</p>
                 </div>
             </details>
         </div>
     </div>
 </section>
 
-<!-- TROUBLESHOOTING -->
+<!-- Troubleshooting -->
 <section class="band band-w" id="trouble">
     <div class="container">
         <p class="section-eyebrow">Troubleshooting</p>
-        <h2 class="section-title doc-title">트러블슈팅</h2>
-        <p class="lead">Mapingo에서는 AI 품질 문제보다도, 응답 형식과 음성 업로드처럼 경계면에서 생기는 문제가 서비스 전체를 더 쉽게 흔들었습니다. 아래 두 사례가 제가 실제로 해결한 대표적인 문제입니다.</p>
+        <h2 class="section-title doc-title">Troubleshooting</h2>
+        <p class="lead">In Mapingo, boundary issues such as response format and voice upload were more likely than AI-quality issues to destabilize the entire service. These are two representative problems I solved.</p>
         <div class="trouble-list">
             <article class="trouble-case">
-                <h3>LLM 응답 형식이 바뀌면 파싱 실패하던 문제</h3>
-                <p>AI 회화 스크립트와 최종 피드백은 화면에서 바로 렌더링해야 했기 때문에, 응답 구조가 조금만 흔들려도 Spring DTO 역직렬화와 프론트 표시가 함께 깨질 수 있었습니다. 그래서 프롬프트를 Role · Instruction · Context · Output Format으로 더 강하게 고정하고, problemWords normalize 후처리를 넣어 문자열 배열과 객체 배열이 섞여도 서비스가 끝까지 응답을 소비할 수 있게 정리했습니다.<span class="trouble-learn">이 경험을 통해 AI 응답은 “좋은 문장”보다 “서비스가 안전하게 파싱할 수 있는 구조”가 먼저 확보되어야 한다는 점을 배웠습니다.</span></p>
+                <h3>Parsing Failures Caused by Changes in LLM Response Format</h3>
+                <p>AI conversation scripts and final feedback had to render directly on screen, so even small response-structure changes could break both Spring DTO deserialization and frontend display. I fixed the prompt more strictly as Role · Instruction · Context · Output Format and added problemWords normalization, allowing the service to consume responses even when string arrays and object arrays were mixed.<span class="trouble-learn">This taught me that an AI response must first have a structure the service can parse safely, and only then be a good sentence.</span></p>
             </article>
             <article class="trouble-case">
-                <h3>React–Spring–FastAPI 음성 연동 오류</h3>
-                <p>React에서 녹음은 정상적으로 끝나도, 마지막 chunk가 반영되기 전에 파일이 만들어지거나 Spring에서 multipart content type이 바뀌면 FastAPI 쪽 음성 처리가 쉽게 실패했습니다. 이를 해결하기 위해 React에서는 녹음 종료 후 최종 File이 완성된 뒤 업로드하도록 정리했고, Spring에서는 원본 content type을 보존해 FastAPI가 실제 음성 형식을 잃지 않도록 바꿨습니다. 동시에 FastAPI 응답도 음성 평가 실패 시 기본 구조를 유지하도록 정리해 세 서버 간 계약을 안정화했습니다.<span class="trouble-learn">결국 문제는 한 서버 안이 아니라 경계면 여러 곳에 나뉘어 있었고, 전체 요청 흐름으로 봐야만 원인을 정확히 잡을 수 있다는 점을 배웠습니다.</span></p>
+                <h3>React–Spring–FastAPI Voice Integration Errors</h3>
+                <p>Even when recording ended normally in React, voice processing in FastAPI could fail if the file was created before the last chunk was written or if Spring changed the multipart content type. I made React upload only after recording ended and the final File was complete; Spring preserved the original content type so FastAPI would not lose the real audio format; and FastAPI retained a base response structure even when voice assessment failed, stabilizing the contract across all three services.<span class="trouble-learn">I ultimately learned that the problem was not inside one server but distributed across multiple boundaries; only the complete request flow made precise diagnosis possible.</span></p>
             </article>
         </div>
-        <a class="xref" href="../en/troubleshooting.html">Mapingo 트러블슈팅 전체 기록 보기 →</a>
+        <a class="xref" href="../en/troubleshooting.html">View the Full Mapingo Troubleshooting Record →</a>
     </div>
 </section>
 
-<!-- COLLABORATION -->
+<!-- Collaboration -->
 <section class="band band-w" id="collab">
     <div class="container">
         <div class="collab-overview">
             <div class="collab-head">
                 <div>
                     <p class="section-eyebrow">Collaboration</p>
-                    <h2 class="section-title doc-title">협업 · 이 프로젝트에서 배운 점</h2>
+                    <h2 class="section-title doc-title">Collaboration and What I Learned</h2>
                 </div>
             </div>
             <div class="collab-grid">
                 <div class="collab-card">
-                    <h3>협업</h3>
+                    <h3>Collaboration</h3>
                     <ul>
-                        <li>AI 코칭 기능을 진입 화면, 세션 생성, 대화 진행, 결과·추천 흐름으로 나눠 역할을 먼저 맞추고, 각 단계에서 어떤 서버가 어떤 책임을 가지는지 문서와 PR 설명에 함께 남겼습니다.</li>
-                        <li>FastAPI 응답 필드, Spring DTO, React 화면 소비 구조가 어긋나지 않도록 PR 단위로 계약을 같이 맞췄고, 바뀐 응답 형식은 프론트와 백엔드가 동시에 확인할 수 있게 공유했습니다.</li>
-                        <li>음성 업로드 오류가 났을 때는 React Network 요청, Spring multipart 로그, FastAPI 진단 로그를 한 흐름으로 묶어 비교하면서 문제를 좁혀 갔습니다.</li>
-                        <li>배포와 재현이 막히지 않도록 GitHub Actions, 환경변수, fallback 로그 같은 운영 요소도 기능 구현과 분리하지 않고 함께 정리했습니다.</li>
+                        <li>I divided AI Coaching into entry screens, session creation, conversation, and results/recommendation flows; aligned responsibilities first; and documented which service owned what at each stage in the docs and PR descriptions.</li>
+                        <li>I aligned FastAPI response fields, Spring DTOs, and the React consumption structure per PR; changes to response formats were shared for frontend and backend confirmation at the same time.</li>
+                        <li>When voice-upload errors occurred, I compared React Network requests, Spring multipart logs, and FastAPI diagnostic logs in one flow to narrow the issue step by step.</li>
+                        <li>To prevent deployment and reproduction from being blocked, I organized operational elements such as GitHub Actions, environment variables, and fallback logs together with the feature implementation.</li>
                     </ul>
-                    <a class="xref" href="../en/collaboration.html">브랜치 전략·커밋·PR·리뷰 협업 방식 자세히 보기 →</a>
+                    <a class="xref" href="../en/collaboration.html">View Branch Strategy, Commits, PRs, and Review Collaboration →</a>
                 </div>
                 <div class="collab-card">
-                    <h3>이 프로젝트에서 배운 점</h3>
-                    <p>Mapingo를 하면서 AI 기능은 단순히 모델을 붙이는 일이 아니라, 입력 포맷, 응답 계약, 실패 시 fallback, 사용자에게 보여줄 안내까지 함께 설계해야 비로소 서비스가 된다는 점을 배웠습니다.</p>
-                    <p>특히 음성 기반 기능은 한 서버 안에서 끝나는 문제가 거의 없었습니다. 브라우저 녹음, Spring 전달, FastAPI 처리, Azure Speech와 OpenAI 응답까지 모두 이어진 경계 문제로 봐야 원인을 정확히 찾을 수 있었습니다.</p>
-                    <p>그리고 작은 로그 한 줄, 기본 응답 구조 하나를 미리 보장해 두는 것만으로도 팀 전체 디버깅 속도가 크게 달라진다는 점을 실제로 체감했습니다.</p>
+                    <h3>What I Learned from This Project</h3>
+                    <p>Through Mapingo, I learned that AI features are not simply model integration. Input formats, response contracts, failure fallbacks, and user-facing guidance all need to be designed together before they become a real service.</p>
+                    <p>Voice features in particular rarely end within one server. Accurate diagnosis required treating browser recording, Spring handoff, FastAPI processing, Azure Speech, and OpenAI responses as one continuous boundary problem.</p>
+                    <p>I also experienced firsthand how guaranteeing one small log line or one base response structure in advance can materially change the whole team’s debugging speed.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CODE -->
+<!-- Code -->
 <section class="band band-g" id="code">
     <div class="container">
         <p class="section-eyebrow">Code</p>
-        <h2 class="section-title doc-title">코드 및 PR</h2>
+        <h2 class="section-title doc-title">Code & PR</h2>
         <div class="code-links">
-            <a href="https://github.com/soo97/languagemap-spring/pull/152" target="_blank" rel="noreferrer"><span class="t">코칭 음성 multipart content type 보존</span><span class="pr">Spring PR #152</span></a>
-            <a href="https://github.com/soo97/languagemap-FastAPI/pull/16" target="_blank" rel="noreferrer"><span class="t">최종 피드백 문제 단어 정규화</span><span class="pr">FastAPI PR #16</span></a>
-            <a href="https://github.com/soo97/languagemap-FastAPI/pull/14" target="_blank" rel="noreferrer"><span class="t">발음 평가 fallback 로그 보강</span><span class="pr">FastAPI PR #14</span></a>
-            <a href="https://github.com/soo97/languagemap-FastAPI/pull/13" target="_blank" rel="noreferrer"><span class="t">Azure 음성 인식 fallback 처리 개선</span><span class="pr">FastAPI PR #13</span></a>
+            <a href="https://github.com/soo97/languagemap-spring/pull/152" target="_blank" rel="noreferrer"><span class="t">Preserve the coaching-audio multipart content type</span><span class="pr">Spring PR #152</span></a>
+            <a href="https://github.com/soo97/languagemap-FastAPI/pull/16" target="_blank" rel="noreferrer"><span class="t">Normalize problematic words in final feedback</span><span class="pr">FastAPI PR #16</span></a>
+            <a href="https://github.com/soo97/languagemap-FastAPI/pull/14" target="_blank" rel="noreferrer"><span class="t">Improve pronunciation-assessment fallback logs</span><span class="pr">FastAPI PR #14</span></a>
+            <a href="https://github.com/soo97/languagemap-FastAPI/pull/13" target="_blank" rel="noreferrer"><span class="t">Improve Azure speech-recognition fallback handling</span><span class="pr">FastAPI PR #13</span></a>
         </div>
         <div class="repo-line">
-            <a href="https://github.com/soo97/languagemap-mapingo-FE" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> React 저장소 보기</a>
-            <a href="https://github.com/soo97/languagemap-spring" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> Spring 저장소 보기</a>
-            <a href="https://github.com/soo97/languagemap-FastAPI" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> FastAPI 저장소 보기</a>
+            <a href="https://github.com/soo97/languagemap-mapingo-FE" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> View React Repository</a>
+            <a href="https://github.com/soo97/languagemap-spring" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> View Spring Repository</a>
+            <a href="https://github.com/soo97/languagemap-FastAPI" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> View FastAPI Repository</a>
         </div>
     </div>
 </section>
 
-<nav class="toc" aria-label="목차">
-    <a href="#about">개요·역할</a>
-    <a href="#design">설계 산출물</a>
-    <a href="#build">주요 구현</a>
-    <a href="#screens">대표 화면</a>
-    <a href="#decisions">기술 의사결정</a>
-    <a href="#trouble">트러블슈팅</a>
-    <a href="#collab">협업·회고</a>
-    <a href="#code">코드·PR</a>
+<nav class="toc" aria-label="Table of Contents">
+    <a href="#about">Overview · Role</a>
+    <a href="#design">Design</a>
+    <a href="#build">Implementation</a>
+    <a href="#screens">Screens</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#trouble">Issues</a>
+    <a href="#collab">Collaboration</a>
+    <a href="#code">Code · PR</a>
 </nav>
 
 <footer class="site-footer">
     <div class="footer-content">
-        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
-        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+        <span><strong>MA RanQian</strong> · Junior Full-stack Developer Portfolio</span>
+        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub Profile</a>
     </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" aria-label="닫기">&times;</span>
-    <div class="lightbox-scroll"><img src="" alt="확대 이미지" id="lightbox-img"></div>
+    <span class="lightbox-close" aria-label="Close">&times;</span>
+    <div class="lightbox-scroll"><img src="" alt="Expand Image" id="lightbox-img"></div>
 </div>
 
 <script>

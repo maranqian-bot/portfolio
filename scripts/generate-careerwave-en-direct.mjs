@@ -31,12 +31,30 @@ const residual = {
   '先通过文档对齐需求与职责，并在实现前记录变更，让团队依据同一标准Collaboration。':'I align requirements and ownership in documentation first, record changes before implementation, and keep the team working from one shared standard.',
   '我将 Issue 对应分支与 PR 说明关联，记录变更意图与范围；把 CodeRabbit 和团队评审反馈落实为修正提交，保持讨论到代码的可追踪性。':'I link issue branches to PR descriptions, record intent and scope, and apply CodeRabbit and team-review feedback as follow-up commits so decisions remain traceable in code.',
   '查看分支策略、提交、PR 与评审Collaboration →':'View branch, commit, PR, and review collaboration →',
-  '查看 ixxveon/career-wave 仓库':'View ixxveon/career-wave repository'
+  '查看 ixxveon/career-wave 仓库':'View ixxveon/career-wave repository',
+  '아키텍처':'architecture', '다이어그램':'diagram', '메인 화면':'main screen',
+  '개요':'Overview', '역할':'Role', '문제':'Issues', '화면':'screen',
+  '기업 회원가입 화면':'company signup screen', '내역 화면':'history screen',
+  '닫기':'Close', '확대 이미지':'Enlarged image'
 };
 for (const [from, to] of Object.entries(residual).sort((a, b) => b[0].length - a[0].length)) html = html.split(from).join(to);
 html = html.replace('<html lang="zh-CN">', '<html lang="en">')
   .replace(/\.\.\/zh\//g, '../en/')
   .replace(/<div class="i18n-switcher"[\s\S]*?<\/div>/, '<div class="i18n-switcher" aria-label="Language"><a href="../ko/final-project.html">한국어</a><a href="../zh/final-project.html">中文</a><a href="../en/final-project.html" aria-current="page">English</a></div>')
-  .replace(/<title>.*?<\/title>/, '<title>CareerWave Final Project</title>');
+  .replace(/<title>.*?<\/title>/, '<title>CareerWave Final Project</title>')
+  // Compact labels keep the TOC border in the same visual position as the
+  // Korean and Chinese pages instead of widening leftward for English copy.
+  .replace(/<nav class="toc"[\s\S]*?<\/nav>/, `<nav class="toc" aria-label="Table of Contents">
+    <a href="#about">Overview · Role</a>
+    <a href="#design">Design</a>
+    <a href="#build">Implementation</a>
+    <a href="#screens">Screens</a>
+    <a href="#result">Outcomes</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#trouble">Issues</a>
+    <a href="#collab">Collaboration</a>
+    <a href="#code">Code · PR</a>
+</nav>`)
+  .replace('</head>', '<meta http-equiv="Cache-Control" content="no-store">\n</head>');
 await writeFile(join(root, 'en', 'final-project.html'), html);
 console.log('Generated English CareerWave page from the reviewed Chinese source.');
