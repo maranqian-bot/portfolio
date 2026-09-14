@@ -3,25 +3,27 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>트러블슈팅 | 마은재 포트폴리오</title>
+<title>Troubleshooting | MA RanQian Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/portfolio.css"/>
-<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
+<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style><meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Cache-Control" content="no-store">
+</head>
 <body>
 
 <nav class="site-nav">
     <div class="nav-content">
         <div class="nav-links">
-            <a href="../en/index.html#about" class="nav-item">About me</a>
+            <a href="../en/index.html#about" class="nav-item">About Me</a>
             <div class="nav-dd">
-                <a class="nav-item">프로젝트</a>
+                <a class="nav-item">Projects</a>
                 <div class="nav-dd-menu">
-                    <a href="../en/final-project.html">파이널 프로젝트</a>
-                    <a href="../en/mini-project.html">미니 프로젝트</a>
+                    <a href="../en/final-project.html">Final Project</a>
+                    <a href="../en/mini-project.html">Mini Project</a>
                 </div>
             </div>
-            <a href="../en/troubleshooting.html" class="nav-item active">트러블슈팅</a>
-            <a href="../en/collaboration.html" class="nav-item">협업방식</a>
+            <a href="../en/troubleshooting.html" class="nav-item active">Troubleshooting</a>
+            <a href="../en/collaboration.html" class="nav-item">Collaboration</a>
         </div>
     </div>
 <div class="i18n-switcher" aria-label="Language"><a href="../ko/troubleshooting.html">한국어</a><a href="../zh/troubleshooting.html">中文</a><a href="../en/troubleshooting.html" aria-current="page">English</a></div></nav>
@@ -30,15 +32,15 @@
 
     <!-- HERO -->
     <section class="page-hero">
-        <p class="eyebrow">Problem Solving</p>
-        <h1>문제를 재현하고 원인을 좁힌 기록</h1>
-        <p class="hero-lead">Mapingo의 AI 회화 코칭과 CareerWave의 인증·결제 도메인을 담당하며 만난 문제를 재현 조건, 원인 분석, 해결, 재검증으로 나누어 기록했습니다.</p>
+        <p class="eyebrow">Problem Solving and Diagnosis</p>
+        <h1>A record of reproducing problems and narrowing down their causes</h1>
+        <p class="hero-lead">I documented the problems I encountered while working on Mapingo AI conversation coaching and CareerWave authentication and payment domains, organized by reproduction conditions, cause analysis, solutions, and revalidation.</p>
     </section>
 
     <!-- CASES -->
     <section>
         <div class="filter-bar" id="filter-bar">
-            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="perf">Performance</button>
             <button class="filter-btn" data-filter="auth">Auth</button>
             <button class="filter-btn" data-filter="billing">Billing</button>
@@ -50,116 +52,116 @@
             <!-- AUTH -->
             <div class="case" data-cat="auth">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>JWT 인증 필터 예외가 500으로 반환되는 문제</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>JWT authentication-filter exception returned as 500</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/351" target="_blank" rel="noreferrer">PR #351</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>만료되었거나 위변조된 토큰으로 보호된 API를 호출했을 때 클라이언트가 기대한 401 응답이 아니라 500 응답이 반환되었습니다. 프론트엔드에서는 로그인 만료와 서버 오류를 구분할 수 없어 재로그인 안내 흐름이 깨졌습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>처음에는 전역 예외 처리 설정 문제로 보고 Controller Advice를 확인했지만, JWT 검증은 DispatcherServlet에 도달하기 전 Security Filter Chain에서 실행되고 있었습니다. 따라서 필터 내부에서 발생한 토큰 만료, 서명 불일치 예외는 Controller Advice가 잡을 수 없었고, 별도 처리 없이 RuntimeException처럼 흘러가며 500으로 변환되었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>JWT 필터에서는 토큰 검증 실패 원인을 AuthenticationException 계열로 정리하고, AuthenticationEntryPoint에서 401 상태 코드와 에러 메시지를 명시적으로 반환하도록 처리했습니다. 케이스별 메시지가 과하게 노출되지 않도록 클라이언트 안내용 메시지와 서버 로그를 분리했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>토큰 누락, 만료, 위변조 요청을 각각 재현해 모두 401로 응답되는지 확인했습니다. 정상 토큰 요청은 기존 API 흐름을 유지했고, 프론트엔드는 401을 기준으로 재로그인 안내를 처리할 수 있게 되었습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>When an API protected by an expired or tampered token was called, it returned 500 instead of the 401 the client expected. The frontend could not distinguish an expired login from a server error, so the re-login guidance flow broke.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>I initially suspected the global exception-handling configuration and checked Controller Advice, but JWT validation actually ran in the Security Filter Chain before reaching DispatcherServlet. Token-expiration and signature-mismatch exceptions raised inside the filter could not be caught by Controller Advice; without dedicated handling, they propagated like RuntimeException and became 500.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>In the JWT filter, I normalized token-validation failures as AuthenticationException types and explicitly returned the 401 status code and error message from AuthenticationEntryPoint. I separated client-facing guidance from server logs to avoid exposing excessive detail.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>I reproduced missing-token, expired-token, and tampered-token requests separately and confirmed that all returned 401. Valid-token requests kept the existing API flow, and the frontend could use 401 to show the re-login guidance.</p></div>
             </div>
 
             <div class="case" data-cat="auth">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>새로고침 시 동시 refresh 경쟁으로 로그아웃</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>Logout caused by a refresh race on page reload</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/971" target="_blank" rel="noreferrer">PR #971</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>페이지 새로고침이나 OAuth 콜백 직후처럼 access token이 아직 메모리에 복구되지 않은 순간, 여러 컴포넌트가 동시에 세션 복원을 시도하면서 사용자가 바로 로그아웃되는 문제가 있었습니다. 정상적인 refresh 쿠키가 있어도 화면 진입 타이밍에 따라 세션이 끊겨 UX가 불안정했습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>401 응답이나 초기 보호 라우트 진입 시 각 요청이 독립적으로 <code>/token/refresh</code>를 호출하고 있었고, 서버는 refresh token rotation과 재사용 탐지를 적용하고 있었습니다. 같은 쿠키로 거의 동시에 두 번 이상 재발급이 들어오면 먼저 회전된 토큰이 뒤늦게 다시 사용된 것으로 판단되어 세션 전체가 폐기될 수 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>프론트엔드의 세션 복원 로직을 single-flight로 묶어 진행 중인 refresh Promise에 후속 요청이 합류하도록 바꿨습니다. 또한 OAuth 콜백 페이지에서 <code>probeAuth()</code>로 refresh 쿠키 회전이 끝나기 전에 이동하지 않도록 순서를 고정해, 새 페이지가 구 쿠키로 다시 refresh를 발사하는 경쟁 창도 닫았습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p><code>probeAuth</code>를 동시에 여러 번 호출해도 refresh 요청이 1회만 나가는 테스트로 재현 케이스를 고정했습니다. OAuth 콜백 이후에도 회전 완료 전에는 이동하지 않도록 검증해, 새로고침 직후 즉시 로그아웃되던 현상이 사라졌습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>At the moment after a page reload or OAuth callback when the access token had not yet been restored to memory, multiple components tried to restore the session at once and logged the user out. Even with a valid refresh Cookie, the session could be interrupted by page-entry timing, creating an unstable UX.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>When a 401 response was received or an initial protected route was entered, each request independently <code>/token/refresh</code> called the endpoint, while the server applied refresh-token rotation and reuse detection. If the same Cookie triggered two or more nearly simultaneous reissues, the system could treat the rotated token as reused and revoke the entire session.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I grouped the frontend session-restoration logic into a single-flight so later requests join the refresh Promise already in progress. On the OAuth callback page, I also used <code>probeAuth()</code> to enforce the order and wait for refresh Cookie rotation before navigating, closing the race window in which a new page could refresh again with the old Cookie.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>Even if <code>probeAuth</code> is called multiple times concurrently, tests guarantee that only one refresh request is sent. We also verify that navigation waits for rotation after OAuth callbacks, eliminating the immediate logout after reload.</p></div>
             </div>
 
             <!-- BILLING -->
             <div class="case" data-cat="billing">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>소셜 로그인 사용자 결제 시 404</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>404 returned when a social-login user pays</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/825" target="_blank" rel="noreferrer">PR #825</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>카카오 소셜 로그인 사용자가 결제를 시도할 때, 프론트엔드에서는 결제 페이지 진입 대신 404 오류가 떨어지는 문제가 QA에서 발견됐습니다. 사용자는 결제 준비 실패 원인을 알 수 없었고, 백엔드도 실제 원인과 다른 예외 경로를 타고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>일부 소셜 계정은 이메일이 비어 있었고, 이 값이 <code>customer_email NOT NULL</code> 제약에 걸리면서 DB 저장 단계에서 <code>DataIntegrityViolationException</code>이 발생했습니다. 그런데 이 예외가 원래는 동시 요청 충돌을 복구하기 위한 catch 블록으로 흘러들어가면서, 실제 제약 위반이 주문 없음처럼 처리되어 404로 바뀌고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>결제 INSERT 이전에 이메일 존재 여부를 명시적으로 검증해 제약 위반을 비즈니스 오류로 앞단에서 막았습니다. 동시에 프론트엔드 오류 분기와 메시지를 수정해, 결제 진입 실패가 404가 아니라 사용자 정보 보완이 필요한 케이스로 처리되도록 정리했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>이메일이 없는 소셜 계정으로 결제 경로를 다시 재현했을 때 더 이상 404로 오인되지 않았습니다. QA 단계에서 원인 확인에 쓰였던 DB 직접 조회 결과와 응답 흐름이 일치하게 바뀌었고, 사용자도 결제 실패 원인을 올바르게 안내받게 되었습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>QA found that when a Kakao social-login user attempted payment, the frontend received 404 instead of entering the payment page. The user could not see why payment preparation failed, and the backend followed an exception path unrelated to the actual cause.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>Some social accounts had an empty email, which violated the <code>customer_email NOT NULL</code> constraint and produced the following during DB persistence: <code>DataIntegrityViolationException</code>.The exception then flowed into a catch block originally intended to recover from concurrent-request conflicts. The actual constraint violation was treated as a missing order and became 404.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I explicitly validated email presence before the payment INSERT, blocking the constraint violation at the frontend and converting it into a business error. I also updated the frontend error branch and message so payment-entry failure is handled as a need for additional user information, not 404.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>When the payment path was reproduced with a social account missing an email, it was no longer misidentified as 404. The DB lookup used during QA and the response flow now agree, and users receive the correct reason for payment failure.</p></div>
             </div>
 
             <!-- AI · LLM -->
             <div class="case" data-cat="ai">
                 <div class="case-head">
-                    <div><span class="kind">미니 프로젝트 · Mapingo</span><h3>LLM 응답 형식이 바뀌면 파싱 실패</h3></div>
+                    <div><span class="kind">Mini Project · Mapingo</span><h3>Parsing failure caused by an LLM response-format change</h3></div>
                     <a class="case-badge" href="https://github.com/soo97/languagemap-FastAPI/pull/16" target="_blank" rel="noreferrer">PR #16</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>AI 회화 스크립트와 최종 피드백은 화면에서 바로 렌더링해야 했기 때문에 필드 구조가 조금만 달라져도 서비스 파싱이 깨졌습니다. 같은 기능을 다시 호출해도 응답 키 이름이나 배열 구조가 흔들리면 Spring DTO 역직렬화와 프론트 표시가 함께 실패했습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>LLM은 자연어 모델이라 프롬프트가 느슨하면 설명 문장, 불필요한 래핑 텍스트, 키 누락처럼 형식 편차를 만들 수 있습니다. 서비스 계층은 이 응답을 구조화된 JSON으로 가정하고 있었기 때문에, 모델 출력 규약이 약한 상태에서는 파싱 실패가 곧 사용자 기능 실패로 이어졌습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>프롬프트를 Role·Instruction·Context·Output Format으로 분리해 모델이 따라야 할 출력 계약을 더 명확히 했습니다. JSON Schema 수준으로 응답 구조를 제한하고, Spring DTO와 화면이 기대하는 필드를 기준으로 허용값을 좁혀 응답 형식이 흔들려도 서비스 계층이 안정적으로 받을 수 있게 정리했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>AI 응답이 사람에게 그럴듯한 문장인지보다 서비스가 끝까지 소비할 수 있는 구조인지에 초점을 맞추게 되었습니다. 스크립트 생성, 피드백 생성, 추천 후속 처리까지 같은 응답 계약을 공유하게 되면서 화면 전달 실패가 크게 줄었습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>AI conversation scripts and final feedback had to render directly on the page, so even a small field-structure change caused service parsing to fail. Even when the same feature was called again, a change in response keys or array structure could break both Spring DTO deserialization and frontend rendering.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>Because an LLM is a natural-language model, a loose prompt can produce format deviations such as explanations, unnecessary wrapper text, or missing keys. The service layer assumed structured JSON, so weak output rules turned parsing failures directly into feature failures.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I split the prompt into Role · Instruction · Context · Output Format to make the output contract explicit. I constrained the response structure to JSON Schema level and narrowed allowed values around the fields expected by the Spring DTO and page, allowing the service layer to receive responses reliably despite format variation.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>I began prioritizing whether an AI response had a structure the service could consume end-to-end, rather than whether its sentences sounded natural. Sharing one response contract across script generation, feedback generation, and recommendation follow-up greatly reduced failures reaching the page.</p></div>
             </div>
 
             <div class="case" data-cat="ai">
                 <div class="case-head">
-                    <div><span class="kind">미니 프로젝트 · Mapingo</span><h3>외부 AI API 오류가 전체 코칭을 중단</h3></div>
+                    <div><span class="kind">Mini Project · Mapingo</span><h3>An external AI API error interrupted the entire coaching flow</h3></div>
                     <a class="case-badge" href="https://github.com/soo97/languagemap-FastAPI/pull/14" target="_blank" rel="noreferrer">PR #14</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>발음 평가와 최종 피드백은 Azure Speech와 OpenAI를 연달아 호출하는 구조였기 때문에, 한 단계라도 Timeout이나 파싱 오류가 나면 코칭 전체가 500으로 끊길 수 있었습니다. 사용자는 음성 입력에 성공해도 결과 화면을 받지 못하거나, 추천 단계 실패 때문에 앞선 피드백까지 잃는 상황이 생겼습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>초기 파이프라인은 외부 API 응답이 정상이라는 가정이 강했고, 실패 시 예외가 상위까지 전파되어 전체 흐름을 중단시키고 있었습니다. 특히 Azure 인식 실패, OpenAI 응답 JSON 파싱 오류, 추천 후속 처리 실패가 각각 독립적인 부분 실패가 아니라 전체 코칭 실패로 확대되고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>FastAPI 쪽에 발음 평가 엔드포인트 진단 로그와 예외 경로 로그를 추가하고, Azure 인식이 실패하면 STT fallback 텍스트와 기본 피드백으로 응답을 조립하도록 바꿨습니다. OpenAI 분석은 safe wrapper로 감싸 실패 시 빈 problemWords와 기본 메시지를 반환하게 했고, 추천 단계가 실패해도 앞서 생성된 최종 피드백은 보존하도록 Spring 쪽 흐름도 분리했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>외부 API 일부가 실패해도 사용자는 최소한의 피드백과 다음 단계 정보를 받을 수 있게 되었습니다. 로그에는 어느 단계에서 실패했는지 남기되, 응답은 가능한 범위의 학습 결과를 유지하도록 바뀌어 코칭 전체 중단 빈도를 낮췄습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>Pronunciation assessment and final feedback called Azure Speech and OpenAI sequentially, so a Timeout or parsing error at any step could stop the entire coaching flow with 500. Even after successful voice input, users might receive no result page or lose earlier feedback when the recommendation step failed.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>The initial pipeline strongly assumed external API responses were normal; failures bubbled upward and interrupted the whole flow. Azure recognition failure, OpenAI response-JSON parsing errors, and recommendation follow-up failures should have been independent partial failures, but each expanded into a complete coaching failure.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I added pronunciation-assessment endpoint diagnostics and exception-path logs in FastAPI. When Azure recognition fails, the response is assembled from STT fallback text and basic feedback. OpenAI analysis is wrapped in a safe wrapper that returns empty problemWords and a default message on failure; the Spring flow is also separated so earlier final feedback is preserved even if recommendations fail.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>Users can still receive minimum feedback and next-step information when part of an external API fails. Logs record the failed stage while responses preserve as much learning output as possible, reducing complete coaching interruptions.</p></div>
             </div>
 
             <!-- SPEECH -->
             <div class="case" data-cat="speech">
                 <div class="case-head">
-                    <div><span class="kind">미니 프로젝트 · Mapingo</span><h3>브라우저마다 녹음 포맷이 달라 발음 인식 실패</h3></div>
+                    <div><span class="kind">Mini Project · Mapingo</span><h3>Browser recording formats caused pronunciation-recognition failures</h3></div>
                     <a class="case-badge" href="https://github.com/soo97/languagemap-FastAPI/pull/13" target="_blank" rel="noreferrer">PR #13</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>사용자가 브라우저에서 녹음한 음성을 그대로 업로드하면 어떤 환경에서는 발음 평가가 되지만, 어떤 환경에서는 같은 기능이 바로 실패했습니다. 사용자는 마이크 권한과 녹음은 정상인데도 음성 인식이 안 되는 상황을 겪었습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>브라우저와 기기마다 MediaRecorder가 만드는 포맷과 codec이 달랐고, Azure Speech는 입력 포맷 편차에 민감했습니다. 서비스는 업로드된 음성을 동일한 형식으로 들어올 것처럼 가정하고 있었기 때문에, WebM 계열 파일이나 샘플링 차이가 그대로 인식 실패로 이어졌습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>FastAPI에서 업로드 음성을 FFmpeg 기반 16kHz mono WAV로 변환해 발음 평가 입력을 표준화했습니다. Azure 발음 평가가 실패할 때는 STT fallback과 기본 피드백을 반환하도록 해, 포맷 문제나 낮은 품질 입력에서도 코칭 흐름이 완전히 끊기지 않도록 보완했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>브라우저별 입력 편차가 서비스 장애로 바로 이어지지 않게 되었고, 서로 다른 녹음 환경에서도 최소한의 음성 평가 결과를 받을 수 있게 되었습니다. 음성이 완벽히 평가되지 않더라도 사용자 경험은 “실패”가 아니라 “제한된 결과”로 바뀌었습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>When users uploaded browser-recorded audio directly, pronunciation assessment worked in some environments but failed immediately in others. Users had granted microphone permission and recorded normally, yet speech could not be recognized.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>MediaRecorder formats and codecs differ across browsers and devices, while Azure Speech is sensitive to input-format differences. The service assumed uploaded audio would always have one format, so WebM files or sampling differences directly caused recognition failures.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>In FastAPI, I converted uploaded audio to FFmpeg-based 16kHz mono WAV to standardize pronunciation-assessment input. When Azure pronunciation assessment fails, STT fallback and basic feedback are returned so format problems or low-quality input do not completely interrupt coaching.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>Differences between browser inputs no longer become service failures directly, and different recording environments still produce a minimum assessment result. Even when audio cannot be assessed perfectly, the user experience changes from “failure” to a “limited result.”</p></div>
             </div>
 
             <div class="case" data-cat="speech">
                 <div class="case-head">
-                    <div><span class="kind">미니 프로젝트 · Mapingo</span><h3>React–Spring–FastAPI 음성 연동 오류</h3></div>
+                    <div><span class="kind">Mini Project · Mapingo</span><h3>React–Spring–FastAPI voice-integration error</h3></div>
                     <a class="case-badge" href="https://github.com/soo97/languagemap-spring/pull/152" target="_blank" rel="noreferrer">PR #152</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>사용자 녹음이 React에서 정상적으로 끝나도 Spring을 거쳐 FastAPI로 전달되는 과정에서 업로드가 실패하거나, 응답은 왔는데 프론트에서 재생/표시가 끊기는 문제가 반복됐습니다. 세 서버가 모두 살아 있어도 경계면 계약이 조금만 어긋나면 코칭 체인이 쉽게 깨졌습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>프론트에서는 녹음 종료 직후 아직 최종 chunk 수집이 끝나기 전에 Blob을 넘기고 있었고, 일부 요청은 File 메타데이터가 불완전한 상태였습니다. Spring 쪽에서는 multipart 음성 파트를 일괄 <code>application/octet-stream</code>으로 바꿔 보내고 있어 원래의 content type 정보가 사라졌고, 그 결과 FastAPI가 음성 파일을 해석하는 데 필요한 힌트를 잃고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>React에서는 녹음 종료 후 최종 chunk를 모두 모은 뒤 File 객체를 완성해 업로드하도록 수정하고, 빈 녹음 데이터는 앞단에서 차단했습니다. Spring의 FastAPI 연동 클라이언트에서는 <code>MultipartFile.getContentType()</code>을 보존해 multipart 파트에 실어 보내도록 바꿨고, FastAPI 응답도 음성 평가 실패 시 기본 구조를 유지하도록 정리해 세 서버 간 계약을 안정화했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>녹음부터 업로드, 발음 평가, 피드백 응답, 재생까지의 흐름이 한 번에 이어지도록 안정성이 높아졌습니다. 실제 커밋에서는 프론트의 recorder 파일 확정, Spring의 content type 보존, FastAPI의 fallback 응답 보강이 순차적으로 반영되며 연동 오류를 줄였습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>Even when recording ended normally in React, uploads could fail while passing through Spring to FastAPI, or the frontend could stop playing or displaying a returned response. The coaching chain could break from a small boundary-contract mismatch even when all three servers were healthy.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>The frontend passed a Blob immediately after recording ended, before collecting the final chunk, and some requests had incomplete File metadata. Spring converted the multipart audio part to <code>application/octet-stream</code> before sending, which lost the original content type and left FastAPI without the hint needed to interpret the audio file.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I changed React to complete the File object after recording ended and all chunks were collected, then upload it; empty recordings are blocked at the entry point. The Spring FastAPI client now preserves <code>MultipartFile.getContentType()</code> and sends it in the multipart part; FastAPI also keeps a base structure when voice assessment fails, stabilizing the contract across the three servers.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>The flow from recording and upload through pronunciation assessment, feedback response, and playback is now stable end-to-end. The commits successively finalized the recorder file in the frontend, preserved content type in Spring, and strengthened FastAPI fallback responses, reducing integration errors.</p></div>
             </div>
 
             <!-- PERFORMANCE -->
             <div class="case" data-cat="perf">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>채용 공고 목록 API, 평균 응답 시간을 15.6초에서 1.1초로 단축</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>Job-list API: average response time reduced from 15.6s to 1.1s</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/951" target="_blank" rel="noreferrer">PR #951</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p><code>GET /api/v1/user/job-notices</code> 는 목록 데이터뿐 아니라 필터 옵션 5종과 통계 2종까지 한 번에 내려주고 있었습니다. 그 결과 비로그인 기준 단일 요청에서도 DB 쿼리가 8~9개 실행됐고, 10만 건 데이터 기준 JMeter 부하 테스트에서 평균 응답시간 15,551ms, p95 28,654ms, TPS 6.3/s, 에러율 1.11%까지 떨어졌습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>병목은 단순 목록 조회 1건이 아니라, <code>createFilterOptions()</code> 의 Distinct 쿼리 5개와 <code>countActiveJobNotices()</code>, <code>countTodayNewActiveJobNotices()</code> 가 요청마다 반복 실행되는 구조에 있었습니다. 여기에 ACTIVE 공고 조회 경로도 적절한 인덱스 없이 Sequential Scan 가능성이 큰 상태라, 변경 빈도가 낮은 집계와 정렬 비용이 동시에 누적되고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>먼저 캐시 대상 메서드를 별도 Spring Bean인 <code>JobNoticeCacheService</code> 로 분리해 self-invocation 때문에 <code>@Cacheable</code> 이 무력화되지 않도록 구조를 바꿨습니다. 필터 옵션은 TTL 1시간, 통계는 TTL 5분으로 Redis 캐시를 적용했고, 채용 공고가 스크래퍼에 의해 DB에 직접 삽입되는 구조라 <code>@CacheEvict</code> 대신 TTL 만료 전략을 택했습니다. 동시에 PostgreSQL에는 ACTIVE 공고만 인덱싱하는 부분 인덱스를 추가해, CLOSED 데이터 누적과 무관하게 실제 조회 대상만 더 빠르게 타도록 정리했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>최종적으로 10만 건 기준 평균 응답시간은 15,551ms에서 1,118ms로, p95는 28,654ms에서 1,385ms로 줄었고 TPS는 6.3/s에서 85.2/s로 올라갔습니다. 에러율도 1.11%에서 0.00%로 떨어졌고, EXPLAIN ANALYZE 기준 목록 조회 경로는 Sequential Scan 대신 Index Scan 중심으로 전환되었습니다. 즉 캐시로 반복 집계를 줄이고, 부분 인덱스로 ACTIVE 조회 범위를 좁혀 목록 API를 구조적으로 안정화했습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p><code>GET /api/v1/user/job-notices</code> It returned not only list data but also five filter options and two statistics in one response. Even one unauthenticated request therefore executed 8–9 DB queries; in a JMeter test with 100,000 records, average latency reached 15,551ms, p95 28,654ms, TPS only 6.3/s, and error rate 1.11%.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>The bottleneck was not one simple list query, but <code>createFilterOptions()</code> five Distinct queries from it, plus <code>countActiveJobNotices()</code>, <code>countTodayNewActiveJobNotices()</code>, a structure that repeated them on every request. The ACTIVE job path also lacked a suitable index and was likely to use Sequential Scan, accumulating both low-change aggregation cost and sorting cost.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>I moved cache-target methods into a separate Spring Bean <code>JobNoticeCacheService</code> to prevent self-invocation from disabling <code>@Cacheable</code>. I applied Redis caching with a one-hour TTL for filters and five minutes for statistics. Because the scraper writes jobs directly to the DB, I did not use <code>@CacheEvict</code>; I used TTL expiration instead. I also added a partial PostgreSQL index for ACTIVE jobs so actual query targets are faster regardless of accumulated CLOSED data.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>Ultimately, with 100,000 records, average latency fell from 15,551ms to 1,118ms, p95 from 28,654ms to 1,385ms, and TPS rose from 6.3/s to 85.2/s. Error rate fell from 1.11% to 0.00%; EXPLAIN ANALYZE showed the list path switching from Sequential Scan to primarily Index Scan. Caching removed repeated aggregation and a partial index narrowed ACTIVE queries, structurally stabilizing the API.</p></div>
             </div>
 
             <div class="case" data-cat="perf">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>채용 공고 100만 건 목록 조회, 뒤 페이지 응답 시간을 84초에서 0.137초로 단축</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>One-million job-list query: deep-page response time reduced from 84s to 0.137s</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/1292" target="_blank" rel="noreferrer">PR #1292</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>채용 공고 데이터가 100만 건 규모로 커지자, 뒤쪽 페이지로 갈수록 OFFSET 기반 목록 조회가 급격히 느려졌습니다. 특히 deep page에서는 실제 사용자 요청보다 DB가 앞의 수십만 행을 버리는 비용이 더 커져, 몇 초가 아니라 수십 초 단위까지 치솟는 구간이 생겼습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>기존 쿼리는 전체 행을 정렬한 뒤 OFFSET 만큼 건너뛰는 방식이라, 뒤 페이지일수록 버려지는 행의 비용이 그대로 누적됐습니다. 여기에 정렬 동률 시 tie-breaker가 없어 페이지 경계에서 중복·누락 가능성도 있었고, 1단계 조회와 실제 응답 조립 사이에 데이터가 바뀌면 결과 정합성도 흔들릴 수 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>API 계약은 유지한 채, 먼저 페이지에 필요한 ID만 커버링 인덱스로 빠르게 뽑고 이후 해당 ID의 실제 행만 읽는 deferred join 2단계 방식으로 바꿨습니다. 또한 모든 정렬에 <code>jobNoticeId</code> tie-breaker를 추가하고, 2단계 조회에서도 동일 predicate를 다시 적용해 deep pagination에서도 순서와 결과 정합성이 흔들리지 않도록 보완했습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>EXPLAIN ANALYZE 기준으로 OFFSET 50만 구간이 약 84초에서 약 137ms 수준으로 줄었고, 80만 구간도 타임아웃 대신 147ms대로 안정화했습니다. 프론트 API를 갈아엎지 않고도 deep page 병목만 정확히 제거해, 성능과 기존 UX를 함께 지킬 수 있었습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>After job data grew to about one million rows, OFFSET-based list queries became slower on later pages. On deep pages, the DB cost of discarding hundreds of thousands of earlier rows exceeded the actual request cost, pushing latency from seconds into tens of seconds.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>The original query sorted all rows and then skipped OFFSET rows, so discarded-row cost accumulated on later pages. There was also no tie-breaker for equal sort values, allowing duplicates or omissions at page boundaries; changes between the first query and response assembly could also undermine consistency.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>Without changing the API contract, I first used a covering index to fetch only the IDs needed for the page, then read the corresponding rows using a two-stage deferred join. I also added <code>jobNoticeId</code> as a tie-breaker and reapplied the same predicate in the second-stage query so order and consistency remain stable during deep pagination.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>According to EXPLAIN ANALYZE, the 500,000-offset point fell from about 84s to about 137ms, and the 800,000-offset point stabilized around 147ms instead of timing out. I removed only the deep-page bottleneck without replacing the frontend API, preserving both performance and the existing UX.</p></div>
             </div>
 
             <div class="case" data-cat="perf">
                 <div class="case-head">
-                    <div><span class="kind">파이널 프로젝트 · CareerWave</span><h3>구독 자동결제 배치, 1만 건 처리 시간을 64.4초에서 17.5초로 단축</h3></div>
+                    <div><span class="kind">Final Project · CareerWave</span><h3>Subscription auto-payment batch: 10,000-item processing reduced from 64.4s to 17.5s</h3></div>
                     <a class="case-badge" href="https://github.com/ixxveon/career-wave/pull/1281" target="_blank" rel="noreferrer">PR #1281</a>
                 </div>
-                <div class="case-row"><span class="case-label p">Problem</span><p>자동결제 배치는 대상 구독 수가 늘수록 한 건씩 필요한 정보를 다시 조회하고, Toss 결제 호출도 순차로 기다리는 구조였습니다. 배치량이 커지면 처리 완료까지 오래 걸릴 뿐 아니라, 스케줄러가 다음 작업을 미루게 될 위험도 커졌습니다.</p></div>
-                <div class="case-row"><span class="case-label c">Cause</span><p>구독, 요금제, 결제 프로필, 회원 정보, 멱등 결제 정보를 루프 안에서 개별 조회해 전형적인 N+1 패턴이 발생하고 있었습니다. 또한 외부 결제 API 호출을 순차 처리하고 있어, DB 병목과 네트워크 대기 시간이 동시에 전체 wall-clock 시간을 늘리고 있었습니다.</p></div>
-                <div class="case-row"><span class="case-label s">Solution</span><p>배치 시작 전에 필요한 연관 데이터를 <code>IN</code> 절 배치 조회로 선로딩해 <code>RenewalContext</code>로 묶고, 결제 생성도 선로딩 결과를 재사용하도록 구조를 바꿨습니다. 그 위에 고정 스레드풀 기반 bounded 병렬화를 적용하되, 멱등키·건당 타임아웃·취소 처리를 넣어 속도를 높이면서도 중복결제와 스케줄러 블로킹을 함께 막았습니다.</p></div>
-                <div class="case-row"><span class="case-label r">Result</span><p>건당 SQL 수는 10개에서 6개로 줄었고, 결제 진입 전 반복 조회는 3만 건 수준에서 사실상 한 자릿수 배치 조회로 축소됐습니다. 1만 건 기준 wall-clock은 64.4초에서 17.5초로, Toss 지연이 있는 환경에서도 235.6초에서 13.9초로 크게 단축하면서 결제 정확성은 그대로 유지했습니다.</p></div>
+                <div class="case-row"><span class="case-label p">Problem</span><p>The auto-payment batch re-queried required information one subscription at a time and waited for Toss calls sequentially. Larger batches took longer to finish and increased the risk of delaying the scheduler’s next task.</p></div>
+                <div class="case-row"><span class="case-label c">Cause</span><p>Subscriptions, plans, payment profiles, member data, and idempotent-payment data were queried individually inside the loop, creating a typical N+1 pattern. External payment APIs were also called sequentially, so DB bottlenecks and network waits both extended wall-clock time.</p></div>
+                <div class="case-row"><span class="case-label s">Solution</span><p>Before the batch started, I preloaded related data through <code>IN</code> batch queries into <code>RenewalContext</code>; payment creation reused those results. I then applied bounded parallelism with a fixed thread pool, adding idempotency keys, per-payment timeouts, and cancellation handling to increase speed while preventing duplicate payments and scheduler blocking.</p></div>
+                <div class="case-row"><span class="case-label r">Result</span><p>SQL statements per item fell from 10 to 6, and repeated pre-payment lookups shrank from about 30,000 to effectively single-digit batch queries. For 10,000 items, wall-clock time fell from 64.4s to 17.5s; even with Toss latency it fell from 235.6s to 13.9s, while payment accuracy remained unchanged.</p></div>
             </div>
 
             <!-- DATA · CACHE -->
@@ -170,8 +172,8 @@
 
 <footer class="site-footer">
     <div class="footer-content">
-        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
-        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+        <span><strong>MA RanQian</strong> · Junior Full-stack Developer Portfolio</span>
+        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub Profile</a>
     </div>
 </footer>
 
