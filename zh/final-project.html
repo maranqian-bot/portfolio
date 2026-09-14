@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store"/><meta http-equiv="Pragma" content="no-cache"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>CareerWave 最终项目</title>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
@@ -690,7 +690,7 @@
 .i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}
 @media(max-width:900px){.i18n-switcher{right:16px;top:14px}}
 </style>
-<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
+<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}.hero-copy{min-width:0}.hero-band .page-hero h1{font-size:clamp(38px,3.4vw,48px);overflow-wrap:anywhere}.hero-band .page-hero h1 .hero-line.nowrap{white-space:normal}.toc{right:40px}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
 <body>
 
 <nav class="site-nav">
@@ -990,9 +990,9 @@
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>처음부터 로그인 실패 관련 데이터를 한 저장소에 몰아넣기보다, 데이터의 성격을 기준으로 나눠 저장했습니다. 실패 횟수는 TTL로 자동 소멸되어야 하고 쓰기 빈도도 높기 때문에 Redis에 두는 것이 적절했습니다. 반면 계정 잠금 상태는 서버 재시작이나 Redis 장애가 발생해도 유지되어야 하는 권위 데이터이기 때문에 DB에 저장했습니다.</p>
-                    <p>이렇게 나누면 Redis가 내려가더라도 이미 잠긴 계정은 계속 잠긴 상태로 유지됩니다. 반대로 실패 횟수처럼 일시적인 데이터는 빠르게 누적하고 자동 정리할 수 있습니다.</p>
-                    <p class="takeaway">저장소를 기술 스택 기준으로 나눈 것이 아니라, “이 상태가 사라져도 되는가 / 반드시 남아야 하는가”를 기준으로 나눈 결정이었습니다.</p>
+                    <p>没有把登录失败相关数据全部放进一个存储，而是按数据性质拆分。失败次数应通过 TTL 自动过期且写入频繁，因此放在 Redis；账户锁定状态即使服务器重启或 Redis 故障也必须保留，所以存入数据库。</p>
+                    <p>这样即使 Redis 不可用，已锁定账户仍保持锁定；而失败次数这类临时数据可以快速累积并自动清理。</p>
+                    <p class="takeaway">这不是按技术栈划分存储，而是按“该状态能否丢失、是否必须保留”来决定。</p>
                 </div>
             </details>
             <details class="decision">
@@ -1003,9 +1003,9 @@
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>billingKey는 노출되면 무단 결제로 이어질 수 있는 고감도 결제 정보였습니다. 단순히 AES로 암호화해 저장하는 것만으로는 충분하지 않다고 봤습니다. 실제 서비스에서는 “암호화는 되어 있지만, 실수로 직렬화되거나 로그에 섞여 나가는” 사고도 충분히 발생할 수 있기 때문입니다.</p>
-                    <p>그래서 저장 단계에서는 AES 암호화를 적용하고, 코드 구조상으로는 @Getter(AccessLevel.NONE)와 전용 접근 메서드를 사용해 Jackson 직렬화 후보 자체에서 빠지도록 설계했습니다.</p>
-                    <p class="takeaway">이 결정의 핵심은 “민감정보는 잘 보관하는 것”에서 끝나지 않고, “실수로도 바깥으로 새지 않게 경로를 줄이는 것”까지 포함해야 한다는 점이었습니다.</p>
+                    <p>billingKey 是一旦暴露就可能导致未授权支付的高敏感支付信息。仅以 AES 加密保存并不足够，真实服务中仍可能发生已加密值被误序列化或混入日志的事故。</p>
+                    <p>因此在保存阶段使用 AES 加密，并通过 @Getter(AccessLevel.NONE) 与专用访问方法，让它从 Jackson 的序列化候选中结构性排除。</p>
+                    <p class="takeaway">这个决定的核心是：敏感信息不仅要妥善保存，还要减少任何可能因误操作泄露到外部的路径。</p>
                 </div>
             </details>
             <details class="decision">
@@ -1016,9 +1016,9 @@
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>조회 로직은 모두 같은 방식으로 처리하지 않았습니다. 단순 중복 확인이나 단건 조회는 JPA Repository 메서드로 두고, 기업회원 아이디 찾기처럼 여러 테이블을 묶고 조건이 복잡한 쿼리는 별도의 QueryRepository로 분리했습니다.</p>
-                    <p>단순 조회까지 모두 복잡한 쿼리 레이어로 밀어 넣으면 코드가 과도하게 무거워지고, 반대로 복합 조인을 전부 메서드 네이밍 기반 Repository에 우겨 넣으면 쿼리 의도가 흐려지고 유지보수가 어려워지기 때문입니다.</p>
-                    <p class="takeaway">“무조건 하나로 통일”이 아니라 조회의 복잡도에 따라 저장소 역할을 나눈 결정이었습니다.</p>
+                    <p>查询逻辑没有全部采用同一种方式。简单重复检查和单条查询使用 JPA Repository 方法；涉及多表和复杂条件的查询则拆分到独立 QueryRepository。</p>
+                    <p>如果把简单查询也全部塞进复杂查询层，代码会过重；如果把复杂连接硬塞进基于方法命名的 Repository，查询意图会模糊且难以维护。</p>
+                    <p class="takeaway">这不是强制统一，而是按查询复杂度划分存储层职责。</p>
                 </div>
             </details>
         </div>
@@ -1033,11 +1033,11 @@
         <div class="trouble-list">
             <article class="trouble-case">
                 <h3>深度分页性能问题</h3>
-                <p>채용공고 데이터를 100만 건으로 확장한 뒤, 목록 조회 API의 딥페이지 구간에서 응답이 급격히 느려졌습니다. 처음에는 부하 테스트에서 보인 지연을 캐시 문제로 오해해 캐시 동기화 방식으로 접근했지만, 실제로는 OFFSET 자체가 병목의 원인이었습니다. 이후 EXPLAIN ANALYZE를 통해 실행 계획을 다시 확인했고, ACTIVE 공고를 위한 커버링 인덱스와 deferred join 구조를 적용해 문제를 해결했습니다.<span class="trouble-learn">이 경험을 통해 체감 성능이나 부하 테스트 노이즈만으로 판단하지 않고, 재현 가능한 지표를 기준으로 병목을 찾는 습관이 중요하다는 점을 배웠습니다.</span></p>
+                <p>招聘数据扩展到 100 万条后，列表 API 在深分页区间响应急剧变慢。起初我误以为负载测试中的延迟是缓存问题，实际瓶颈来自 OFFSET 本身。通过 EXPLAIN ANALYZE 重新确认执行计划后，应用 ACTIVE 职位覆盖索引与 deferred join 解决了问题。<span class="trouble-learn">这段经历让我养成了不凭体感或负载测试噪声判断，而以可复现指标定位瓶颈的习惯。</span></p>
             </article>
             <article class="trouble-case">
                 <h3>社交登录用户支付 404 问题</h3>
-                <p>또 다른 사례는 카카오 로그인 사용자에게만 결제 요청 시 404가 발생하던 문제였습니다. DB를 직접 조회한 결과 소셜 로그인 사용자의 이메일이 비어 있는 경우가 있었고, 주문 생성 과정의 NOT NULL 제약 위반이 중복 요청 처리용 catch 로직에 잘못 흡수되고 있었습니다. 이후 INSERT 전 사전 검증을 추가하고 예외 처리를 분리했으며, 프론트의 상태 코드 분기까지 함께 수정해 문제를 해결했습니다.<span class="trouble-learn">이 과정을 통해 겉으로 같은 예외처럼 보여도 실제 원인은 다를 수 있으며, 데이터 제약 위반은 사전 검증으로 먼저 차단하는 편이 더 안전하다는 점을 배웠습니다.</span></p>
+                <p>另一个案例是 Kakao 登录用户发起支付时才出现 404。直接查询数据库发现部分社交登录用户邮箱为空，订单创建时的 NOT NULL 约束异常被错误地吸收到重复请求 catch 逻辑中。随后增加 INSERT 前校验、拆分异常处理，并同步修正前端状态码分支。<span class="trouble-learn">这个过程让我认识到，表面相同的异常可能有不同根因；数据约束违反应优先通过前置校验阻断。</span></p>
             </article>
         </div>
         <a class="xref" href="../zh/troubleshooting.html">查看认证、支付与性能排障完整记录 →</a>
@@ -1059,7 +1059,7 @@
                     <h3>协作</h3>
                     <ul>
                         <li>先通过文档对齐需求与职责，并在实现前记录变更，让团队依据同一标准协作。</li>
-                        <li>Issue 기준 브랜치와 PR 설명을 연결해 변경 의도와 범위를 남겼고, CodeRabbit과 팀 리뷰 피드백을 수정 커밋으로 반영해 논의가 실제 코드에 어떻게 적용되었는지 추적 가능하게 유지했습니다.</li>
+                        <li>我将 Issue 对应分支与 PR 说明关联，记录变更意图与范围；把 CodeRabbit 和团队评审反馈落实为修正提交，保持讨论到代码的可追踪性。</li>
                         <li>与前端共同核对 Spec、Swagger、DTO 和 TypeScript 类型以对齐 API 契约，并在认证与计费领域统一使用 ApiResponse，减少返工。</li>
                         <li>QA 发现的问题不只从后端单独排查，而是结合数据库、日志和前端行为逐步缩小根因。</li>
                     </ul>

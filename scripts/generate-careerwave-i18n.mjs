@@ -5,6 +5,9 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = (await readFile(join(root, 'final-project.html'), 'utf8'))
   .replace(/<div class="i18n-switcher"[\s\S]*?<\/div>/g, '');
+// Generate one locale at a time so reviewed translations are never overwritten.
+// Default: English. Pass `--zh` to regenerate only the Chinese page.
+const outputLanguages = process.argv.includes('--zh') ? ['zh'] : ['en'];
 
 // Keep the Korean page as the source of truth. Exact text-node replacements preserve
 // every section, image, link, metric, and technical evidence in the original page.
@@ -15,6 +18,23 @@ const translations = {
   },
   en: {}
 };
+
+Object.assign(translations.zh, {
+  '처음부터 로그인 실패 관련 데이터를 한 저장소에 몰아넣기보다, 데이터의 성격을 기준으로 나눠 저장했습니다. 실패 횟수는 TTL로 자동 소멸되어야 하고 쓰기 빈도도 높기 때문에 Redis에 두는 것이 적절했습니다. 반면 계정 잠금 상태는 서버 재시작이나 Redis 장애가 발생해도 유지되어야 하는 권위 데이터이기 때문에 DB에 저장했습니다.':'没有把登录失败相关数据全部放进一个存储，而是按数据性质拆分。失败次数应通过 TTL 自动过期且写入频繁，因此放在 Redis；账户锁定状态即使服务器重启或 Redis 故障也必须保留，所以存入数据库。',
+  '이렇게 나누면 Redis가 내려가더라도 이미 잠긴 계정은 계속 잠긴 상태로 유지됩니다. 반대로 실패 횟수처럼 일시적인 데이터는 빠르게 누적하고 자동 정리할 수 있습니다.':'这样即使 Redis 不可用，已锁定账户仍保持锁定；而失败次数这类临时数据可以快速累积并自动清理。',
+  '저장소를 기술 스택 기준으로 나눈 것이 아니라, “이 상태가 사라져도 되는가 / 반드시 남아야 하는가”를 기준으로 나눈 결정이었습니다.':'这不是按技术栈划分存储，而是按“该状态能否丢失、是否必须保留”来决定。',
+  'billingKey는 노출되면 무단 결제로 이어질 수 있는 고감도 결제 정보였습니다. 단순히 AES로 암호화해 저장하는 것만으로는 충분하지 않다고 봤습니다. 실제 서비스에서는 “암호화는 되어 있지만, 실수로 직렬화되거나 로그에 섞여 나가는” 사고도 충분히 발생할 수 있기 때문입니다.':'billingKey 是一旦暴露就可能导致未授权支付的高敏感支付信息。仅以 AES 加密保存并不足够，真实服务中仍可能发生已加密值被误序列化或混入日志的事故。',
+  '그래서 저장 단계에서는 AES 암호화를 적용하고, 코드 구조상으로는 @Getter(AccessLevel.NONE)와 전용 접근 메서드를 사용해 Jackson 직렬화 후보 자체에서 빠지도록 설계했습니다.':'因此在保存阶段使用 AES 加密，并通过 @Getter(AccessLevel.NONE) 与专用访问方法，让它从 Jackson 的序列化候选中结构性排除。',
+  '이 결정의 핵심은 “민감정보는 잘 보관하는 것”에서 끝나지 않고, “실수로도 바깥으로 새지 않게 경로를 줄이는 것”까지 포함해야 한다는 점이었습니다.':'这个决定的核心是：敏感信息不仅要妥善保存，还要减少任何可能因误操作泄露到外部的路径。',
+  '조회 로직은 모두 같은 방식으로 처리하지 않았습니다. 단순 중복 확인이나 단건 조회는 JPA Repository 메서드로 두고, 기업회원 아이디 찾기처럼 여러 테이블을 묶고 조건이 복잡한 쿼리는 별도의 QueryRepository로 분리했습니다.':'查询逻辑没有全部采用同一种方式。简单重复检查和单条查询使用 JPA Repository 方法；涉及多表和复杂条件的查询则拆分到独立 QueryRepository。',
+  '단순 조회까지 모두 복잡한 쿼리 레이어로 밀어 넣으면 코드가 과도하게 무거워지고, 반대로 복합 조인을 전부 메서드 네이밍 기반 Repository에 우겨 넣으면 쿼리 의도가 흐려지고 유지보수가 어려워지기 때문입니다.':'如果把简单查询也全部塞进复杂查询层，代码会过重；如果把复杂连接硬塞进基于方法命名的 Repository，查询意图会模糊且难以维护。',
+  '“무조건 하나로 통일”이 아니라 조회의 복잡도에 따라 저장소 역할을 나눈 결정이었습니다.':'这不是强制统一，而是按查询复杂度划分存储层职责。',
+  '채용공고 데이터를 100만 건으로 확장한 뒤, 목록 조회 API의 딥페이지 구간에서 응답이 급격히 느려졌습니다. 처음에는 부하 테스트에서 보인 지연을 캐시 문제로 오해해 캐시 동기화 방식으로 접근했지만, 실제로는 OFFSET 자체가 병목의 원인이었습니다. 이후 EXPLAIN ANALYZE를 통해 실행 계획을 다시 확인했고, ACTIVE 공고를 위한 커버링 인덱스와 deferred join 구조를 적용해 문제를 해결했습니다.':'招聘数据扩展到 100 万条后，列表 API 在深分页区间响应急剧变慢。起初我误以为负载测试中的延迟是缓存问题，实际瓶颈来自 OFFSET 本身。通过 EXPLAIN ANALYZE 重新确认执行计划后，应用 ACTIVE 职位覆盖索引与 deferred join 解决了问题。',
+  '이 경험을 통해 체감 성능이나 부하 테스트 노이즈만으로 판단하지 않고, 재현 가능한 지표를 기준으로 병목을 찾는 습관이 중요하다는 점을 배웠습니다.':'这段经历让我养成了不凭体感或负载测试噪声判断，而以可复现指标定位瓶颈的习惯。',
+  '또 다른 사례는 카카오 로그인 사용자에게만 결제 요청 시 404가 발생하던 문제였습니다. DB를 직접 조회한 결과 소셜 로그인 사용자의 이메일이 비어 있는 경우가 있었고, 주문 생성 과정의 NOT NULL 제약 위반이 중복 요청 처리용 catch 로직에 잘못 흡수되고 있었습니다. 이후 INSERT 전 사전 검증을 추가하고 예외 처리를 분리했으며, 프론트의 상태 코드 분기까지 함께 수정해 문제를 해결했습니다.':'另一个案例是 Kakao 登录用户发起支付时才出现 404。直接查询数据库发现部分社交登录用户邮箱为空，订单创建时的 NOT NULL 约束异常被错误地吸收到重复请求 catch 逻辑中。随后增加 INSERT 前校验、拆分异常处理，并同步修正前端状态码分支。',
+  '이 과정을 통해 겉으로 같은 예외처럼 보여도 실제 원인은 다를 수 있으며, 데이터 제약 위반은 사전 검증으로 먼저 차단하는 편이 더 안전하다는 점을 배웠습니다.':'这个过程让我认识到，表面相同的异常可能有不同根因；数据约束违反应优先通过前置校验阻断。',
+  'Issue 기준 브랜치와 PR 설명을 연결해 변경 의도와 범위를 남겼고, CodeRabbit과 팀 리뷰 피드백을 수정 커밋으로 반영해 논의가 실제 코드에 어떻게 적용되었는지 추적 가능하게 유지했습니다.':'我将 Issue 对应分支与 PR 说明关联，记录变更意图与范围；把 CodeRabbit 和团队评审反馈落实为修正提交，保持讨论到代码的可追踪性。'
+});
 
 Object.assign(translations.zh, {
   '블랙리스트 조회가 실패했을 때 모든 사용자를 일괄 차단하는 방식도 가능했지만, 그렇게 하면 일반 사용자가 대규모로 강제 로그아웃되는 문제가 생길 수 있었습니다. 반대로 모두 허용하면 고권한 계정까지 그대로 통과할 수 있어 위험했습니다.':'黑名单查询失败时可以阻断所有用户，但这会导致大量普通用户被强制退出；全部放行则可能让高权限账户绕过安全检查，风险同样很高。',
@@ -34,11 +54,42 @@ Object.assign(translations.en, {
   '문제排查':'Troubleshooting','协作方式':'Collaboration','查看认证、支付与性能排障完整记录 →':'View authentication, payment, and performance troubleshooting →','查看分支策略、提交、PR 与评审协作方式 →':'View branch, commit, PR, and review collaboration →','查看 ixxveon/career-wave 仓库':'View ixxveon/career-wave repository','查看项目':'View project','代表界面':'Key screens','主要实现':'Key implementation','设计产出':'Design artifacts','核心成果':'Key outcomes','技术决策':'Technical decisions','协作与项目收获':'Collaboration and lessons learned','负责范围':'Responsibilities','以设计为中心':'Design-led'
 });
 
+Object.assign(translations.en, {
+  '처음부터 로그인 실패 관련 데이터를 한 저장소에 몰아넣기보다, 데이터의 성격을 기준으로 나눠 저장했습니다. 실패 횟수는 TTL로 자동 소멸되어야 하고 쓰기 빈도도 높기 때문에 Redis에 두는 것이 적절했습니다. 반면 계정 잠금 상태는 서버 재시작이나 Redis 장애가 발생해도 유지되어야 하는 권위 데이터이기 때문에 DB에 저장했습니다.':'I separated login-failure data by its purpose instead of placing everything in one store. Attempt counts belong in Redis because they are high-frequency and should expire by TTL; account-lock state belongs in the database because it must survive restarts and Redis outages.',
+  '이렇게 나누면 Redis가 내려가더라도 이미 잠긴 계정은 계속 잠긴 상태로 유지됩니다. 반대로 실패 횟수처럼 일시적인 데이터는 빠르게 누적하고 자동 정리할 수 있습니다.':'This keeps already-locked accounts locked even when Redis is unavailable, while temporary attempt counts can accumulate quickly and be cleaned up automatically.',
+  '저장소를 기술 스택 기준으로 나눈 것이 아니라, “이 상태가 사라져도 되는가 / 반드시 남아야 하는가”를 기준으로 나눈 결정이었습니다.':'The split is based on whether a state may disappear or must be retained, rather than on technology preference.',
+  'billingKey는 노출되면 무단 결제로 이어질 수 있는 고감도 결제 정보였습니다. 단순히 AES로 암호화해 저장하는 것만으로는 충분하지 않다고 봤습니다. 실제 서비스에서는 “암호화는 되어 있지만, 실수로 직렬화되거나 로그에 섞여 나가는” 사고도 충분히 발생할 수 있기 때문입니다.':'billingKey is highly sensitive payment data: exposure could enable unauthorized charges. AES encryption alone is not sufficient because encrypted values can still be accidentally serialized or logged.',
+  '그래서 저장 단계에서는 AES 암호화를 적용하고, 코드 구조상으로는 @Getter(AccessLevel.NONE)와 전용 접근 메서드를 사용해 Jackson 직렬화 후보 자체에서 빠지도록 설계했습니다.':'I applied AES encryption at rest and used @Getter(AccessLevel.NONE) with a dedicated accessor so billingKey is structurally excluded from Jackson serialization candidates.',
+  '이 결정의 핵심은 “민감정보는 잘 보관하는 것”에서 끝나지 않고, “실수로도 바깥으로 새지 않게 경로를 줄이는 것”까지 포함해야 한다는 점이었습니다.':'The key principle is to protect sensitive data not only at rest, but also by minimizing every path through which it could leak accidentally.',
+  '조회 로직은 모두 같은 방식으로 처리하지 않았습니다. 단순 중복 확인이나 단건 조회는 JPA Repository 메서드로 두고, 기업회원 아이디 찾기처럼 여러 테이블을 묶고 조건이 복잡한 쿼리는 별도의 QueryRepository로 분리했습니다.':'I did not force every read through one pattern: simple duplicate checks and single-row lookups use JPA Repository methods, while multi-table and complex queries use a dedicated QueryRepository.',
+  '단순 조회까지 모두 복잡한 쿼리 레이어로 밀어 넣으면 코드가 과도하게 무거워지고, 반대로 복합 조인을 전부 메서드 네이밍 기반 Repository에 우겨 넣으면 쿼리 의도가 흐려지고 유지보수가 어려워지기 때문입니다.':'Putting simple reads into a complex query layer makes the code heavy; forcing complex joins into method-name repositories hides intent and hurts maintainability.',
+  '“무조건 하나로 통일”이 아니라 조회의 복잡도에 따라 저장소 역할을 나눈 결정이었습니다.':'This was a complexity-based separation of responsibilities, not an arbitrary push for one uniform approach.',
+  '채용공고 데이터를 100만 건으로 확장한 뒤, 목록 조회 API의 딥페이지 구간에서 응답이 급격히 느려졌습니다.':'After expanding job data to one million rows, the listing API slowed sharply on deep pages.',
+  '이 경험을 통해 체감 성능이나 부하 테스트 노이즈만으로 판단하지 않고, 재현 가능한 지표를 기준으로 병목을 찾는 습관이 중요하다는 점을 배웠습니다.':'This taught me to locate bottlenecks using reproducible metrics rather than intuition or noisy load-test observations.',
+  '또 다른 사례는 카카오 로그인 사용자에게만 결제 요청 시 404가 발생하던 문제였습니다.':'Another issue was a 404 that occurred only when Kakao-login users attempted payment.',
+  '이 과정을 통해 겉으로 같은 예외처럼 보여도 실제 원인은 다를 수 있으며, 데이터 제약 위반은 사전 검증으로 먼저 차단하는 편이 더 안전하다는 점을 배웠습니다.':'I learned that identical-looking errors can have different causes, and that data-constraint violations are safer to stop with pre-validation.',
+  'Issue 기준 브랜치와 PR 설명을 연결해 변경 의도와 범위를 남겼고, CodeRabbit과 팀 리뷰 피드백을 수정 커밋으로 반영해 논의가 실제 코드에 어떻게 적용되었는지 추적 가능하게 유지했습니다.':'I linked issue branches to PR descriptions, recorded intent and scope, and applied CodeRabbit and team-review feedback as follow-up commits so decisions remained traceable in code.'
+});
+
+Object.assign(translations.en, {
+  '처음에는 부하 테스트에서 보인 지연을 캐시 문제로 오해해 캐시 동기화 방식으로 접근했지만, 실제로는 OFFSET 자체가 병목의 원인이었습니다. 이후 EXPLAIN ANALYZE를 통해 실행 계획을 다시 확인했고, ACTIVE 공고를 위한 커버링 인덱스와 deferred join 구조를 적용해 문제를 해결했습니다.':'I initially suspected cache synchronization, but OFFSET itself was the bottleneck. EXPLAIN ANALYZE confirmed the plan; a covering index for ACTIVE jobs and deferred join solved the issue.','DB를 직접 조회한 결과 소셜 로그인 사용자의 이메일이 비어 있는 경우가 있었고, 주문 생성 과정의 NOT NULL 제약 위반이 중복 요청 처리용 catch 로직에 잘못 흡수되고 있었습니다. 이후 INSERT 전 사전 검증을 추가하고 예외 처리를 분리했으며, 프론트의 상태 코드 분기까지 함께 수정해 문제를 해결했습니다.':'A database check found missing emails for some social-login users, while a NOT NULL violation was incorrectly absorbed by duplicate-request handling. I added pre-insert validation, separated exception handling, and fixed the frontend status branch.'
+});
+
 function apply(html, lang) {
   const map = translations[lang];
   const pairs = Object.entries(map).sort((a,b) => b[0].length - a[0].length);
   for (const [from, to] of pairs) html = html.split(from).join(to);
+  // Some entries are chained (Korean source -> Chinese baseline -> English copy).
+  // Run the table twice so the second pass resolves those intermediate values.
+  for (const [from, to] of pairs) html = html.split(from).join(to);
+  if (lang === 'en') {
+    const enTerms = {
+      '最终项目 · 2026.05 – 2026.07 · 6人团队':'Final Project · 2026.05 – 2026.07 · 6-person team','AI 求职支持综合平台':'AI Career Support Platform','GitHub 仓库':'GitHub repository','个人与企业注册 · 条款同意凭证 · 账户恢复':'Individual & company signup · consent evidence · account recovery','JWT 认证与会话管理 · 社交登录':'JWT authentication & session management · social login','订阅生命周期 · Toss 支付集成 · 管理员认证':'Subscription lifecycle · Toss payments · admin authentication','认证安全强化 · 自动支付批处理 · 招聘列表性能优化':'Authentication security · automated billing batch · job-list performance','以设计为中心':'Design-led','主要实现':'Key implementation','设计产出':'Design artifacts','AWS 架构':'AWS architecture','注册与账户恢复':'Signup & account recovery','认证、会话与社交登录':'Authentication, sessions & social login','订阅与支付一致性':'Subscription & payment consistency','代表界面':'Key screens','核心成果':'Key outcomes','大数据量与批处理性能优化':'Large-scale and batch performance','自动支付批处理优化':'Automated billing batch optimization','招聘列表深度分页':'Deep pagination for job listings','招聘列表 API':'Job-list API','认证与社交登录安全强化':'Authentication & social-login security','核心能力':'Core capabilities','可用性 vs 安全性':'Availability vs security','Redis 故障时按角色区分策略':'Role-based policy during Redis failures','Redis（临时）+ DB（权威）':'Redis (temporary) + DB (authoritative)','便利性 vs 暴露风险':'Convenience vs exposure risk','自动实现 vs 复杂查询拆分':'Generated queries vs complex-query separation','分离 JPA Repository 与 QueryRepository 职责':'Separate JPA Repository and QueryRepository responsibilities','深度分页性能问题':'Deep-pagination performance issue','社交登录用户支付 404 问题':'404 payment issue for social-login users','协作':'Collaboration','项目收获':'Lessons learned','代码与 PR':'Code & PR','概览·职责':'Overview · responsibilities','协作·复盘':'Collaboration · retrospective','代码·PR':'Code · PR','GitHub 个人主页':'GitHub profile','最终项目':'Final Project','迷你项目':'Mini Project','问题排查':'Troubleshooting','协作方式':'Collaboration','查看项目':'View project','查看详情':'View details','个人注册':'Individual signup','企业注册 · 在职证明':'Company signup · employment certificate','上次登录方式提示':'Last login method','找回账户':'Account recovery','找回个人账号':'Find individual account','找回企业账号':'Find company account','订阅支付':'Subscription payment','订阅状态':'Subscription status','订阅与支付记录':'Subscription & payment history','约 94% ↓':'~94% ↓','约 99.8% ↓':'~99.8% ↓','约 93% ↓':'~93% ↓'
+    };
+    for (const [from, to] of Object.entries(enTerms)) html = html.split(from).join(to);
+  }
   return html
+    .replace('<meta charset="utf-8"/>', '<meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store"/><meta http-equiv="Pragma" content="no-cache"/>')
     .replace('<html lang="ko">', `<html lang="${lang === 'zh' ? 'zh-CN' : 'en'}">`)
     .replace(/<title>.*?<\/title>/, `<title>${lang === 'zh' ? 'CareerWave 最终项目' : 'CareerWave Final Project'}</title>`)
     .replace(/href="assets\//g, 'href="../assets/')
@@ -48,11 +99,11 @@ function apply(html, lang) {
     .replace(/href="mini-project\.html/g, `href="../${lang}/mini-project.html`)
     .replace(/href="troubleshooting\.html/g, `href="../${lang}/troubleshooting.html`)
     .replace(/href="collaboration\.html/g, `href="../${lang}/collaboration.html`)
-    .replace('</head>', '<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>')
+    .replace('</head>', '<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}.hero-copy{min-width:0}.hero-band .page-hero h1{font-size:clamp(38px,3.4vw,48px);overflow-wrap:anywhere}.hero-band .page-hero h1 .hero-line.nowrap{white-space:normal}.toc{right:40px}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>')
     .replace('</nav>', `<div class="i18n-switcher" aria-label="Language"><a href="../ko/final-project.html">한국어</a><a href="../zh/final-project.html"${lang==='zh'?' aria-current="page"':''}>中文</a><a href="../en/final-project.html"${lang==='en'?' aria-current="page"':''}>English</a></div></nav>`);
 }
 
-for (const lang of ['zh', 'en']) {
+for (const lang of outputLanguages) {
   await mkdir(join(root, lang), { recursive: true });
   await writeFile(join(root, lang, 'final-project.html'), apply(source, lang));
 }
