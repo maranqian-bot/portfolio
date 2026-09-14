@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>협업 방식 | 마은재 포트폴리오</title>
+<title>协作方式 | MA RanQian 作品集</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/portfolio.css"/>
 <style>
@@ -84,22 +84,23 @@
         .conv-table td:first-child { width: auto; }
     }
 </style>
-<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
+<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style><meta http-equiv="Cache-Control" content="no-store">
+</head>
 <body>
 
 <nav class="site-nav">
     <div class="nav-content">
         <div class="nav-links">
-            <a href="../zh/index.html#about" class="nav-item">About me</a>
+            <a href="../zh/index.html#about" class="nav-item">关于我</a>
             <div class="nav-dd">
-                <a class="nav-item">프로젝트</a>
+                <a class="nav-item">项目</a>
                 <div class="nav-dd-menu">
-                    <a href="../zh/final-project.html">파이널 프로젝트</a>
-                    <a href="../zh/mini-project.html">미니 프로젝트</a>
+                    <a href="../zh/final-project.html">最终项目</a>
+                    <a href="../zh/mini-project.html">迷你项目</a>
                 </div>
             </div>
-            <a href="../zh/troubleshooting.html" class="nav-item">트러블슈팅</a>
-            <a href="../zh/collaboration.html" class="nav-item active">협업방식</a>
+            <a href="../zh/troubleshooting.html" class="nav-item">问题排查</a>
+            <a href="../zh/collaboration.html" class="nav-item active">协作方式</a>
         </div>
     </div>
 <div class="i18n-switcher" aria-label="Language"><a href="../ko/collaboration.html">한국어</a><a href="../zh/collaboration.html" aria-current="page">中文</a><a href="../en/collaboration.html">English</a></div></nav>
@@ -108,185 +109,185 @@
 
     <!-- HERO -->
     <section class="page-hero">
-        <p class="eyebrow">Collaboration</p>
-        <h1>팀과 함께 일하는 방식</h1>
-        <p class="hero-lead">프로젝트를 진행하며 팀과 함께 지킨 협업 기준입니다. <strong>스펙 주도 개발</strong>을 바탕으로 브랜치 전략, 커밋 컨벤션, 이슈 관리, PR·코드리뷰 절차를 팀과 맞추고 일관되게 운영했습니다.</p>
+        <p class="eyebrow">协作方式</p>
+        <h1>与团队协作的方式</h1>
+        <p class="hero-lead">这是我在项目推进中与团队共同遵守的协作标准。 <strong>规范驱动开发</strong>，并据此与团队统一分支策略、提交约定、Issue 管理及 PR、代码评审流程，保持一致执行。</p>
     </section>
 
     <!-- WORKFLOW -->
     <section id="flow">
-        <h2 class="section-title">작업 흐름</h2>
-        <p class="section-desc">기능을 바로 구현하기보다, 요구사항과 스펙을 먼저 확인하고 작업 범위를 합의한 뒤 구현에 들어가는 순서로 일했습니다.</p>
+        <h2 class="section-title">工作流程</h2>
+        <p class="section-desc">我不会直接开始实现功能，而是先确认需求与规范、协商工作范围，再进入实现。</p>
         <div class="flow reveal">
-            <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><h4>이슈 · 요구사항 확인</h4><p>구현할 기능, 버그, 개선 사항을 먼저 이슈로 정리했습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><h4>Spec 문서 확인 · 작성</h4><p>관련 스펙을 확인하고, 없으면 spec · plan · tasks 순서로 작성했습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><h4>구현 범위 합의</h4><p>구현 계획과 작업 범위를 팀과 맞춘 뒤 시작했습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><h4>브랜치 생성</h4><p>최신 <code>develop</code> 기준으로 기능 단위 브랜치를 만들었습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">5</div><div class="flow-body"><h4>구현 및 검증</h4><p>기존 코드 스타일·구조를 따르며 구현하고, 테스트로 검증했습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">6</div><div class="flow-body"><h4>Pull Request 생성</h4><p>하나의 목적에 집중된 PR을 열고 변경 의도를 정리했습니다.</p></div></div>
-            <div class="flow-step"><div class="flow-num">7</div><div class="flow-body"><h4>리뷰 반영 후 병합</h4><p>리뷰 코멘트를 반영하고 스레드를 정리한 뒤 병합했습니다.</p></div></div>
+            <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><h4>确认 Issue · 需求</h4><p>先将待实现功能、Bug 和改进事项整理为 Issue。</p></div></div>
+            <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><h4>确认 · 编写 Spec 文档</h4><p>先确认相关规范；若不存在，则按 spec · plan · tasks 的顺序编写。</p></div></div>
+            <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><h4>协商实现范围</h4><p>与团队对齐实现计划和工作范围后再开始。</p></div></div>
+            <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><h4>创建分支</h4><p>以最新 <code>develop</code> 为基准创建功能分支。</p></div></div>
+            <div class="flow-step"><div class="flow-num">5</div><div class="flow-body"><h4>实现与验证</h4><p>遵循既有代码风格与结构进行实现，并通过测试验证。</p></div></div>
+            <div class="flow-step"><div class="flow-num">6</div><div class="flow-body"><h4>创建 Pull Request</h4><p>创建聚焦单一目的的 PR，并整理变更意图。</p></div></div>
+            <div class="flow-step"><div class="flow-num">7</div><div class="flow-body"><h4>应用评审后合并</h4><p>处理评审评论并整理线程后再合并。</p></div></div>
         </div>
     </section>
 
     <!-- BRANCH -->
     <section id="branch">
-        <h2 class="section-title">브랜치 전략</h2>
-        <p class="section-desc">항상 최신 <code>develop</code>에서 분기하고, 작업 내용이 드러나도록 브랜치명을 지었습니다. 하나의 브랜치에는 하나의 목적만 담았습니다.</p>
+        <h2 class="section-title">分支策略</h2>
+        <p class="section-desc">始终从最新 <code>develop</code>分支创建，并使用能够体现工作内容的分支名；一个分支只包含一个目的。</p>
         <div class="grid-2 reveal">
             <div class="c-card">
-                <h4>브랜치 네이밍</h4>
-                <div class="code-block"><span class="tk">feature/</span>{작업명}<br><span class="tk">fix/</span>{작업명}<br><span class="tk">refactor/</span>{작업명}<br><span class="tk">docs/</span>{작업명}<br><span class="tk">chore/</span>{작업명}</div>
+                <h4>分支命名</h4>
+                <div class="code-block"><span class="tk">feature/</span>{工作名称}<br><span class="tk">fix/</span>{工作名称}<br><span class="tk">refactor/</span>{工作名称}<br><span class="tk">docs/</span>{工作名称}<br><span class="tk">chore/</span>{工作名称}</div>
             </div>
             <div class="c-card">
-                <h4>지킨 규칙</h4>
+                <h4>遵守的规则</h4>
                 <ul>
-                    <li>진행 중인 작업 브랜치 위에서 새 브랜치를 만들지 않았습니다.</li>
-                    <li>브랜치를 잘못 만들면 변경사항을 보존한 뒤 <code>develop</code> 기준으로 다시 만들었습니다.</li>
-                    <li>순차 의존 피처는 머지 순서와 의존 브랜치를 PR 본문에 명시했습니다.</li>
+                    <li>不在进行中的工作分支上创建新分支。</li>
+                    <li>如果分支创建错误，则保留变更后重新以 <code>develop</code> 为基准创建。</li>
+                    <li>对于有顺序依赖的功能，在 PR 正文中注明合并顺序与依赖分支。</li>
                 </ul>
             </div>
         </div>
         <figure class="shot reveal">
-            <img class="shot-img" src="../assets/collab/branches.png" alt="브랜치 목록" onerror="this.classList.add('missing')">
-            <div class="shot-ph"><span class="ic">📷</span><b>브랜치 목록 스크린샷</b><small>GitHub 저장소 → <b>Branches</b> 탭(또는 Insights → Network 그래프)을 캡처. 컨벤션에 맞춘 feature/·fix/ 브랜치들이 보이도록.</small><code>assets/collab/branches.png</code></div>
-            <figcaption>실제 브랜치 목록 — 컨벤션에 맞춘 기능 단위 브랜치명</figcaption>
+            <img class="shot-img" src="../assets/collab/branches.png" alt="分支列表" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>分支列表截图</b><small>GitHub 仓库 → <b>Branches</b> 标签页（或 Insights → Network 图），使符合约定的 feature/、fix/ 分支可见。</small><code>assets/collab/branches.png</code></div>
+            <figcaption>实际分支列表 — 遵循约定的功能分支名称</figcaption>
         </figure>
     </section>
 
     <!-- COMMIT -->
     <section id="commit">
-        <h2 class="section-title">커밋 컨벤션</h2>
-        <p class="section-desc">커밋 메시지만 봐도 변경 의도가 드러나도록 <code>{type}({branch-name}) : {summary}</code> 형식을 지켰고, 리뷰 가능한 단위로 커밋을 나눴습니다.</p>
+        <h2 class="section-title">提交约定</h2>
+        <p class="section-desc">确保只看提交消息也能了解变更意图，遵守 <code>{type}({branch-name}) : {summary}</code> 格式，并将提交拆分为便于评审的单位。</p>
         <div class="c-card reveal" style="overflow-x:auto;">
             <table class="conv-table">
-                <thead><tr><th>Type</th><th>의미</th></tr></thead>
+                <thead><tr><th>类型</th><th>含义</th></tr></thead>
                 <tbody>
-                    <tr><td><code>feat</code></td><td>기능 추가</td></tr>
-                    <tr><td><code>fix</code></td><td>버그 수정</td></tr>
-                    <tr><td><code>refactor</code></td><td>리팩토링</td></tr>
-                    <tr><td><code>style</code></td><td>코드 포맷 또는 스타일 변경</td></tr>
-                    <tr><td><code>design</code></td><td>UI/UX 변경</td></tr>
-                    <tr><td><code>chore</code></td><td>기타 설정 또는 문서 작업</td></tr>
-                    <tr><td><code>rename</code></td><td>파일 또는 이름 변경</td></tr>
-                    <tr><td><code>remove</code></td><td>삭제</td></tr>
-                    <tr><td><code>build</code></td><td>빌드 설정 변경</td></tr>
+                    <tr><td><code>feat</code></td><td>新增功能</td></tr>
+                    <tr><td><code>fix</code></td><td>修复 Bug</td></tr>
+                    <tr><td><code>refactor</code></td><td>重构</td></tr>
+                    <tr><td><code>style</code></td><td>代码格式或样式变更</td></tr>
+                    <tr><td><code>design</code></td><td>UI/UX 变更</td></tr>
+                    <tr><td><code>chore</code></td><td>其他配置或文档工作</td></tr>
+                    <tr><td><code>rename</code></td><td>文件或名称变更</td></tr>
+                    <tr><td><code>remove</code></td><td>删除</td></tr>
+                    <tr><td><code>build</code></td><td>构建配置变更</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="code-block reveal" style="margin-top:20px;"><span class="cm"># 예시</span><br>feat(feature/user-login-api) : 회원 로그인 API 추가<br>fix(fix/payment-status-validation) : 결제 상태 검증 오류 수정</div>
+        <div class="code-block reveal" style="margin-top:20px;"><span class="cm"># 示例</span><br>feat(feature/user-login-api) : 新增会员登录 API<br>fix(fix/payment-status-validation) : 修复支付状态验证错误</div>
         <figure class="shot reveal">
-            <img class="shot-img" src="../assets/collab/commits.png" alt="커밋 히스토리" onerror="this.classList.add('missing')">
-            <div class="shot-ph"><span class="ic">📷</span><b>커밋 히스토리 스크린샷</b><small>GitHub → <b>Commits</b> 목록을 캡처. <code>{type}({branch}) : {summary}</code> 형식이 실제로 지켜진 커밋들이 보이도록.</small><code>assets/collab/commits.png</code></div>
-            <figcaption>실제 커밋 히스토리 — 컨벤션 형식을 지킨 커밋 메시지</figcaption>
+            <img class="shot-img" src="../assets/collab/commits.png" alt="提交历史" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>提交历史截图</b><small>GitHub → <b>Commits</b> 截图该列表。 <code>{type}({branch}) : {summary}</code> 使实际遵循该格式的提交可见。</small><code>assets/collab/commits.png</code></div>
+            <figcaption>实际提交历史 — 遵循约定格式的提交消息</figcaption>
         </figure>
     </section>
 
     <!-- ISSUE -->
     <section id="issue">
-        <h2 class="section-title">이슈 관리</h2>
-        <p class="section-desc">구현할 기능, 버그, 개선 사항을 이슈 단위로 나누고 진행 상태와 완료 기준을 남겨, 작업 흐름이 팀 안에서 보이도록 정리했습니다.</p>
+        <h2 class="section-title">Issue 管理</h2>
+        <p class="section-desc">将待实现功能、Bug 和改进事项拆分为 Issue，记录进度与完成标准，让团队能够看见工作流程。</p>
         <div class="grid-2 reveal">
-            <div class="c-card"><h4>이슈로 나눈 기준</h4><p>기능, 버그, 개선 사항을 각각의 이슈로 분리해 작업 단위를 명확히 했습니다.</p></div>
-            <div class="c-card"><h4>남긴 기록</h4><p>진행 상태와 완료 기준을 이슈에 남겨, 무엇을 어디까지 했는지 드러나게 했습니다.</p></div>
+            <div class="c-card"><h4>拆分为 Issue 的标准</h4><p>将功能、Bug 和改进事项分别拆成 Issue，明确工作单位。</p></div>
+            <div class="c-card"><h4>留下的记录</h4><p>在 Issue 中记录进度和完成标准，明确已完成的内容与范围。</p></div>
         </div>
         <figure class="shot reveal">
-            <img class="shot-img" src="../assets/collab/issues.png" alt="이슈 목록" onerror="this.classList.add('missing')">
-            <div class="shot-ph"><span class="ic">📷</span><b>이슈 목록 스크린샷</b><small>GitHub → <b>Issues</b> 탭을 캡처. 기능·버그·개선이 이슈 단위로 분리되고 라벨·상태가 보이도록. (이슈 하나의 상세 화면을 추가로 넣어도 좋아요.)</small><code>assets/collab/issues.png</code></div>
-            <figcaption>실제 이슈 목록 — 기능·버그·개선 단위 분리 및 진행 상태 기록</figcaption>
+            <img class="shot-img" src="../assets/collab/issues.png" alt="Issue 列表" onerror="this.classList.add('missing')">
+            <div class="shot-ph"><span class="ic">📷</span><b>Issue 列表截图</b><small>GitHub → <b>Issues</b> 截图该标签页，使功能、Bug、改进按 Issue 拆分并显示标签与状态。（也可以追加一个 Issue 详情页。）</small><code>assets/collab/issues.png</code></div>
+            <figcaption>实际 Issue 列表 — 按功能、Bug、改进拆分并记录进度</figcaption>
         </figure>
     </section>
 
     <!-- PR -->
     <section id="pr">
         <h2 class="section-title">Pull Request</h2>
-        <p class="section-desc">PR은 항상 <code>develop</code>을 대상으로 열었고, 팀 템플릿에 맞춰 관련 이슈·작업 모듈·변경 사항·검증 결과·리뷰어 전달 사항을 남겼습니다. PR을 열기 전 아래 항목을 스스로 점검했습니다.</p>
+        <p class="section-desc">PR 始终以 <code>develop</code>为目标创建，并按照团队模板记录相关 Issue、工作模块、变更内容、验证结果和给评审者的信息。创建 PR 前，我会自行检查以下项目。</p>
         <div class="c-card reveal">
             <div class="check-list">
-                <div class="check-item"><span class="ck">✓</span><span>작업 브랜치가 <code>develop</code>에서 분기되었는가 (순차 의존 시 머지 순서·의존 브랜치 명시)</span></div>
-                <div class="check-item"><span class="ck">✓</span><span>PR 범위가 하나의 목적에 집중되어 있는가</span></div>
-                <div class="check-item"><span class="ck">✓</span><span>관련 없는 파일 변경이 제외되었는가</span></div>
-                <div class="check-item"><span class="ck">✓</span><span>Spec 또는 Convention과 충돌하지 않는가</span></div>
-                <div class="check-item"><span class="ck">✓</span><span>필요한 테스트 또는 빌드 확인을 수행했는가</span></div>
-                <div class="check-item"><span class="ck">✓</span><span>리뷰어가 확인해야 할 사항을 PR 본문에 남겼는가</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>工作分支是否从 <code>develop</code>创建（有顺序依赖时注明合并顺序与依赖分支）</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>PR 范围是否聚焦单一目的</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>是否排除了无关文件变更</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>是否与 Spec 或 Convention 冲突</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>是否完成必要的测试或构建检查</span></div>
+                <div class="check-item"><span class="ck">✓</span><span>是否在 PR 正文留下评审者需要确认的事项</span></div>
             </div>
         </div>
         <div class="shot-grid reveal">
             <figure class="shot-item">
-                <img class="shot-img" src="../assets/collab/pr-list.png" alt="PR 목록" onerror="this.classList.add('missing')">
-                <div class="shot-ph"><span class="ic">📷</span><b>PR 목록 스크린샷</b><small>GitHub → <b>Pull requests</b> 탭 전체 목록. 하나의 목적에 집중된 PR들이 쌓인 모습이 보이도록.</small><code>assets/collab/pr-list.png</code></div>
-                <figcaption>실제 PR 목록 — 한 PR에 하나의 목적</figcaption>
+                <img class="shot-img" src="../assets/collab/pr-list.png" alt="PR 列表" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>PR 列表截图</b><small>GitHub → <b>Pull requests</b> 截取该标签页的完整列表，显示多个聚焦单一目的的 PR。</small><code>assets/collab/pr-list.png</code></div>
+                <figcaption>实际 PR 列表 — 一个 PR 一个目的</figcaption>
             </figure>
             <figure class="shot-item">
-                <img class="shot-img" src="../assets/collab/pr-detail.png" alt="PR 본문" onerror="this.classList.add('missing')">
-                <div class="shot-ph"><span class="ic">📷</span><b>PR 본문 스크린샷</b><small>PR 하나를 열어 <b>템플릿(관련 이슈·작업 모듈·변경 사항·검증 결과)</b>이 작성된 본문을 캡처.</small><code>assets/collab/pr-detail.png</code></div>
-                <figcaption>실제 PR 본문 — 팀 템플릿에 맞춘 작성</figcaption>
+                <img class="shot-img" src="../assets/collab/pr-detail.png" alt="PR 正文" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>PR 正文截图</b><small>打开一个 PR，截取其中填写了 <b>模板（相关 Issue、工作模块、变更内容、验证结果）</b>的正文。</small><code>assets/collab/pr-detail.png</code></div>
+                <figcaption>实际 PR 正文 — 按团队模板填写</figcaption>
             </figure>
         </div>
     </section>
 
     <!-- REVIEW -->
     <section id="review">
-        <h2 class="section-title">코드리뷰 반영</h2>
-        <p class="section-desc">구현 결과만 공유하지 않고, 리뷰 코멘트와 수정 내역을 함께 남겨 팀 안에서 개선한 과정을 기록했습니다.</p>
+        <h2 class="section-title">代码评审</h2>
+        <p class="section-desc">不仅分享实现结果，还同时记录评审评论与修改内容，保留团队共同改进的过程。</p>
         <div class="grid-2 reveal">
             <div class="c-card">
-                <h4>리뷰 처리 원칙</h4>
+                <h4>评审处理原则</h4>
                 <ul>
-                    <li>모든 코멘트를 반영·보류·반려 중 하나로 명확히 처리했습니다.</li>
-                    <li>반영하지 않을 때는 이유를 코멘트로 남겼습니다.</li>
-                    <li>반영 커밋을 기존 PR 브랜치에 추가하고 스레드를 resolved 처리했습니다.</li>
+                    <li>明确将每条评论标记为已处理、暂缓或拒绝。</li>
+                    <li>不采纳时在评论中留下理由。</li>
+                    <li>将修正提交追加到原 PR 分支，并将线程标记为 resolved。</li>
                 </ul>
             </div>
             <div class="c-card">
-                <h4>AI · 자동 리뷰</h4>
+                <h4>AI · 自动评审</h4>
                 <ul>
-                    <li>CodeRabbit 등 자동 리뷰도 유효한 지적이면 반영했습니다.</li>
-                    <li>단순 스타일 경고도 팀 규칙과 충돌하지 않으면 가능한 한 정리했습니다.</li>
-                    <li>현재 코드와 맞지 않는 지적은 근거를 남기고 스킵했습니다.</li>
+                    <li>CodeRabbit 等自动评审只要指出有效问题也会采纳。</li>
+                    <li>简单的样式警告只要不与团队规则冲突，也会尽量整理。</li>
+                    <li>与当前代码不符的意见会留下依据后跳过。</li>
                 </ul>
             </div>
         </div>
         <div class="shot-grid reveal">
             <figure class="shot-item">
-                <img class="shot-img" src="../assets/collab/review.png" alt="코드리뷰 코멘트" onerror="this.classList.add('missing')">
-                <div class="shot-ph"><span class="ic">📷</span><b>코드리뷰 코멘트 스크린샷</b><small>PR 대화(Conversation)의 실제 <b>리뷰 코멘트 + 반영 커밋 / Resolved</b> 처리된 스레드를 캡처.</small><code>assets/collab/review.png</code></div>
-                <figcaption>실제 리뷰 코멘트와 반영·해결 과정</figcaption>
+                <img class="shot-img" src="../assets/collab/review.png" alt="代码评审评论" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>代码评审评论截图</b><small>截取 PR 对话（Conversation）中实际的 <b>评审评论 + 修正提交 / Resolved</b> 已处理的线程。</small><code>assets/collab/review.png</code></div>
+                <figcaption>实际评审评论与采纳、解决过程</figcaption>
             </figure>
             <figure class="shot-item">
-                <img class="shot-img" src="../assets/collab/coderabbit.png" alt="AI 자동 리뷰" onerror="this.classList.add('missing')">
-                <div class="shot-ph"><span class="ic">📷</span><b>AI 자동 리뷰 스크린샷</b><small><b>CodeRabbit</b> 등 자동 리뷰가 남긴 코멘트와, 그에 대한 반영/스킵 근거가 보이도록 캡처.</small><code>assets/collab/coderabbit.png</code></div>
-                <figcaption>CodeRabbit 자동 리뷰 반영</figcaption>
+                <img class="shot-img" src="../assets/collab/coderabbit.png" alt="AI 自动评审" onerror="this.classList.add('missing')">
+                <div class="shot-ph"><span class="ic">📷</span><b>AI 自动评审截图</b><small>截取 <b>CodeRabbit</b> 等自动评审留下的评论，以及采纳或跳过的依据。</small><code>assets/collab/coderabbit.png</code></div>
+                <figcaption>采纳 CodeRabbit 自动评审</figcaption>
             </figure>
         </div>
     </section>
 
     <!-- TEST -->
     <section id="test">
-        <h2 class="section-title">테스트 & 검증</h2>
-        <p class="section-desc">각 스택별로 아래 명령으로 검증한 뒤 PR에 결과를 남겼습니다. 문서만 수정한 경우에는 생략 사유를 함께 적었습니다.</p>
+        <h2 class="section-title">测试与验证</h2>
+        <p class="section-desc">按技术栈使用以下命令验证后，将结果记录在 PR 中。只修改文档时，也会一并说明省略验证的理由。</p>
         <div class="code-block reveal"><span class="cm"># Backend</span><br>cd backend &amp;&amp; ./gradlew test<br><br><span class="cm"># Frontend</span><br>cd frontend &amp;&amp; npm run build<br><br><span class="cm"># FastAPI</span><br>cd fastapi &amp;&amp; python -m pytest</div>
     </section>
 
 </div>
 
-<nav class="toc" aria-label="목차">
-    <a href="#flow">작업 흐름</a>
-    <a href="#branch">브랜치 전략</a>
-    <a href="#commit">커밋 컨벤션</a>
-    <a href="#issue">이슈 관리</a>
+<nav class="toc" aria-label="目录">
+    <a href="#flow">工作流程</a>
+    <a href="#branch">分支策略</a>
+    <a href="#commit">提交约定</a>
+    <a href="#issue">Issue 管理</a>
     <a href="#pr">Pull Request</a>
-    <a href="#review">코드리뷰 반영</a>
-    <a href="#test">테스트 &amp; 검증</a>
+    <a href="#review">代码评审</a>
+    <a href="#test">测试与验证</a>
 </nav>
 
 <footer class="site-footer">
     <div class="footer-content">
-        <span><strong>마은재</strong> · 풀스택 신입 개발자 포트폴리오</span>
-        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 프로필</a>
+        <span><strong>MA RanQian</strong> · 初级全栈开发者作品集</span>
+        <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub 个人主页</a>
     </div>
 </footer>
 
-<div class="lightbox" id="lightbox"><img src="" alt="확대 이미지"></div>
+<div class="lightbox" id="lightbox"><img src="" alt="放大图片"></div>
 
 <script>
     const observer = new IntersectionObserver((entries) => {
