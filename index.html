@@ -564,5 +564,12 @@
     })();
 </script>
 
+<script>
+    // Keep the portfolio narrative order consistent: About Me → Projects → Skills.
+    const aboutSection = document.getElementById('about');
+    const projectsSection = document.getElementById('projects');
+    if (aboutSection && projectsSection) aboutSection.after(projectsSection);
+</script>
+
 </body>
 </html>
