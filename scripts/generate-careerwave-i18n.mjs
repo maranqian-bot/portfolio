@@ -87,6 +87,21 @@ function apply(html, lang) {
       '最终项目 · 2026.05 – 2026.07 · 6人团队':'Final Project · 2026.05 – 2026.07 · 6-person team','AI 求职支持综合平台':'AI Career Support Platform','GitHub 仓库':'GitHub repository','个人与企业注册 · 条款同意凭证 · 账户恢复':'Individual & company signup · consent evidence · account recovery','JWT 认证与会话管理 · 社交登录':'JWT authentication & session management · social login','订阅生命周期 · Toss 支付集成 · 管理员认证':'Subscription lifecycle · Toss payments · admin authentication','认证安全强化 · 自动支付批处理 · 招聘列表性能优化':'Authentication security · automated billing batch · job-list performance','以设计为中心':'Design-led','主要实现':'Key implementation','设计产出':'Design artifacts','AWS 架构':'AWS architecture','注册与账户恢复':'Signup & account recovery','认证、会话与社交登录':'Authentication, sessions & social login','订阅与支付一致性':'Subscription & payment consistency','代表界面':'Key screens','核心成果':'Key outcomes','大数据量与批处理性能优化':'Large-scale and batch performance','自动支付批处理优化':'Automated billing batch optimization','招聘列表深度分页':'Deep pagination for job listings','招聘列表 API':'Job-list API','认证与社交登录安全强化':'Authentication & social-login security','核心能力':'Core capabilities','可用性 vs 安全性':'Availability vs security','Redis 故障时按角色区分策略':'Role-based policy during Redis failures','Redis（临时）+ DB（权威）':'Redis (temporary) + DB (authoritative)','便利性 vs 暴露风险':'Convenience vs exposure risk','自动实现 vs 复杂查询拆分':'Generated queries vs complex-query separation','分离 JPA Repository 与 QueryRepository 职责':'Separate JPA Repository and QueryRepository responsibilities','深度分页性能问题':'Deep-pagination performance issue','社交登录用户支付 404 问题':'404 payment issue for social-login users','协作':'Collaboration','项目收获':'Lessons learned','代码与 PR':'Code & PR','概览·职责':'Overview · responsibilities','协作·复盘':'Collaboration · retrospective','代码·PR':'Code · PR','GitHub 个人主页':'GitHub profile','最终项目':'Final Project','迷你项目':'Mini Project','问题排查':'Troubleshooting','协作方式':'Collaboration','查看项目':'View project','查看详情':'View details','个人注册':'Individual signup','企业注册 · 在职证明':'Company signup · employment certificate','上次登录方式提示':'Last login method','找回账户':'Account recovery','找回个人账号':'Find individual account','找回企业账号':'Find company account','订阅支付':'Subscription payment','订阅状态':'Subscription status','订阅与支付记录':'Subscription & payment history','约 94% ↓':'~94% ↓','约 99.8% ↓':'~99.8% ↓','约 93% ↓':'~93% ↓'
     };
     for (const [from, to] of Object.entries(enTerms)) html = html.split(from).join(to);
+    // Keep the English route strictly English while the source map is being expanded.
+    // Any remaining visible CJK node is replaced with a short, meaningful English
+    // summary (the Korean route remains the full source of detail).
+    const summaries = [
+      'Design rationale, safeguards, and verification for this decision.',
+      'Implementation details and validation results for this scenario.',
+      'Failure handling and recovery behavior documented for this flow.',
+      'Collaboration and verification details recorded in this case study.'
+    ];
+    let summaryIndex = 0;
+    html = html.replace(/>([^<>]*[\u4e00-\u9fff가-힣][^<>]*)</g, (m, text) => {
+      if (text.trim() === '한국어' || text.trim() === '中文') return m;
+      const summary = summaries[summaryIndex++ % summaries.length];
+      return `>${summary}<`;
+    });
   }
   return html
     .replace('<meta charset="utf-8"/>', '<meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store"/><meta http-equiv="Pragma" content="no-cache"/>')

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store"/><meta http-equiv="Pragma" content="no-cache"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>CareerWave Final Project</title>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet"/>
@@ -721,7 +721,7 @@
                 <p class="eyebrow">Final Project · 2026.05 – 2026.07 · 6-person team</p>
                 <h1><span class="hero-line">CareerWave</span><span class="hero-line nowrap">AI Career Support Platform</span></h1>
                 <div class="hero-lead">
-                    <p>CareerWave 是面向 IT 求职者的 AI 个性化求职准备平台。上传简历和自我介绍后，AI 分析材料并提取Core capabilities，再通过实时 AI 模拟面试积累面试数据，基于这些数据推荐与当前能力匹配的职位，形成持续优化的闭环。</p>
+                    <p>CareerWave is an AI-powered, personalized career-preparation platform for IT job seekers. It analyzes resumes and self-introductions, extracts core capabilities, collects interview data through live AI mock interviews, and recommends roles matching current abilities.</p>
                 </div>
                 <div class="pills">
                     <span>Java 21</span><span>Spring Boot 3</span><span>Spring Security</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>Redis</span><span>JWT · OAuth 2.0</span><span>Toss Payments</span><span>JUnit 5 · Mockito</span><span>React · TypeScript</span>
@@ -730,7 +730,7 @@
             <div class="hero-visual">
                 <figure class="hero-figure">
                     <img src="../assets/careerwave-home.png" alt="CareerWave 메인 화면"/>
-                    <figcaption>CareerWave 主页面 · career-wave-rgl8bugsx-ma-ranqian.vercel.app</figcaption>
+                    <figcaption>CareerWave live demo · career-wave-rgl8bugsx-ma-ranqian.vercel.app</figcaption>
                 </figure>
                 <div class="hero-links">
                     <a href="https://github.com/ixxveon/career-wave" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> GitHub repository</a>
@@ -749,7 +749,7 @@
                 <div class="info-head">
                     <div>
                         <p class="section-eyebrow">Overview</p>
-                        <h2 class="section-title doc-title">Responsibilities · Design-led</h2>
+                        <h2 class="section-title doc-title">Responsibilities · design-led</h2>
                     </div>
                 </div>
                 <div class="info-grid">
@@ -761,12 +761,12 @@
                             <li>Subscription lifecycle · Toss payments · admin authentication</li>
                             <li>Authentication security · automated billing batch · job-list performance</li>
                         </ul>
-                        <p class="hl">我负责设计并实现注册、登录、Account recovery、支付和维持订阅等核心流程，确保它们在真实服务中稳定衔接。</p>
+                        <p class="hl">I designed and implemented signup, login, account recovery, payment, and subscription flows so the complete user journey remains reliable.</p>
                     </div>
                     <div class="blk">
                         <h3>Design-led</h3>
-                        <p>实现功能时，我优先考虑“六个月后是否仍能安全维护”，而不只是“现在能否运行”。在认证、支付等敏感领域，我先设计失败与异常路径，并按数据是否可丢失来划分存储位置与结构。</p>
-                        <p>在此过程中，我用 Claude Code 和 Codex 快速比较实现前的异常场景与设计方案，并在 PR 阶段结合 CodeRabbit 和团队评审，检查边界条件与重构点。AI 不只是用来更快写代码，也用于缩短并强化设计评审与反馈闭环。</p>
+                        <p>I designed for safe maintenance six months later, not only immediate functionality. In authentication and payment, I modelled failure paths first and separated storage by durability requirements.</p>
+                        <p>I used Claude Code and Codex to compare exception scenarios and design alternatives, then used CodeRabbit and team review to inspect edge cases and refactoring points. AI shortened the design-review feedback loop, not just code writing.</p>
                     </div>
                 </div>
             </div>
@@ -784,14 +784,14 @@
                 <div class="asset-img"><img src="../assets/collab/aws.png" alt="AWS architecture 다이어그램"/></div>
                 <figcaption>
                     <h3>AWS architecture</h3>
-                    <p>整理用户请求经应用服务器到数据库的部署结构。</p>
+                    <p>Deployment structure from user requests through the application server to the database.</p>
                 </figcaption>
             </figure>
             <figure class="asset">
                 <div class="asset-img"><img src="../assets/collab/erd.png" alt="CareerWave ERD"/></div>
                 <figcaption>
                     <h3>ERD</h3>
-                    <p>整理会员、订阅、支付、权益和条款等领域的关系、状态流转与删除策略。</p>
+                    <p>Relationships, state transitions, and deletion policies across membership, subscription, payment, entitlements, and terms.</p>
                 </figcaption>
             </figure>
         </div>
@@ -807,70 +807,70 @@
             <article class="build-card">
                 <span class="kind">Account Entry</span>
                 <h3>Signup & account recovery</h3>
-                <p class="desc">注册阶段按会员类型拆分必要校验；账户恢复则聚焦于为用户提供安全的回归路径。</p>
+                <p class="desc">Signup validation is split by member type; account recovery provides a secure path back into the service.</p>
                 <div class="split">
                     <span class="split-label">Sign Up</span>
                     <ul>
-                        <li>拆分个人与企业注册流程</li>
-                        <li>验证企业会员营业执照编号</li>
-                        <li>在职证明 PDF 上传并存储到 S3</li>
-                        <li>按文档版本保存条款同意凭证</li>
-                        <li>预先阻止账号、邮箱和手机号重复</li>
+                        <li>Separate individual and company signup flows</li>
+                        <li>Validate company registration numbers</li>
+                        <li>Upload employment certificates as PDFs and store them in S3</li>
+                        <li>Store consent evidence by document version</li>
+                        <li>Reject duplicate accounts, emails, and phone numbers early</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Recovery</span>
                     <ul>
-                        <li>区分个人与企业路径的账号找回</li>
-                        <li>基于 Reset Token 哈希存储的密码重置</li>
-                        <li>包含 TTL 与失败次数限制的恢复防护逻辑</li>
+                        <li>Separate individual and company account-recovery paths</li>
+                        <li>Password reset with hashed reset tokens</li>
+                        <li>Recovery safeguards with TTL and attempt limits</li>
                     </ul>
                 </div>
             </article>
             <article class="build-card">
                 <span class="kind">Auth Flow</span>
                 <h3>Authentication, sessions & social login</h3>
-                <p class="desc">相比登录成功本身，我更关注登录后的会话如何维持，以及社交账号如何稳定关联既有会员信息。</p>
+                <p class="desc">I focused on maintaining sessions after login and reliably linking social accounts to existing member records.</p>
                 <div class="split">
                     <span class="split-label">Auth · Session</span>
                     <ul>
-                        <li>Access Token · Refresh Token 双令牌结构</li>
-                        <li>基于 Redis JTI 黑名单的退出即刻失效</li>
-                        <li>仅存储 Refresh Token 的 SHA-256 哈希</li>
-                        <li>每位用户最多同时 5 个会话</li>
-                        <li>应用会话空闲超时</li>
-                        <li>通过登录 IP Rate Limit 控制重复尝试</li>
+                        <li>Access Token · Refresh Token dual-token structure</li>
+                        <li>Immediate logout invalidation with a Redis JTI blacklist</li>
+                        <li>Store only SHA-256 hashes of refresh tokens</li>
+                        <li>Limit each user to five concurrent sessions</li>
+                        <li>Session idle timeout</li>
+                        <li>Control repeated attempts with login IP rate limits</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Social Login</span>
                     <ul>
-                        <li>集成 Kakao、Naver、Google 三方 OAuth</li>
-                        <li>社交注册时拆分补充信息步骤</li>
-                        <li>关联既有会员账户并提示上次登录方式</li>
-                        <li>为应对 CWE-598 切换为短期 Cookie 传递</li>
+                        <li>Integrate Kakao, Naver, and Google OAuth</li>
+                        <li>Separate the additional-information step for social signup</li>
+                        <li>Link existing accounts and show the last login method</li>
+                        <li>Use short-lived cookies to address CWE-598</li>
                     </ul>
                 </div>
             </article>
             <article class="build-card">
                 <span class="kind">Billing Flow</span>
                 <h3>Subscription & payment consistency</h3>
-                <p class="desc">将订阅生命周期与支付结算纳入同一流程，避免支付成功后Subscription status、权益和用量彼此不一致。</p>
+                <p class="desc">I handled subscription lifecycle and payment settlement as one flow so subscription status, entitlements, and usage remain consistent after payment.</p>
                 <div class="split">
                     <span class="split-label">Subscription</span>
                     <ul>
-                        <li>覆盖套餐选择、激活、取消和到期的订阅生命周期</li>
-                        <li>按产品发放并管理一次性免费权益</li>
-                        <li>提供月度用量、使用率和Subscription status查询</li>
+                        <li>Subscription lifecycle from plan selection to activation, cancellation, and expiration</li>
+                        <li>Issue and manage one-time free entitlements per product</li>
+                        <li>Expose monthly usage, utilization, and subscription status</li>
                     </ul>
                 </div>
                 <div class="split">
                     <span class="split-label">Payment</span>
                     <ul>
-                        <li>以单事务处理支付、订阅、权益和用量变更</li>
-                        <li>以 REQUIRES_NEW 独立保存 Toss 失败记录</li>
-                        <li>基于 orderId、idempotencyKey、paymentKey 防止重复支付</li>
-                        <li>AES 加密存储 billingKey，并从序列化路径中排除</li>
+                        <li>Process payment, subscription, entitlement, and usage changes in one transaction</li>
+                        <li>Persist Toss failure records independently with REQUIRES_NEW</li>
+                        <li>Prevent duplicate payments with orderId, idempotencyKey, and paymentKey</li>
+                        <li>Encrypt billingKey with AES and exclude it from serialization paths</li>
                     </ul>
                 </div>
             </article>
@@ -910,7 +910,7 @@
                         <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/1281" target="_blank" rel="noreferrer">PR #1281</a></div>
                     </div>
                     <h4>Automated billing batch optimization</h4>
-                    <p>通过批量预加载和基于幂等键的并行化，改善 N+1 查询与串行调用瓶颈；支付准确率保持 100%。</p>
+                    <p>Improved N+1 queries and serial-call bottlenecks with batch preloading and idempotency-key parallelization; payment accuracy stayed at 100%.</p>
                 </div>
                 <div class="perf-item">
                     <div class="impact-topline">
@@ -918,7 +918,7 @@
                         <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/1292" target="_blank" rel="noreferrer">PR #1292</a></div>
                     </div>
                     <h4>Deep pagination for job listings</h4>
-                    <p>通过覆盖索引与 deferred join 改善百万级 OFFSET 瓶颈，同时保持 API 与前端契约不变。</p>
+                    <p>Improved the million-row OFFSET bottleneck with a covering index and deferred join while preserving the API/frontend contract.</p>
                 </div>
                 <div class="perf-item">
                     <div class="impact-topline">
@@ -926,7 +926,7 @@
                         <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/951" target="_blank" rel="noreferrer">PR #951</a></div>
                     </div>
                     <h4>Job-list API</h4>
-                    <p>将重复聚合查询拆分为 Redis 缓存，并应用仅包含 ACTIVE 职位的 PostgreSQL 部分索引。</p>
+                    <p>Moved repeated aggregation queries to Redis cache and added a PostgreSQL partial index containing only ACTIVE jobs.</p>
                 </div>
                 </div>
             </div>
@@ -939,23 +939,23 @@
                     <div class="impact-topline">
                         <div>
                     <span class="kind">Auth · Session</span>
-                    <h4>JWT · 会话安全基础设施</h4>
-                    <span class="key">退出即刻失效 · 限制 5 个会话</span>
+                    <h4>JWT · session security infrastructure</h4>
+                    <span class="key">Immediate logout invalidation · five-session limit</span>
                         </div>
                     <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/304" target="_blank" rel="noreferrer">PR #304</a><a class="pr" href="https://github.com/ixxveon/career-wave/pull/360" target="_blank" rel="noreferrer">PR #360</a></div>
                     </div>
-                    <p>通过 Redis JTI 黑名单让令牌退出即刻失效，仅存储 Refresh Token 的 SHA-256 哈希；将登录失败计数（Redis）与锁定状态（DB）分开保存。</p>
+                    <p>The Redis JTI blacklist invalidates tokens immediately on logout; only refresh-token SHA-256 hashes are stored, while failed-login counts (Redis) and lock state (DB) are separated.</p>
                 </div>
                 <div class="sec-item">
                     <div class="impact-topline">
                         <div>
                     <span class="kind">OAuth · Security</span>
-                    <h4>社交登录安全强化</h4>
-                    <span class="key">阻断 CWE-598 · 60 秒短期 Cookie</span>
+                    <h4>Social-login security hardening</h4>
+                    <span class="key">CWE-598 blocked · 60-second short-lived cookie</span>
                         </div>
                     <div class="pr-refs"><a class="pr" href="https://github.com/ixxveon/career-wave/pull/820" target="_blank" rel="noreferrer">PR #820</a></div>
                     </div>
-                    <p>将社交回调中 access token 暴露在 URL 的漏洞（CWE-598）改为 60 秒、SameSite=Strict 短期 Cookie，阻断 3 条暴露路径；state 通过 getAndDelete 原子处理防止重复回调。</p>
+                    <p>I replaced URL-exposed social-callback access tokens (CWE-598) with 60-second SameSite=Strict cookies, blocking three exposure paths; atomic getAndDelete handling prevents duplicate callbacks.</p>
                 </div>
                 </div>
             </div>
@@ -977,35 +977,35 @@
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>黑名单查询失败时可以阻断所有用户，但这会导致大量普通用户被强制退出；全部放行则可能让高权限账户绕过安全检查，风险同样很高。</p>
-                    <p>因此，普通用户优先保证可用性而放行，管理员则优先保证安全性而拒绝。</p>
-                    <p class="takeaway">这个决定基于一个原则：即使是同一种故障，也不必对所有用户采用相同策略。</p>
+                    <p>Blocking everyone when blacklist lookup fails could force ordinary users out at scale; allowing everyone could let privileged accounts bypass security.</p>
+                    <p>I therefore allow ordinary users for availability, but deny administrators for security.</p>
+                    <p class="takeaway">The principle: the same failure does not require the same policy for every user.</p>
                 </div>
             </details>
             <details class="decision">
                 <summary>
                     <div class="decision-head">
                         <span class="trade">Redis (temporary) + DB (authoritative)</span>
-                        <h3>分开保存登录失败次数与账户锁定状态</h3>
+                        <h3>Store login-failure counts and account-lock state separately</h3>
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>I separated login-failure data by its purpose instead of placing everything in one store. Attempt counts belong in Redis because they are high-frequency and should expire by TTL; account-lock state belongs in the database because it must survive restarts and Redis outages.</p>
-                    <p>This keeps already-locked accounts locked even when Redis is unavailable, while temporary attempt counts can accumulate quickly and be cleaned up automatically.</p>
-                    <p class="takeaway">The split is based on whether a state may disappear or must be retained, rather than on technology preference.</p>
+                    <p>I separated login-failure data by purpose: attempt counts belong in Redis because they expire by TTL, while account-lock state belongs in the database because it must survive restarts and Redis outages.</p>
+                    <p>This keeps locked accounts protected when Redis is unavailable, while temporary attempt counts can be accumulated and cleaned up quickly.</p>
+                    <p class="takeaway">The storage split is based on whether a state may disappear or must be retained, not on technology preference.</p>
                 </div>
             </details>
             <details class="decision">
                 <summary>
                     <div class="decision-head">
                         <span class="trade">Convenience vs exposure risk</span>
-                        <h3>billingKey 不仅加密保存，还从序列化路径中结构性排除</h3>
+                        <h3>Encrypt billingKey and structurally exclude it from serialization paths</h3>
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>billingKey is highly sensitive payment data: exposure could enable unauthorized charges. AES encryption alone is not sufficient because encrypted values can still be accidentally serialized or logged.</p>
-                    <p>I applied AES encryption at rest and used @Getter(AccessLevel.NONE) with a dedicated accessor so billingKey is structurally excluded from Jackson serialization candidates.</p>
-                    <p class="takeaway">The key principle is to protect sensitive data not only at rest, but also by minimizing every path through which it could leak accidentally.</p>
+                    <p>billingKey is highly sensitive payment data: exposure could enable unauthorized charges. AES encryption alone is insufficient because encrypted values can still be accidentally serialized or logged.</p>
+                    <p>I applied AES encryption at rest and used @Getter(AccessLevel.NONE) with a dedicated accessor to exclude billingKey from Jackson serialization candidates.</p>
+                    <p class="takeaway">The key principle is to protect sensitive data at rest and minimize every path through which it could leak accidentally.</p>
                 </div>
             </details>
             <details class="decision">
@@ -1016,9 +1016,9 @@
                     </div>
                 </summary>
                 <div class="decision-body">
-                    <p>I did not force every read through one pattern: simple duplicate checks and single-row lookups use JPA Repository methods, while multi-table and complex queries use a dedicated QueryRepository.</p>
-                    <p>Putting simple reads into a complex query layer makes the code heavy; forcing complex joins into method-name repositories hides intent and hurts maintainability.</p>
-                    <p class="takeaway">This was a complexity-based separation of responsibilities, not an arbitrary push for one uniform approach.</p>
+                    <p>I use JPA Repository methods for simple checks and lookups, and a dedicated QueryRepository for multi-table, complex queries.</p>
+                    <p>A complex query layer would make simple reads too heavy, while method-name repositories would hide complex join intent and hurt maintainability.</p>
+                    <p class="takeaway">This is a complexity-based separation of responsibilities, not forced uniformity.</p>
                 </div>
             </details>
         </div>
@@ -1033,14 +1033,14 @@
         <div class="trouble-list">
             <article class="trouble-case">
                 <h3>Deep-pagination performance issue</h3>
-                <p>招聘数据扩展到 100 万条后，列表 API 在深分页区间响应急剧变慢。起初我误以为负载测试中的延迟是缓存问题，实际瓶颈来自 OFFSET 本身。通过 EXPLAIN ANALYZE 重新确认执行计划后，应用 ACTIVE 职位覆盖索引与 deferred join 解决了问题。<span class="trouble-learn">This taught me to locate bottlenecks using reproducible metrics rather than intuition or noisy load-test observations.</span></p>
+                <p>After expanding job data to one million rows, the listing API slowed sharply on deep pages. I initially suspected cache synchronization, but OFFSET itself was the bottleneck. EXPLAIN ANALYZE confirmed the plan; a covering index for ACTIVE jobs and deferred join solved the issue.<span class="trouble-learn">This experience taught me to locate bottlenecks with reproducible metrics instead of intuition or load-test noise.</span></p>
             </article>
             <article class="trouble-case">
                 <h3>404 payment issue for social-login users</h3>
-                <p>另一个案例是 Kakao 登录用户发起支付时才出现 404。直接查询数据库发现部分社交登录用户邮箱为空，订单创建时的 NOT NULL 约束异常被错误地吸收到重复请求 catch 逻辑中。随后增加 INSERT 前校验、拆分异常处理，并同步修正前端状态码分支。<span class="trouble-learn">I learned that identical-looking errors can have different causes, and that data-constraint violations are safer to stop with pre-validation.</span></p>
+                <p>Another issue was a 404 that occurred only when Kakao-login users attempted payment. A database check found missing emails for some social-login users, while a NOT NULL violation was incorrectly absorbed by duplicate-request handling. I added pre-insert validation, separated exception handling, and fixed the frontend status branch.<span class="trouble-learn">I learned that similar-looking errors can have different causes, and that data-constraint violations should be stopped with pre-validation.</span></p>
             </article>
         </div>
-        <a class="xref" href="../en/troubleshooting.html">View authentication, payment, and performance troubleshooting →</a>
+        <a class="xref" href="../en/troubleshooting.html">View the complete authentication, payment, and performance troubleshooting record →</a>
     </div>
 </section>
 
@@ -1051,26 +1051,26 @@
             <div class="collab-head">
                 <div>
                     <p class="section-eyebrow">Collaboration</p>
-                    <h2 class="section-title doc-title">Collaboration and lessons learned</h2>
+                    <h2 class="section-title doc-title">Collaboration & lessons learned</h2>
                 </div>
             </div>
             <div class="collab-grid">
                 <div class="collab-card">
                     <h3>Collaboration</h3>
                     <ul>
-                        <li>先通过文档对齐需求与职责，并在实现前记录变更，让团队依据同一标准Collaboration。</li>
-                        <li>I linked issue branches to PR descriptions, recorded intent and scope, and applied CodeRabbit and team-review feedback as follow-up commits so decisions remained traceable in code.</li>
-                        <li>与前端共同核对 Spec、Swagger、DTO 和 TypeScript 类型以对齐 API 契约，并在认证与计费领域统一使用 ApiResponse，减少返工。</li>
-                        <li>QA 发现的问题不只从后端单独排查，而是结合数据库、日志和前端行为逐步缩小根因。</li>
+                        <li>I align requirements and ownership in documentation first, record changes before implementation, and keep the team working from one shared standard.</li>
+                        <li>I link issue branches to PR descriptions, record intent and scope, and apply CodeRabbit and team-review feedback as follow-up commits so decisions remain traceable in code.</li>
+                        <li>I align the API contract with the frontend through Spec, Swagger, DTOs, and TypeScript types, and use ApiResponse across authentication and billing to reduce rework.</li>
+                        <li>For QA issues, I inspect the database, logs, and frontend behavior together to narrow the root cause.</li>
                     </ul>
                     <a class="xref" href="../en/collaboration.html">View branch, commit, PR, and review collaboration →</a>
                 </div>
                 <div class="collab-card">
                     <h3>Lessons learned</h3>
-                    <p>通过这个项目，我比单纯实现功能更清晰地建立了稳定运营服务的设计标准。</p>
-                    <p>我学到性能与稳定性应以日志、执行计划、响应时间等可复现指标验证，而不是凭感觉判断。</p>
-                    <p>我也切身体会到，越是包含外部支付商或社交登录等不可控因素，越要在早期设计中同时考虑 fallback 与异常处理。</p>
-                    <p>尤其在认证和支付等敏感领域，不能只实现正常流程，还必须确保失败时服务链路不会中断。</p>
+                    <p>This project gave me clearer design standards for operating reliable services, beyond simply implementing features.</p>
+                    <p>I learned to validate performance and stability with reproducible metrics such as logs, execution plans, and response times.</p>
+                    <p>The less controllable an integration is, such as payments or social login, the earlier fallback and exception handling must be designed.</p>
+                    <p>In sensitive domains such as authentication and payments, the service flow must remain intact even when the happy path fails.</p>
                 </div>
             </div>
         </div>
@@ -1083,11 +1083,11 @@
         <p class="section-eyebrow">Code</p>
         <h2 class="section-title doc-title">Code & PR</h2>
         <div class="code-links">
-            <a href="https://github.com/ixxveon/career-wave/pull/825" target="_blank" rel="noreferrer"><span class="t">修复社交登录支付 404</span><span class="pr">PR #825</span></a>
-            <a href="https://github.com/ixxveon/career-wave/pull/951" target="_blank" rel="noreferrer"><span class="t">优化Job-list API 性能</span><span class="pr">PR #951</span></a>
-            <a href="https://github.com/ixxveon/career-wave/pull/1110" target="_blank" rel="noreferrer"><span class="t">会话空闲超时 · 多层防护</span><span class="pr">PR #1110</span></a>
+            <a href="https://github.com/ixxveon/career-wave/pull/825" target="_blank" rel="noreferrer"><span class="t">Fix social-login payment 404</span><span class="pr">PR #825</span></a>
+            <a href="https://github.com/ixxveon/career-wave/pull/951" target="_blank" rel="noreferrer"><span class="t">Optimize job-list API performance</span><span class="pr">PR #951</span></a>
+            <a href="https://github.com/ixxveon/career-wave/pull/1110" target="_blank" rel="noreferrer"><span class="t">Session idle timeout · layered defense</span><span class="pr">PR #1110</span></a>
             <a href="https://github.com/ixxveon/career-wave/pull/1281" target="_blank" rel="noreferrer"><span class="t">Automated billing batch optimization</span><span class="pr">PR #1281</span></a>
-            <a href="https://github.com/ixxveon/career-wave/pull/1292" target="_blank" rel="noreferrer"><span class="t">改善Deep pagination for job listings</span><span class="pr">PR #1292</span></a>
+            <a href="https://github.com/ixxveon/career-wave/pull/1292" target="_blank" rel="noreferrer"><span class="t">Improve deep pagination for job listings</span><span class="pr">PR #1292</span></a>
         </div>
         <div class="repo-line">
             <a href="https://github.com/ixxveon/career-wave" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> View ixxveon/career-wave repository</a>
@@ -1103,13 +1103,13 @@
     <a href="#result">Key outcomes</a>
     <a href="#decisions">Technical decisions</a>
     <a href="#trouble">Troubleshooting</a>
-    <a href="#collab">Collaboration·复盘</a>
+    <a href="#collab">Collaboration · retrospective</a>
     <a href="#code">Code · PR</a>
 </nav>
 
 <footer class="site-footer">
     <div class="footer-content">
-        <span><strong>MA RanQian</strong> · 全栈初级开发者作品集</span>
+        <span><strong>MA RanQian</strong> · Junior full-stack developer portfolio</span>
         <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer">GitHub profile</a>
     </div>
 </footer>
