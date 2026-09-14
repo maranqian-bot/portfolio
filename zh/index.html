@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA RanQian | 后端 · AI Service Integration Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=optional" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FBFBFD;
+            --card-bg: #FFFFFF;
+            --accent: #0066FF;
+            --hot: #ff2442;
+            --text-main: #1D1D1F;
+            --text-sub: #6E6E73;
+            --border: #E5E5E7;
+            --radius: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", "Noto Sans KR", -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; overflow-x: hidden; }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(251, 251, 253, 0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border); padding: 18px 0;
+        }
+        .nav-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; padding: 0 24px; align-items: center; }
+        .nav-logo { font-weight: 800; font-size: 17px; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none; color: var(--text-main); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        nav a.nav-item { text-decoration: none; color: var(--text-sub); font-size: 13px; font-weight: 600; transition: 0.2s; letter-spacing: 0.02em; text-transform: uppercase; }
+        nav a.nav-item:hover, nav a.nav-item.active { color: var(--accent); }
+        .nav-dd { position: relative; display: inline-flex; align-items: center; }
+        .nav-dd .dd-caret { font-size: 8px; margin-left: 5px; transition: 0.2s; }
+        .nav-dd:hover .dd-caret { transform: rotate(180deg); }
+        .nav-dd::after { content: ""; position: absolute; top: 100%; left: 0; right: 0; height: 24px; }
+        .nav-dd-menu { position: absolute; top: 100%; left: 50%; margin-top: 16px; transform: translateX(-50%) translateY(8px); background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,0.10); padding: 7px; min-width: 170px; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 1001; }
+        .nav-dd:hover .nav-dd-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .nav-dd-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--text-sub); text-decoration: none; text-transform: none; letter-spacing: 0; white-space: nowrap; transition: 0.15s; }
+        .nav-dd-menu a:hover { background: #F2F2F7; color: var(--accent); }
+        .nav-toggle { display: none; background: none; border: none; font-size: 20px; color: var(--text-main); cursor: pointer; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 140px 24px; }
+        section { margin-bottom: 120px; scroll-margin-top: 96px; }
+        .section-title { font-size: 44px; font-weight: 700; margin-bottom: 40px; letter-spacing: -0.02em; }
+        .section-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sub); letter-spacing: 0.14em; display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .section-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--border); }
+
+        /* 1. HERO */
+        .hero-shell { margin-bottom: 120px; }
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 0; margin-top: 0; margin-bottom: 0; }
+        .hero-avatar { width: 168px; height: 168px; border-radius: 50%; overflow: hidden; background: #F2F2F7; box-shadow: 0 8px 28px rgba(0,0,0,0.10); margin-bottom: 40px; }
+        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; transform: scale(1.18); }
+        .hero-status { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff7a1a; letter-spacing: 0.08em; margin-bottom: 22px; }
+        .hero h1 { font-size: 54px; font-weight: 800; line-height: 1.14; margin-bottom: 26px; letter-spacing: -0.03em; }
+        .hero h1 .accent { color: var(--accent); }
+        .hero-sub { font-size: 18px; color: var(--text-sub); font-weight: 400; line-height: 1.75; margin-bottom: 38px; }
+        .hero-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--text-main); color: #fff; padding: 16px 32px; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; transition: 0.25s; }
+        .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+        /* ABOUT ME */
+        #about { background: #fff; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 92px calc(50vw - 50%); }
+        .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; margin-top: 12px; }
+        .about-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid var(--border); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+        .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+        .about-tags span { padding: 9px 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 700; color: var(--text-sub); }
+        .about-content h3 { font-size: 25px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+        .about-content p { font-size: 16px; color: var(--text-sub); line-height: 1.8; margin-bottom: 12px; }
+        .about-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--text-main); color: #fff; padding: 14px 28px; border-radius: 999px; font-size: 14.5px; font-weight: 700; text-decoration: none; margin-top: 28px; transition: 0.25s; }
+        .about-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+
+        /* 2. BENTO (philosophy) */
+        .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .card { background: var(--card-bg); border-radius: var(--radius); padding: 36px; border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.04); border-color: #d1d1d6; }
+        .large { grid-column: span 2; }
+        .full { grid-column: span 3; }
+        .tag-label { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 16px; display: block; }
+        .card-icon { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--border); color: var(--accent); font-size: 19px; margin-bottom: 18px; }
+        .card h3 { font-size: 24px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+        .card p { color: var(--text-sub); font-size: 15px; line-height: 1.7; }
+        .card .lead { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .stats { display: flex; gap: 40px; margin-top: 32px; flex-wrap: wrap; }
+        .stat-item h4 { font-size: 34px; font-weight: 700; color: var(--accent); }
+        .stat-item p { font-size: 11px; font-weight: 600; color: var(--text-sub); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* 3. CAREER timeline */
+        .timeline { position: relative; margin-top: 8px; }
+        .timeline::before { content: ""; position: absolute; left: 50%; top: 6px; bottom: 6px; width: 1px; background: var(--border); transform: translateX(-50%); }
+        .tl-item { position: relative; width: 50%; padding: 0 48px; margin-bottom: 56px; }
+        .tl-item:last-child { margin-bottom: 0; }
+        .tl-item:nth-child(odd) { left: 0; text-align: right; }
+        .tl-item:nth-child(even) { left: 50%; text-align: left; }
+        .tl-dot { position: absolute; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--border); border: 3px solid var(--bg); z-index: 2; }
+        .tl-item:nth-child(odd) .tl-dot { right: -6px; }
+        .tl-item:nth-child(even) .tl-dot { left: -6px; }
+        .tl-item:first-child .tl-dot { background: var(--text-main); }
+        .tl-period { color: #ff7a1a; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+        .tl-item h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .tl-role { color: var(--text-sub); font-size: 15px; font-weight: 600; line-height: 1.55; }
+        .tl-stack { margin-top: 8px; color: var(--text-sub); font-size: 13px; font-weight: 500; line-height: 1.7; }
+        .tl-list { list-style: none; margin-top: 8px; display: grid; gap: 4px; }
+        .tl-list li { color: var(--text-sub); font-size: 14px; line-height: 1.6; }
+
+        /* 4. PROJECTS */
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .p-card { background: var(--card-bg); padding: 34px 30px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: 0.3s; }
+        .p-card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.04); transform: translateY(-4px); }
+        .p-card .p-icon { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; background: #F2F2F7; color: var(--accent); font-size: 22px; margin-bottom: 20px; }
+        .p-card .p-logo { height: 42px; width: auto; max-width: 80%; object-fit: contain; object-position: left center; display: block; margin: 14px 0 4px; }
+        .p-media { margin: -34px -30px 24px; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; background: #fff; aspect-ratio: 1280 / 620; }
+        .p-media img, .p-media video { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .p-media.p-shadow { position: relative; }
+        .p-media.p-shadow::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08)); pointer-events: none; }
+        .p-kind { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-sub); }
+        .p-card h4 { font-size: 23px; font-weight: 800; margin: 12px 0 14px; letter-spacing: -0.02em; }
+        .p-card p { font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+        .p-card .p-desc { min-height: 154px; }
+        .p-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 20px; }
+        .p-tags span { padding: 6px 11px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--text-sub); }
+        .p-link { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 700; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; }
+        .p-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 18px; }
+        .p-links .p-link { margin-top: 0; }
+        .p-links .p-link:hover { text-decoration: underline; }
+
+        /* 5. SKILLS */
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .skill-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; padding: 26px 22px; transition: 0.3s; }
+        .skill-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+        .skill-card .s-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .skill-card .s-head i { font-size: 22px; color: var(--accent); width: 26px; text-align: center; }
+        .skill-card .s-head h4 { font-size: 15px; font-weight: 700; }
+        .skill-card .s-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-card .s-tags span { font-size: 12px; font-weight: 600; color: var(--text-sub); background: #F5F5F7; padding: 4px 10px; border-radius: 8px; }
+        /* tech stack — categories with logos */
+        .tech-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .tech-cat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 22px; padding: 26px 24px; transition: 0.3s; }
+        .tech-cat:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+        .tech-cat .tc-head { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; }
+        .tech-cat .tc-head i { font-size: 18px; color: var(--accent); width: 22px; text-align: center; }
+        .tech-cat .tc-head h4 { font-size: 15px; font-weight: 700; }
+        .tech-cat .tc-items { display: flex; flex-wrap: wrap; gap: 12px; }
+        .tech-cat .tc-tools { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--border); }
+        .tech-cat .tc-sub { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-sub); margin-bottom: 12px; }
+        .tech-chip { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; width: 94px; height: 94px; padding: 8px; background: #F5F5F7; border: 1px solid transparent; border-radius: 16px; opacity: 0; transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.28s ease; }
+        .tech-chip img { width: 34px; height: 34px; object-fit: contain; display: block; transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .tech-chip span { font-size: 11.5px; font-weight: 600; color: var(--text-main); text-align: center; line-height: 1.2; }
+        .tech-chip.text-only span { color: var(--text-sub); }
+        .tech-chip:hover { background: #fff; border-color: var(--accent); box-shadow: 0 12px 26px rgba(0,0,0,0.09); transform: translateY(-6px); }
+        .tech-chip:hover img { transform: scale(1.14); }
+        .tech-cats.visible .tech-chip { animation: chipIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .tc-items .tech-chip:nth-child(1) { animation-delay: 0.04s; }
+        .tc-items .tech-chip:nth-child(2) { animation-delay: 0.09s; }
+        .tc-items .tech-chip:nth-child(3) { animation-delay: 0.14s; }
+        .tc-items .tech-chip:nth-child(4) { animation-delay: 0.19s; }
+        .tc-items .tech-chip:nth-child(5) { animation-delay: 0.24s; }
+        .tc-items .tech-chip:nth-child(6) { animation-delay: 0.29s; }
+        @keyframes chipIn { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+
+        /* 6. COLLABORATION accordion */
+        details.collab { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; transition: 0.3s; }
+        details.collab:hover { border-color: #d1d1d6; }
+        details.collab summary { padding: 28px 36px; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 18px; }
+        details.collab summary::-webkit-details-marker { display: none; }
+        details.collab summary .c-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: #F2F2F7; padding: 6px 12px; border-radius: 8px; flex-shrink: 0; }
+        details.collab summary h4 { font-size: 19px; font-weight: 700; flex: 1; }
+        details.collab summary .c-plus { color: var(--accent); font-size: 26px; font-weight: 300; transition: transform 0.3s; }
+        details.collab[open] summary .c-plus { transform: rotate(45deg); }
+        .collab-body { padding: 0 36px 32px; border-top: 1px solid var(--border); }
+        .collab-body p { color: var(--text-sub); font-size: 15px; line-height: 1.75; margin-top: 22px; }
+        .collab-body ul { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
+        .collab-body ul li { color: var(--text-sub); font-size: 15px; line-height: 1.65; padding-left: 18px; position: relative; }
+        .collab-body ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+        /* PROBLEM SOLVING (growth) */
+        .growth-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: start; }
+        .growth-text h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 20px; }
+        .growth-text p { color: var(--text-sub); font-size: 16px; line-height: 1.75; margin-bottom: 14px; }
+        .growth-steps { display: grid; gap: 14px; }
+        .growth-step { display: grid; grid-template-columns: 40px 1fr; gap: 18px; align-items: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 22px 24px; transition: 0.3s; }
+        .growth-step:hover { border-color: #d1d1d6; box-shadow: 0 8px 24px rgba(0,0,0,0.03); }
+        .growth-step span { font-size: 15px; font-weight: 800; color: var(--accent); }
+        .growth-step p { font-size: 15px; font-weight: 600; color: var(--text-main); line-height: 1.5; }
+
+        /* COLLABORATION list */
+        .collab-list { display: grid; }
+        .collab-row { display: grid; grid-template-columns: 180px 1fr; gap: 36px; align-items: start; padding: 40px 0; border-top: 1px solid var(--border); }
+        .collab-row:first-child { border-top: none; padding-top: 8px; }
+        .collab-meta { color: var(--accent); font-size: 14px; font-weight: 800; }
+        .collab-row h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+        .collab-row p { color: var(--text-sub); font-size: 15.5px; line-height: 1.7; }
+        .collab-row ul { list-style: none; display: grid; gap: 8px; }
+        .collab-row ul li { color: var(--text-sub); font-size: 15.5px; line-height: 1.6; padding-left: 18px; position: relative; }
+        .collab-row ul li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+        .collab-cta-wrap { margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+        .collab-cta-wrap.right { align-items: flex-end; text-align: right; }
+        .collab-cta-desc { color: var(--text-sub); font-size: 15px; line-height: 1.7; }
+        .collab-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 700; border-radius: 10px; transition: 0.25s; }
+        .collab-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .collab-cta i { font-size: 15px; }
+        .collab-gallery { display: grid; grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+        .collab-item { margin: 0; }
+        .collab-cap { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; color: var(--text-main); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+        .collab-cap::before { content: ""; width: 4px; height: 15px; border-radius: 2px; background: var(--accent); }
+        .collab-shot { height: 420px; overflow: auto; border: 1px solid var(--border); border-radius: 12px; background: #fff; transition: 0.25s; }
+        .collab-shot:hover { border-color: #c4c4ca; }
+        .collab-shot img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+        .lightbox { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 40px; background: rgba(0,0,0,0.88); cursor: zoom-out; opacity: 0; transition: opacity 0.2s ease; }
+        .lightbox.open { display: flex; opacity: 1; }
+        .lightbox img { max-width: 96%; max-height: 96%; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-close { position: fixed; top: 22px; right: 28px; color: #fff; font-size: 34px; font-weight: 300; line-height: 1; cursor: pointer; opacity: 0.8; }
+        .lightbox-close:hover { opacity: 1; }
+
+        /* 7. CONTACT */
+        .contact-box { background: var(--text-main); color: #fff; border-radius: 44px; padding: 100px 40px; text-align: center; }
+        .contact-box h2 { font-size: 36px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
+        .contact-box .sub { color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.75; margin-bottom: 40px; }
+        .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .contact-actions a { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none; transition: 0.2s; }
+        .contact-primary { background: #fff; color: var(--text-main); }
+        .contact-primary:hover { background: var(--accent); color: #fff; }
+        .contact-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .contact-secondary:hover { background: rgba(255,255,255,0.18); }
+
+        /* footer */
+        footer { border-top: 1px solid var(--border); padding: 40px 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-sub); flex-wrap: wrap; gap: 12px; }
+        .footer-content strong { color: var(--text-main); }
+
+        /* reveal */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } .tech-cats { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .tech-cats { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .container { padding: 110px 20px; }
+            .hero-shell { margin-bottom: 90px; }
+            .hero h1 { font-size: 36px; }
+            .hero-avatar { width: 150px; height: 150px; }
+            #about { padding-top: 56px; padding-bottom: 56px; }
+            .about-grid { grid-template-columns: 1fr; gap: 28px; }
+            .about-photo { max-width: 280px; margin: 0 auto; }
+            .section-title { font-size: 34px; }
+            .bento-grid, .project-grid { grid-template-columns: 1fr; }
+            .growth-grid { grid-template-columns: 1fr; gap: 28px; }
+            .collab-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
+            .collab-shot { height: 240px; }
+            .large, .full { grid-column: span 1; }
+            .timeline::before { left: 5px; }
+            .tl-item { width: 100%; padding: 0 0 0 32px; margin-bottom: 40px; }
+            .tl-item:nth-child(odd), .tl-item:nth-child(even) { left: 0; text-align: left; }
+            .tl-item:nth-child(odd) .tl-dot, .tl-item:nth-child(even) .tl-dot { left: -1px; right: auto; }
+            .contact-box { padding: 70px 24px; border-radius: 32px; }
+            .contact-box h2 { font-size: 34px; }
+            details.collab summary { padding: 22px 24px; gap: 12px; }
+            details.collab summary h4 { font-size: 17px; }
+            .collab-body { padding: 0 24px 26px; }
+        }
+    </style>
+<style>.i18n-switcher{position:fixed;right:24px;top:18px;z-index:1100;display:flex;gap:8px;font-size:12px;font-weight:700}.i18n-switcher a{color:#6E6E73;text-decoration:none;padding:5px 8px;border:1px solid #E5E5E7;border-radius:999px;background:#fff}.i18n-switcher a[aria-current="page"]{color:#0066FF;border-color:#0066FF}@media(max-width:900px){.i18n-switcher{right:16px;top:14px}}</style></head>
+<body>
+
+<nav>
+    <div class="nav-content">
+        <div class="nav-links">
+            <a href="#about" class="nav-item active">关于我</a>
+            <div class="nav-dd">
+                <a class="nav-item">项目</a>
+                <div class="nav-dd-menu">
+                    <a href="../final-project.html">最终项目</a>
+                    <a href="../mini-project.html">小组项目</a>
+                </div>
+            </div>
+            <a href="../troubleshooting.html" class="nav-item">问题复盘</a>
+            <a href="../collaboration.html" class="nav-item">协作方式</a>
+        </div>
+    </div>
+<div class="i18n-switcher" aria-label="Language"><a href="../ko/index.html">한국어</a><a href="../zh/index.html" aria-current="page">中文</a><a href="../en/index.html">English</a></div></nav>
+
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero-shell" id="hero-shell">
+        <section id="home" class="hero">
+            <div class="hero-avatar">
+                <img src="../assets/hero-profile.jpg" alt="마은재">
+            </div>
+            <span class="hero-status">● Status: Open to Work</span>
+            <h1>你好，<br>我是 Java/Spring 后端<br><span class="accent">开发者 MA RanQian。</span></h1>
+            <p class="hero-sub">我专注于认证、支付、性能优化和 AI 服务集成。</p>
+            <a class="hero-btn" href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer"><i class="fab fa-github"></i> 前往 GitHub</a>
+        </section>
+    </div>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-grid reveal">
+            <div class="about-photo">
+                <img src="../assets/KakaoTalk_Photo_2026-06-28-08-08-03.jpeg" alt="마은재">
+            </div>
+            <div class="about-content">
+                <div class="about-tags">
+                    <span>#深入解决问题</span><span>#责任感</span><span>#稳定设计</span><span>#持续学习</span>
+                </div>
+                <h3>先理解问题，再稳定地构建解决方案</h3>
+                <p>我相信，好代码不是从快速堆出功能开始，而是从深入理解问题开始。</p>
+                <p>我会先理解用户流程和业务领域，把需求拆成小而明确的单元，稳定实现，再根据结果持续改进。</p>
+                <a class="about-btn" href="#projects">查看项目 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2 class="section-title">技术栈</h2>
+        <div class="tech-cats reveal">
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-server"></i><h4>后端</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/java.svg" alt="Java"><span>Java</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/spring.svg" alt="Spring Boot"><span>Spring Boot</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/python.svg" alt="Python"><span>Python</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/langchain.svg" alt="LangChain"><span>LangChain</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/fastapi.svg" alt="FastAPI"><span>FastAPI</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/gradle.svg" alt="Gradle"><span>Gradle</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/jpa.svg" alt="JPA"><span>JPA</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/swagger.svg" alt="Swagger"><span>Swagger</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">工具</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="../assets/logos/eclipse.svg" alt="Eclipse"><span>Eclipse</span></span>
+                        <span class="tech-chip"><img src="../assets/logos/pycharm.svg" alt="PyCharm"><span>PyCharm</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fab fa-react"></i><h4>前端</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/react.svg" alt="React"><span>React</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/javascript.svg" alt="JavaScript"><span>JavaScript</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/typescript.svg" alt="TypeScript"><span>TypeScript</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/tailwindcss.svg" alt="Tailwind CSS"><span>Tailwind</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/html5.svg" alt="HTML"><span>HTML</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/css3.svg" alt="CSS"><span>CSS</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">工具</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="../assets/logos/vscode.svg" alt="VS Code"><span>VS Code</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-users"></i><h4>协作</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/git.svg" alt="Git"><span>Git</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/github.svg" alt="GitHub"><span>GitHub</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/notion.svg" alt="Notion"><span>Notion</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/discord.svg" alt="Discord"><span>Discord</span></span>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-database"></i><h4>数据库</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/mysql.svg" alt="MySQL"><span>MySQL</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/postgresql.svg" alt="PostgreSQL"><span>PostgreSQL</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/redis.svg" alt="Redis"><span>Redis</span></span>
+                </div>
+                <div class="tc-tools">
+                    <span class="tc-sub">工具</span>
+                    <div class="tc-items">
+                        <span class="tech-chip"><img src="../assets/logos/dbeaver.svg" alt="DBeaver"><span>DBeaver</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-cloud"></i><h4>DevOps</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/docker.svg" alt="Docker"><span>Docker</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/aws.svg" alt="AWS"><span>AWS</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/linux.svg" alt="Linux"><span>Linux</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/githubactions.svg" alt="GitHub Actions"><span>GitHub Actions</span></span>
+                </div>
+            </div>
+            <div class="tech-cat">
+                <div class="tc-head"><i class="fas fa-wand-magic-sparkles"></i><h4>AI · LLM</h4></div>
+                <div class="tc-items">
+                    <span class="tech-chip"><img src="../assets/logos/openai.svg" alt="OpenAI"><span>OpenAI</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/azure.svg" alt="Azure OpenAI"><span>Azure OpenAI</span></span>
+                    <span class="tech-chip"><img src="../assets/logos/claude.svg" alt="Claude Code"><span>Claude Code</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER -->
+    <section id="career">
+        <h2 class="section-title">经历</h2>
+        <div class="timeline reveal">
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2026.01 — 2026.07</div>
+                <h3>韩国 IT Academy</h3>
+                <p class="tl-role">云原生与生成式 AI SaaS 平台开发课程</p>
+                <p class="tl-stack">学习 Java/Spring Boot、React、Docker/AWS、FastAPI/LLM 全栈开发、云端部署自动化和生成式 AI 服务集成</p>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2021.09 — 2024.08</div>
+                <h3>汉阳大学</h3>
+                <p class="tl-role">数字媒体内容专业 硕士</p>
+                <ul class="tl-list">
+                    <li>在读期间每学期获得 30% 学费奖学金</li>
+                    <li>获得毕业届最佳论文奖</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-period">2017.09 — 2021.08</div>
+                <h3>Sichuan International Studies University</h3>
+                <p class="tl-role">信息媒体专业 学士</p>
+                <ul class="tl-list">
+                    <li>学习广播视频制作、媒体内容和营销传播等课程</li>
+                    <li>获得中国全国大学生广告艺术大赛优秀奖</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2 class="section-title">项目</h2>
+        <div class="project-grid">
+            <a href="../final-project.html" class="p-card reveal">
+                <div class="p-media"><video src="../assets/careerwave-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">最终项目</span>
+                <img src="../assets/logo-careerwave.png" alt="Career Wave" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">CareerWave</h4>
+                <p class="p-desc">求职者通常需要用多个分散的工具完成简历、面试和职业诊断。CareerWave 试图把这些流程连接在一个服务中，提供 AI 面试辅导、材料分析和职业诊断。<br><br>我负责用户注册、认证、订阅和支付等后端核心流程，确保用户能够稳定完成整个流程。</p>
+                <div class="p-tags"><span>Java 21</span><span>Spring Boot 3</span><span>Spring Security</span><span>PostgreSQL</span><span>Redis</span><span>Toss Payments</span></div>
+                <span class="p-link">查看详情 <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="../mini-project.html" class="p-card reveal">
+                <div class="p-media"><video src="../assets/mapingo-preview2.mp4" autoplay muted loop playsinline></video></div>
+                <span class="p-kind">小组项目</span>
+                <img src="../assets/logo-mapingo.png" alt="Mapingo" class="p-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <h4 style="display:none;">Mapingo</h4>
+                <p class="p-desc">Mapingo 是一款根据用户选择的真实地点和学习记录，提供个性化对话、语音练习和发音评价的 AI 英语学习服务。<br><br>我负责从 FastAPI AI 服务、Spring 集成到 React 前端的 AI 对话辅导流程。</p>
+                <div class="p-tags"><span>FastAPI</span><span>OpenAI</span><span>Azure Speech</span><span>FFmpeg</span><span>Spring Boot</span><span>React</span></div>
+                <span class="p-link">查看详情 <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PROBLEM SOLVING (growth) -->
+    <section id="growth">
+        <h2 class="section-title">问题解决</h2>
+        <div class="growth-grid reveal">
+            <div class="growth-text">
+                <h3>用问题复盘展示成长</h3>
+                <p>我把项目中遇到的问题拆分为复现条件、原因分析、解决过程和验证结果。</p>
+                <p>我不只看结果页面，也会结合日志、请求参数和数据库状态定位问题。</p>
+                <p>我会记录原因和验证标准，避免同类问题反复出现。</p>
+            </div>
+            <div class="growth-steps">
+                <div class="growth-step"><span>01</span><p>先记录问题和复现条件。</p></div>
+                <div class="growth-step"><span>02</span><p>根据日志、请求参数和数据库状态缩小原因范围。</p></div>
+                <div class="growth-step"><span>03</span><p>修改后在相同条件下重新验证。</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION -->
+    <section id="collaboration">
+        <h2 class="section-title">协作</h2>
+        <div class="collab-list reveal">
+            <article class="collab-row">
+                <span class="collab-meta">GitHub</span>
+                <div>
+                    <h3>统一分支策略和提交规范</h3>
+                    <ul>
+                        <li>按功能创建分支，避免一个 PR 混入过多工作范围。</li>
+                        <li>按照团队规范编写能体现变更意图的提交信息。</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Issue</span>
+                <div>
+                    <h3>按 Issue 跟踪工作</h3>
+                    <p>把功能、Bug 和改进拆成 Issue，记录状态和完成标准，让工作流可追踪。</p>
+                </div>
+            </article>
+            <article class="collab-row">
+                <span class="collab-meta">Code Review</span>
+                <div>
+                    <h3>记录 Code Review 改进过程</h3>
+                    <p>不仅分享实现结果，也记录 Review 评论和修改过程。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-box reveal">
+            <h2>持续学习、思考并成长。</h2>
+            <p class="sub">面对新技术和陌生问题不退缩，<br>从用户视角持续构建更好的服务。</p>
+            <div class="contact-actions">
+                <a href="mailto:maranqian@gmail.com" class="contact-primary"><i class="fas fa-envelope"></i> maranqian@gmail.com</a>
+                <a href="https://github.com/maranqian-bot" target="_blank" rel="noreferrer" class="contact-secondary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <span><strong>마은재</strong> · 后端 · AI Service Integration 作品集</span>
+        <span>© 2026 · Java、Spring Boot、数据库、部署与问题解决</span>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" aria-label="关闭">&times;</span>
+    <img src="" alt="放大图片" id="lightbox-img">
+</div>
+
+<script>
+    // reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // lightbox
+    (function () {
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.collab-shot img').forEach(img => {
+            img.addEventListener('click', () => {
+                lbImg.src = img.src;
+                lb.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+        lb.addEventListener('click', close);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+</script>
+
+</body>
+</html>
